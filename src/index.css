@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
   --color-dark-violet: oklch(0.1452 0.0734 309.22);
