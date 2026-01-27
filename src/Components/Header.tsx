@@ -17,10 +17,17 @@ function DarkModeToggle() {
     );
 }
 
-export default function Header() {
+type HeaderType = { 
+    setSideBarOpen: React.Dispatch<React.SetStateAction<boolean>> 
+}
+
+export default function Header({ setSideBarOpen }: HeaderType ) {
     return (
         <header className="p-4 flex justify-between items-center">
-            <IoMenuOutline className="mr-2 text-white text-2xl" />
+            <IoMenuOutline 
+                onClick={() => setSideBarOpen(true)}
+                className="mr-2 text-white text-2xl" 
+            />
 
             <h1 className="group text-2xl font-extralight tracking-wider *:transition-colors *:duration-700 *:ease-in-out">
                 <span className="bg-clip-text text-transparent bg-linear-to-tl from-orange-500 to-orange-400 group-hover:bg-linear-to-tr group-hover:from-orange-500 group-hover:to-orange-300">
