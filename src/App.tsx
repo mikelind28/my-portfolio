@@ -3,6 +3,7 @@ import Header from "./Components/Header";
 import Sidebar from "./Components/Sidebar";
 import "./index.css";
 import { useState } from "react";
+import { Outlet } from "react-router";
 
 function App() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
@@ -24,6 +25,8 @@ function App() {
       </AnimatePresence>
 
       <Header setSideBarOpen={setSideBarOpen} />
+
+      <Outlet />
     </>
   );
 }
