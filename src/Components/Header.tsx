@@ -46,15 +46,15 @@ export default function Header({ setSideBarOpen }: HeaderType) {
       />
 
       <h1 className="group text-2xl font-extralight tracking-wider *:transition-colors *:duration-700 *:ease-in-out">
-        <span className="bg-linear-to-tl from-orange-500 to-orange-400 bg-clip-text text-transparent group-hover:bg-linear-to-tr group-hover:from-orange-500 group-hover:to-orange-300">
+        <span className="bg-radial-[at_60%_-10%] from-amber-500/90 to-orange-500 bg-clip-text text-transparent group-hover:bg-radial-[at_66%_0%] group-hover:from-amber-500 group-hover:from-40% group-hover:to-orange-400">
           mike lind
         </span>
 
-        <span className="bg-linear-to-b from-fuchsia-600/85 to-fuchsia-600/66 bg-clip-text text-transparent group-hover:bg-linear-to-b group-hover:from-fuchsia-500 group-hover:to-fuchsia-600">
+        <span className="bg-linear-to-b from-fuchsia-600/85 to-fuchsia-700/66 bg-clip-text text-transparent group-hover:bg-linear-to-b group-hover:from-fuchsia-500 group-hover:to-fuchsia-600">
           {" | "}
         </span>
 
-        <span className="bg-linear-to-tr from-fuchsia-600 to-fuchsia-500 bg-clip-text text-transparent group-hover:bg-linear-to-tl group-hover:from-fuchsia-600 group-hover:to-fuchsia-400">
+        <span className="group-hover:bg-radial-[at_33%_0% bg-radial-[at_40%_10%] from-fuchsia-500 to-fuchsia-600 bg-clip-text text-transparent group-hover:from-fuchsia-500 group-hover:from-40% group-hover:to-fuchsia-700">
           web dev
         </span>
       </h1>

@@ -23,7 +23,7 @@ function AnimatedLink({ children }: { children: ReactNode }) {
           ease: "easeOut",
         }}
         style={{ originX: 0 }}
-        className="absolute left-0 -bottom-0.5 h-0.5 w-full bg-current"
+        className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-current"
       />
     </motion.span>
   );
@@ -60,7 +60,9 @@ export default function Sidebar({ setSideBarOpen }: SideBarType) {
           </AnimatedLink>
 
           <AnimatedLink>
-            <li className="flex items-center gap-2">GitHub <LuExternalLink /></li>
+            <li className="flex items-center gap-2">
+              GitHub <LuExternalLink />
+            </li>
           </AnimatedLink>
         </ul>
       </nav>
