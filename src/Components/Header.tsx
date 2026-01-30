@@ -45,7 +45,7 @@ export default function Header({ setSideBarOpen }: HeaderType) {
         className="mr-2 cursor-pointer text-2xl text-white"
       />
 
-      <h1 className="group text-2xl font-extralight tracking-wider *:transition-colors *:duration-700 *:ease-in-out">
+      <h1 className="group text-2xl font-extralight tracking-wider cursor-pointer *:transition-colors *:duration-700 *:ease-in-out">
         <span className="bg-radial-[at_60%_-10%] from-amber-500/90 to-orange-500 bg-clip-text text-transparent group-hover:bg-radial-[at_66%_0%] group-hover:from-amber-500 group-hover:from-40% group-hover:to-orange-400">
           mike lind
         </span>
