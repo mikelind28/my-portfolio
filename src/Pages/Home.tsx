@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { IoIosArrowForward } from "react-icons/io";
+import { Link } from "react-router";
 
 function WelcomeHeader() {
   return (
@@ -41,9 +42,9 @@ function HelloWorldWelcome() {
   );
 }
 
-function MyPortfolioH2() {
+function H2({ text }: { text: string }) {
     return (
-        <div className="flex w-full flex-col gap-1">
+        <div className="my-2 flex w-full flex-col gap-1">
             <motion.div
                 className="group flex gap-2 items-center cursor-pointer"
             >
@@ -53,7 +54,7 @@ function MyPortfolioH2() {
                     transition={{ duration: 1, ease: "easeOut" }}
                     className="w-full bg-radial-[at_40%_-10%] from-amber-500 to-orange-700 bg-clip-text text-3xl font-light text-transparent"
                 >
-                    My Portfolio
+                    {text}
                 </motion.h2>
 
                 <motion.div
@@ -78,10 +79,24 @@ function MyPortfolioH2() {
     );
 }
 
-function PortfolioItem({ text, imgUrl }: { text: string, imgUrl: string }) {
+const item = {
+    hidden: { x: '-150vw' },
+    show: { x: 0 }
+}
+
+function PortfolioItem({ text, url, imgUrl }: { text: string, url: string, imgUrl: string }) {
     return (
-        <li className="group relative h-20 w-full overflow-clip rounded-xl cursor-pointer">
-            <div className="absolute flex h-full w-full rounded-lg bg-radial-[at_25%_25%] from-orange-400 to-fuchsia-700 bg-clip-padding p-1 transition-colors duration-300 group-hover:from-orange-300 group-hover:to-fuchsia-600">
+        <motion.li
+            variants={item}
+            whileHover={{ scale: 1.03 }}
+            className="group relative h-20 w-full overflow-clip rounded-xl cursor-pointer"
+        >
+            <Link 
+                to={url}
+                target='_blank'
+                rel='noopener noreferrer'
+                className="absolute flex h-full w-full rounded-lg bg-radial-[at_25%_25%] from-orange-400 to-fuchsia-700 bg-clip-padding p-1 transition-colors duration-300 group-hover:from-orange-300 group-hover:to-fuchsia-600"
+            >
                 <div
                     className="relative bg-dark-violet4/75 h-full w-full rounded-lg group-hover:bg-dark-violet4/85"
                     style={{ boxShadow: "0px 8px 12px 4px inset rgb(0 0 0 / 50%)" }}
@@ -96,13 +111,22 @@ function PortfolioItem({ text, imgUrl }: { text: string, imgUrl: string }) {
                 <div className="absolute flex items-center justify-center right-1 top-1 rounded-tr-lg rounded-br-lg h-18 w-12 bg-black/50">
                     <IoIosArrowForward className="size-8 text-amber-600 group-hover:text-amber-500 transition-color duration-300"/>
                 </div>
-            </div>
+            </Link>
 
             <p className=" absolute bottom-2 left-4 text-xl font-light text-amber-500 text-shadow-md/50 transition-all duration-300 group-hover:text-amber-400 group-hover:text-shadow-2xl/75">
                 {text}
             </p>
-        </li>
+        </motion.li>
     );
+}
+
+const list = {
+    hidden: {},
+    show: {
+        transition: {
+            staggerChildren: 0.15
+        }
+    }
 }
 
 export default function Home() {
@@ -112,24 +136,36 @@ export default function Home() {
 
         <HelloWorldWelcome />
 
-        <MyPortfolioH2 />
+        <H2 text={"My Portfolio"} />
 
-        <ul className="my-4 flex w-full flex-col items-center space-y-3">
+        <motion.ul 
+            variants={list}
+            initial="hidden"
+            animate="show"
+            className="mt-2 mb-4 flex w-full flex-col items-center space-y-3"
+        >
             <PortfolioItem 
                 text={'Win / Doc / Nav Interfaces'}
+                url={'https://window-doc-nav.netlify.app'}
                 imgUrl={'./src/public/win-doc-nav-interfaces.png'}
             />
 
             <PortfolioItem 
                 text={'myBookShelf'}
+                url={'https://my-bookshelf-wg3p.onrender.com/'}
                 imgUrl={'./src/public/my-bookshelf.png'}
             />
 
             <PortfolioItem 
                 text={'myNumberArray'}
+                url={'https://my-number-array.netlify.app/'}
                 imgUrl={'./src/public/my-number-array.png'}
             />
-        </ul>
+        </motion.ul>
+
+        <H2 text={"About Me"} />
+
+        <H2 text={"Contact"} />
     </div>
   );
 }

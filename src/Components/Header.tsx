@@ -2,6 +2,7 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 import { IoMenuOutline, IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
+import { Link } from "react-router";
 
 function DarkModeToggle() {
   const [isOn, setIsOn] = useState(false);
@@ -45,19 +46,21 @@ export default function Header({ setSideBarOpen }: HeaderType) {
         className="mr-2 cursor-pointer text-2xl text-white"
       />
 
-      <h1 className="group text-2xl font-extralight tracking-wider cursor-pointer *:transition-colors *:duration-700 *:ease-in-out">
-        <span className="bg-radial-[at_60%_-10%] from-amber-500/90 to-orange-500 bg-clip-text text-transparent group-hover:bg-radial-[at_66%_0%] group-hover:from-amber-500 group-hover:from-40% group-hover:to-orange-400">
-          mike lind
-        </span>
+      <Link to={'/'}>
+        <h1 className="group text-2xl font-extralight tracking-wider cursor-pointer *:transition-colors *:duration-700 *:ease-in-out">
+          <span className="bg-radial-[at_60%_-10%] from-amber-500/90 to-orange-500 bg-clip-text text-transparent group-hover:bg-radial-[at_66%_0%] group-hover:from-amber-500 group-hover:from-40% group-hover:to-orange-400">
+            mike lind
+          </span>
 
-        <span className="bg-linear-to-b from-fuchsia-600/85 to-fuchsia-700/66 bg-clip-text text-transparent group-hover:bg-linear-to-b group-hover:from-fuchsia-500 group-hover:to-fuchsia-600">
-          {" | "}
-        </span>
+          <span className="bg-linear-to-b from-fuchsia-600/85 to-fuchsia-700/66 bg-clip-text text-transparent group-hover:bg-linear-to-b group-hover:from-fuchsia-500 group-hover:to-fuchsia-600">
+            {" | "}
+          </span>
 
-        <span className="group-hover:bg-radial-[at_33%_0% bg-radial-[at_40%_10%] from-fuchsia-500 to-fuchsia-600 bg-clip-text text-transparent group-hover:from-fuchsia-500 group-hover:from-40% group-hover:to-fuchsia-700">
-          web dev
-        </span>
-      </h1>
+          <span className="group-hover:bg-radial-[at_33%_0% bg-radial-[at_40%_10%] from-fuchsia-500 to-fuchsia-600 bg-clip-text text-transparent group-hover:from-fuchsia-500 group-hover:from-40% group-hover:to-fuchsia-700">
+            web dev
+          </span>
+        </h1>
+      </Link>
 
       <DarkModeToggle />
     </header>
