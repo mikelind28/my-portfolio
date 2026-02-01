@@ -42,9 +42,12 @@ function HelloWorldWelcome() {
   );
 }
 
-function H2({ text }: { text: string }) {
+function H2({ text, pathName }: { text: string, pathName: string }) {
     return (
-        <div className="my-2 flex w-full flex-col gap-1">
+        <Link 
+            to={pathName}
+            className="my-2 flex w-full flex-col gap-1"
+        >
             <motion.div
                 className="group flex gap-2 items-center cursor-pointer"
             >
@@ -75,7 +78,7 @@ function H2({ text }: { text: string }) {
                 transition={{ duration: 1 }}
                 className="h-px bg-linear-to-r from-orange-600/75 to-orange-400/85"
             />
-        </div>
+        </Link>
     );
 }
 
@@ -131,12 +134,12 @@ const list = {
 
 export default function Home() {
   return (
-    <div className="flex w-full flex-col items-center p-5">
+    <main className="flex w-full flex-col items-center p-5">
         <WelcomeHeader />
 
         <HelloWorldWelcome />
 
-        <H2 text={"My Portfolio"} />
+        <H2 text={"My Portfolio"} pathName={'/portfolio'} />
 
         <motion.ul 
             variants={list}
@@ -161,11 +164,17 @@ export default function Home() {
                 url={'https://my-number-array.netlify.app/'}
                 imgUrl={'./src/public/my-number-array.png'}
             />
+
+            <div className="text-xl text-orange-400 font-light">
+                <Link to='/portfolio'>
+                    See all...
+                </Link>
+            </div>
         </motion.ul>
 
-        <H2 text={"About Me"} />
+        <H2 text={"About Me"} pathName={'/about'} />
 
-        <H2 text={"Contact"} />
-    </div>
+        <H2 text={"Contact"} pathName={'/contact'} />
+    </main>
   );
 }

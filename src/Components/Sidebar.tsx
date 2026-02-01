@@ -4,7 +4,7 @@ import { IoClose } from "react-icons/io5";
 import { LuExternalLink } from "react-icons/lu";
 import { NavLink, useLocation } from "react-router";
 
-function AnimatedLink({ children, url, newTab }: { children: ReactNode, url: string, newTab: boolean }) {
+function AnimatedLink({ children, url, newTab, setSideBarOpen }: { children: ReactNode, url: string, newTab: boolean, setSideBarOpen: React.Dispatch<React.SetStateAction<boolean>> }) {
   let location = useLocation();
 
   return (
@@ -13,6 +13,7 @@ function AnimatedLink({ children, url, newTab }: { children: ReactNode, url: str
       initial="rest"
       whileHover="hover"
       animate="rest"
+      onClick={() => setSideBarOpen(false)}
     >
       <NavLink
         to={url}
@@ -55,25 +56,26 @@ export default function Sidebar({ setSideBarOpen }: SideBarType) {
 
       <nav>
         <ul className="flex flex-col gap-5 p-6 text-2xl text-pink-100 *:hover:text-pink-50">
-          <AnimatedLink url={"/"} newTab={false}>
+          <AnimatedLink url={"/"} newTab={false} setSideBarOpen={setSideBarOpen}>
             Home
           </AnimatedLink>
 
-          <AnimatedLink url={"/portfolio"} newTab={false}>
+          <AnimatedLink url={"/portfolio"} newTab={false} setSideBarOpen={setSideBarOpen}>
             Portfolio
           </AnimatedLink>
 
-          <AnimatedLink url={"/about"} newTab={false}>
+          <AnimatedLink url={"/about"} newTab={false} setSideBarOpen={setSideBarOpen}>
             About Me
           </AnimatedLink>
 
-          <AnimatedLink url={"/contact"} newTab={false}>
+          <AnimatedLink url={"/contact"} newTab={false} setSideBarOpen={setSideBarOpen}>
             Contact
           </AnimatedLink>
 
           <AnimatedLink 
             url={"https://github.com/mikelind28"}
             newTab={true}
+            setSideBarOpen={setSideBarOpen}
           >
             <div className="flex items-center gap-2">
               GitHub <LuExternalLink />

@@ -17,7 +17,7 @@ function App() {
             animate={{ y: 0, opacity: 100 }}
             transition={{ type: "tween", ease: "circOut", duration: 0.5 }}
             exit={{ y: "-100%", opacity: 0 }}
-            className="absolute z-100"
+            className="fixed z-100"
           >
             <Sidebar setSideBarOpen={setSideBarOpen} />
           </motion.div>

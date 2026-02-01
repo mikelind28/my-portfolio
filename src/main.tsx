@@ -5,6 +5,7 @@ import { RouterProvider } from "react-router/dom";
 import "./index.css";
 import App from "./App.tsx";
 import Home from "./Pages/Home.tsx";
+import About from "./Pages/About.tsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
         index: true,
         Component: Home,
       },
+      {
+        path: 'about',
+        Component: About,
+      }
     ],
   },
 ]);

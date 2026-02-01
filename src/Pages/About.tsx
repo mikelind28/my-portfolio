@@ -1,0 +1,107 @@
+import { motion } from "motion/react";
+
+// CHANGING BG COLOR WITH SCROLL:
+// const containerRef = useRef<HTMLDivElement | null>(null);
+// const { scrollYProgress } = useScroll({ container: containerRef });
+
+// const { innerLightness, outerLightness, innerChroma, outerChroma, innerHue, outerHue } = useTransform(scrollYProgress, [0, 1], {
+//     innerLightness: [0.452, 0.47],
+//     outerLightness: [0.401, 0.408],
+//     innerChroma: [0.211, 0.157],
+//     outerChroma: [0.17, 0.123],
+//     innerHue: [324.591, 37.304],
+//     outerHue: [325.612, 38.172]
+// });
+
+// const background = useTransform([innerLightness, outerLightness, innerChroma, outerChroma, innerHue, outerHue], ([il, ol, ic, oc, ih, oh]) => 
+//     `radial-gradient(
+//         circle,
+//         oklch(${il} ${ic} ${ih} / 0.8) 40%,
+//         oklch(${ol} ${oc} ${oh} / 0.5) 100%
+//     )`
+// );
+
+export default function About() {
+    return (
+        <main className="w-full p-2 pt-0">
+            <motion.h2
+                animate={{
+                    backgroundPosition: ["10% 70%", "90% 40%", "33% 60%", "50% 90%"],
+                }}
+                transition={{
+                    duration: 3,
+                    ease: "easeInOut",
+                    times: [0, 0.5, 2],
+                }}
+                className="pb-2 bg-radial from-orange-500 from-10% to-fuchsia-700 to-85% bg-clip-text text-3xl text-center font-light text-transparent"
+                style={{ backgroundSize: "200% 200%" }}
+            >
+                About Me.
+            </motion.h2>
+
+            <div className="relative mt-4 mb-4 flex flex-col items-center gap-2 font-light">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.75 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 2, ease: "easeInOut" }}
+                    className="absolute -z-10 h-full w-[90%] rounded-xl bg-clip-content blur-lg bg-radial from-fuchsia-800/80 from-40% to-fuchsia-900/50"
+                />
+
+                <div className="m-8 text-center">
+
+                    <h3 className="mb-2 text-xl text-rose-100 text-shadow-md/15">My Background:</h3>
+
+                    <p className="text-center text-base/5 text-orange-100/95 text-shadow-sm">
+                        I have a Bachelor of Fine Arts from the University of Wisconsin-Madison, where I double-majored in Studio Art and Art History. I grew up in Wisconsin, but now live in Minneapolis.
+                    </p>
+                </div>
+            </div>
+
+            <div className="relative mt-8 mb-4 flex flex-col items-center gap-2 font-light">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.75 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 2, ease: "easeInOut" }}
+                    className="absolute -z-10 h-full w-[90%] rounded-xl bg-clip-content blur-lg bg-radial from-orange-800/80 from-40% to-orange-900/50"
+                />
+
+                <div className="m-8 text-center">
+
+                    <h3 className="mb-2 text-xl text-rose-100 text-shadow-md/15">My Proficiencies:</h3>
+
+                    <ul className="text-center text-base/5 text-orange-100/95 text-shadow-sm">
+                         <li>JavaScript</li>
+                         <li>TypeScript</li>
+                         <li>HTML</li>
+                         <li>CSS</li>
+                         <li>Vite</li>
+                         <li>React</li>
+                         <li>ReactRouter</li>
+                         <li>Tailwind CSS</li>
+                         <li>PostgreSQL</li>
+                         <li>Node</li>
+                         <li>Express</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div className="relative mt-8 mb-4 flex flex-col items-center gap-2 font-light">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.75 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 2, ease: "easeInOut" }}
+                    className="absolute -z-10 h-full w-[90%] rounded-xl bg-clip-content blur-lg bg-radial from-green-800/80 from-40% to-green-900/50"
+                />
+
+                <div className="m-8 text-center">
+
+                    <h3 className="mb-2 text-xl text-rose-100 text-shadow-md/15">Miscellaneous:</h3>
+
+                    <p className="text-center text-base/5 text-orange-100/95 text-shadow-sm">
+                        In my free time, I enjoy spending time with my wife, along with our dog and cat. We love spending time in the many nature preserves surrounding the Twin Cities. I frequently oscillate between practicing piano, guitar, drums, and digital mixing. Latest gaming obsessions include: <span className="italic">Hollow Knight: Silksong</span> and <span className="italic">Baldur's Gate</span>.
+                    </p>
+                </div>
+            </div>
+        </main>
+    );
+}
