@@ -1,17 +1,21 @@
 import { AnimatePresence, motion } from "motion/react";
 import Header from "./Components/Header";
-import Sidebar from "./Components/Sidebar";
+import GlobalNav from "./Components/GlobalNav";
 import "./index.css";
 import { useState } from "react";
 import { Outlet } from "react-router";
 
 function App() {
-  const [sideBarOpen, setSideBarOpen] = useState(false);
+  const [globalNavOpen, setGlobalNavOpen] = useState(false);
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
       <AnimatePresence>
-        {sideBarOpen && (
+        {globalNavOpen && (
           <motion.div
             initial={{ y: "-100%", opacity: 5 }}
             animate={{ y: 0, opacity: 100 }}
@@ -19,15 +23,15 @@ function App() {
             exit={{ y: "-100%", opacity: 0 }}
             className="fixed z-100"
           >
-            <Sidebar setSideBarOpen={setSideBarOpen} />
+            <GlobalNav setGlobalNavOpen={setGlobalNavOpen} />
           </motion.div>
         )}
       </AnimatePresence>
 
-      <Header setSideBarOpen={setSideBarOpen} />
+      <Header setGlobalNavOpen={setGlobalNavOpen} />
 
       <Outlet />
-    </>
+    </motion.div>
   );
 }
 

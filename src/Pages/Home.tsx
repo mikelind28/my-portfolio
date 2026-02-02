@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion, stagger } from "motion/react";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router";
 
@@ -28,7 +28,7 @@ function HelloWorldWelcome() {
         initial={{ opacity: 0, scale: 0.75 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 2, ease: "easeInOut" }}
-        className="absolute -z-10 h-[90%] w-[90%] rounded-xl bg-radial from-fuchsia-800/80 from-40% to-fuchsia-900/50 bg-clip-content blur-lg"
+        className="absolute -z-10 h-[95%] w-[95%] rounded-xl bg-radial from-fuchsia-800/80 from-40% to-fuchsia-900/50 bg-clip-content blur-lg"
       ></motion.div>
 
       <div className="mt-2 mb-4 flex flex-col items-center gap-2 p-2 font-light">
@@ -46,16 +46,16 @@ function H2({ text, pathName }: { text: string, pathName: string }) {
     return (
         <Link 
             to={pathName}
-            className="my-2 flex w-full flex-col gap-1"
+            className="mb-4 flex w-full flex-col gap-1"
         >
             <motion.div
-                className="group flex gap-2 items-center cursor-pointer"
+                className="group flex gap-4 items-center cursor-pointer"
             >
                 <motion.h2
                     initial={{ x: "150vw" }}
                     animate={{ x: 0 }}
                     transition={{ duration: 1, ease: "easeOut" }}
-                    className="w-full bg-radial-[at_40%_-10%] from-amber-500 to-orange-700 bg-clip-text text-3xl font-light text-transparent"
+                    className="w-fit text-nowrap bg-radial-[at_40%_-10%] from-amber-500 to-orange-700 bg-clip-text text-3xl font-light text-transparent"
                 >
                     {text}
                 </motion.h2>
@@ -67,24 +67,22 @@ function H2({ text, pathName }: { text: string, pathName: string }) {
                     className="relative flex items-center w-full"
                 >
                     <IoIosArrowForward 
-                        className="absolute size-8 text-amber-600 right-[calc((100%)-(--spacing(6)))] transition-all duration-700 group-hover:right-0"
+                        className="absolute size-8 text-amber-600 right-[calc((100%)-(--spacing(6)))] transition-all duration-700 group-active:right-0 group-hover:right-0"
                     />
                 </motion.div>
             </motion.div>
-
-            <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-                className="h-px bg-linear-to-r from-orange-600/75 to-orange-400/85"
-            />
         </Link>
     );
 }
 
 const item = {
-    hidden: { x: '-150vw' },
-    show: { x: 0 }
+    hidden: { opacity: 0 },
+    show: { 
+        opacity: 1, 
+        transition: {
+            duration: 2.5
+        }
+    }
 }
 
 function PortfolioItem({ text, url, imgUrl }: { text: string, url: string, imgUrl: string }) {
@@ -92,16 +90,17 @@ function PortfolioItem({ text, url, imgUrl }: { text: string, url: string, imgUr
         <motion.li
             variants={item}
             whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 1.03 }}
             className="group relative h-20 w-full overflow-clip rounded-xl cursor-pointer"
         >
             <Link 
                 to={url}
                 target='_blank'
                 rel='noopener noreferrer'
-                className="absolute flex h-full w-full rounded-lg bg-radial-[at_25%_25%] from-orange-400 to-fuchsia-700 bg-clip-padding p-1 transition-colors duration-300 group-hover:from-orange-300 group-hover:to-fuchsia-600"
+                className="absolute flex h-full w-full rounded-lg bg-radial-[at_25%_25%] from-orange-400 to-fuchsia-700 bg-clip-padding p-0.5 transition-colors duration-300 group-hover:from-orange-300 group-hover:to-fuchsia-600"
             >
                 <div
-                    className="relative bg-dark-violet4/75 h-full w-full rounded-lg group-hover:bg-dark-violet4/85"
+                    className="relative bg-dark-violet4/75 h-full w-full rounded-[10px] group-hover:bg-dark-violet4/85"
                     style={{ boxShadow: "0px 8px 12px 4px inset rgb(0 0 0 / 50%)" }}
                 > 
                     <div 
@@ -111,7 +110,7 @@ function PortfolioItem({ text, url, imgUrl }: { text: string, url: string, imgUr
                     </div>
                 </div>
 
-                <div className="absolute flex items-center justify-center right-1 top-1 rounded-tr-lg rounded-br-lg h-18 w-12 bg-black/50">
+                <div className="absolute flex items-center justify-center right-0.5 top-0.5 rounded-tr-[10px] rounded-br-[10px] h-19 w-12 bg-black/50">
                     <IoIosArrowForward className="size-8 text-amber-600 group-hover:text-amber-500 transition-color duration-300"/>
                 </div>
             </Link>
@@ -123,11 +122,17 @@ function PortfolioItem({ text, url, imgUrl }: { text: string, url: string, imgUr
     );
 }
 
+function Divider() {
+    return (
+        <span className="my-4 w-full h-px bg-linear-to-r from-orange-600/75 to-orange-400/85" />
+    );
+}
+
 const list = {
     hidden: {},
     show: {
         transition: {
-            staggerChildren: 0.15
+            delayChildren: stagger(0.5)
         }
     }
 }
@@ -139,13 +144,15 @@ export default function Home() {
 
         <HelloWorldWelcome />
 
+        <Divider />
+
         <H2 text={"My Portfolio"} pathName={'/portfolio'} />
 
         <motion.ul 
             variants={list}
             initial="hidden"
             animate="show"
-            className="mt-2 mb-4 flex w-full flex-col items-center space-y-3"
+            className="flex w-full flex-col items-center space-y-3"
         >
             <PortfolioItem 
                 text={'Win / Doc / Nav Interfaces'}
@@ -172,9 +179,19 @@ export default function Home() {
             </div>
         </motion.ul>
 
+        <Divider />
+
         <H2 text={"About Me"} pathName={'/about'} />
 
+        <p className="text-left self-start text-base/5 text-orange-100/95 text-shadow-sm/15">My background, my proficiencies, and some more about me.</p>
+
+        <Divider />
+
         <H2 text={"Contact"} pathName={'/contact'} />
+
+        <p className="text-left self-start text-base/5 text-orange-100/95 text-shadow-sm/15">Let's get in touch!</p>
+
+        <Divider />
     </main>
   );
 }

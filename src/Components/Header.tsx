@@ -35,14 +35,14 @@ function DarkModeToggle() {
 }
 
 type HeaderType = {
-  setSideBarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setGlobalNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function Header({ setSideBarOpen }: HeaderType) {
+export default function Header({ setGlobalNavOpen }: HeaderType) {
   return (
     <header className="flex items-center justify-between p-4">
       <IoMenuOutline
-        onClick={() => setSideBarOpen(true)}
+        onClick={() => setGlobalNavOpen(true)}
         className="mr-2 cursor-pointer text-2xl text-white"
       />
 
