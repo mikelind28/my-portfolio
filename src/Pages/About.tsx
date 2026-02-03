@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { H2 } from "./Home";
 // CHANGING BG COLOR WITH SCROLL:
 // const containerRef = useRef<HTMLDivElement | null>(null);
 // const { scrollYProgress } = useScroll({ container: containerRef });
@@ -31,39 +32,34 @@ function ProficiencyListItem({ text, img }: { text: string, img: string }) {
                 <p>{text}</p>
             </div>
         </li>
-    )
+    );
+}
+
+function AboutH3({ text }: { text: string }) {
+    return (
+        <h3 className="mb-2 text-xl text-rose-100 text-shadow-md/15 font-normal">
+            {text}
+        </h3>
+    );
 }
 
 export default function About() {
 
     return (
         <main className="w-full p-2 pt-0">
-            <motion.h2
-                animate={{
-                    backgroundPosition: ["10% 70%", "90% 40%", "33% 60%", "50% 90%"],
-                }}
-                transition={{
-                    duration: 3,
-                    ease: "easeInOut",
-                    times: [0, 0.5, 2],
-                }}
-                className="pb-2 bg-radial from-orange-500 from-10% to-fuchsia-700 to-85% bg-clip-text text-3xl text-center font-light text-transparent"
-                style={{ backgroundSize: "200% 200%" }}
-            >
-                About Me.
-            </motion.h2>
+            <H2 text={'About Me.'} />
 
             <div className="relative mt-4 mb-4 flex flex-col items-center gap-2 font-light">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.75 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 2, ease: "easeInOut" }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
                     className="absolute -z-10 h-full w-[90%] rounded-xl bg-clip-content blur-md bg-radial from-fuchsia-800/80 from-40% to-fuchsia-900/50"
                 />
 
-                <div className="m-8 text-center">
+                <div className="px-4 m-8 text-center">
 
-                    <h3 className="mb-2 text-xl text-rose-100 text-shadow-md/15 font-normal">My Background:</h3>
+                    <AboutH3 text={"My Background"} />
 
                     <p className="text-base/5 text-orange-100/95 text-shadow-sm">
                         I received my Bachelor of Fine Arts from the University of Wisconsin-Madison, where I double-majored in Studio Art and Art History.
@@ -81,12 +77,12 @@ export default function About() {
                 <motion.div
                     initial={{ opacity: 0, scale: 0.75 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }}
+                    transition={{ duration: 1, delay: 0.5, ease: "easeInOut" }}
                     className="absolute -z-10 h-full w-[90%] rounded-xl bg-clip-content blur-md bg-radial from-orange-800/80 from-40% to-orange-900/50"
                 />
 
-                <div className="w-full m-8 text-center">
-                    <h3 className="mb-2 text-xl text-rose-100 text-shadow-md/15 font-normal">My Proficiencies:</h3>
+                <div className="w-full px-4 m-8 text-center">
+                    <AboutH3 text={"My Proficiencies"} />
 
                     <ul className="flex flex-col items-center gap-1 text-base/5 text-orange-100 font-light">
                         <ProficiencyListItem text={'JavaScript'} img={'javascript.jpg'} />
@@ -108,13 +104,13 @@ export default function About() {
                 <motion.div
                     initial={{ opacity: 0, scale: 0.75 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 2, delay: 1, ease: "easeInOut" }}
+                    transition={{ duration: 1, delay: 1, ease: "easeInOut" }}
                     className="absolute -z-10 h-full w-[90%] rounded-xl bg-clip-content blur-md bg-radial from-green-800/80 from-40% to-green-900/50"
                 />
 
-                <div className="m-8 text-center">
+                <div className="px-4 m-8 text-center">
 
-                    <h3 className="mb-2 text-xl text-rose-100 text-shadow-md/15 font-normal">Miscellaneous:</h3>
+                    <AboutH3 text={'Miscellaneous'} />
 
                     <p className="text-center text-base/5 text-orange-100/95 text-shadow-sm">
                         In my free time, I enjoy spending time with my wife, along with our dog and cat. We love exploring the many nature preserves surrounding the Twin Cities. I frequently oscillate between practicing piano, guitar, drums, and digital mixing. My latest gaming obsessions include <span className="italic">Hollow Knight: Silksong</span> and <span className="italic">Baldur's Gate 3</span>.

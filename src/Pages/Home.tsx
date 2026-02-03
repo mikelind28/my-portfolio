@@ -2,9 +2,9 @@ import { motion, stagger } from "motion/react";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router";
 
-function WelcomeHeader() {
+export function H2({ text }: { text: string }) {
   return (
-    <motion.h1
+    <motion.h2
       animate={{
         backgroundPosition: ["10% 70%", "90% 40%", "33% 60%", "50% 90%"],
       }}
@@ -13,17 +13,17 @@ function WelcomeHeader() {
         ease: "easeInOut",
         times: [0, 0.5, 2],
       }}
-      className="bg-radial from-orange-500 from-10% to-fuchsia-700 to-85% bg-clip-text text-3xl font-light text-transparent"
+      className="mb-4 bg-radial from-orange-500 from-10% to-fuchsia-700 to-85% bg-clip-text text-3xl font-light text-transparent text-center"
       style={{ backgroundSize: "200% 200%" }}
     >
-      Welcome.
-    </motion.h1>
+      {text}
+    </motion.h2>
   );
 }
 
 function HelloWorldWelcome() {
   return (
-    <div className="relative my-4 flex h-fit w-full place-items-center justify-center overflow-visible rounded-xl p-4">
+    <div className="relative mt-2 mb-4 flex h-fit w-full place-items-center justify-center overflow-visible rounded-xl p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.75 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -42,7 +42,7 @@ function HelloWorldWelcome() {
   );
 }
 
-function H2({ text, pathName }: { text: string, pathName: string }) {
+function HomeH3({ text, pathName }: { text: string, pathName: string }) {
     return (
         <Link 
             to={pathName}
@@ -51,14 +51,14 @@ function H2({ text, pathName }: { text: string, pathName: string }) {
             <motion.div
                 className="group flex gap-4 items-center cursor-pointer"
             >
-                <motion.h2
+                <motion.h3
                     initial={{ x: "150vw" }}
                     animate={{ x: 0 }}
                     transition={{ duration: 1, ease: "easeOut" }}
                     className="w-fit text-nowrap bg-radial-[at_40%_-10%] from-amber-500 to-orange-700 bg-clip-text text-3xl font-light text-transparent"
                 >
                     {text}
-                </motion.h2>
+                </motion.h3>
 
                 <motion.div
                     initial={{ x: "150vw" }}
@@ -75,23 +75,13 @@ function H2({ text, pathName }: { text: string, pathName: string }) {
     );
 }
 
-const item = {
-    hidden: { opacity: 0 },
-    show: { 
-        opacity: 1, 
-        transition: {
-            duration: 2.5
-        }
-    }
-}
 
-function PortfolioItem({ text, url, imgUrl }: { text: string, url: string, imgUrl: string }) {
+
+function PortfolioItemPreview({ text, url, imgUrl, height = 80 }: { text: string, url: string, imgUrl: string, height?: number }) {
     return (
-        <motion.li
-            variants={item}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 1.03 }}
-            className="group relative h-20 w-full overflow-clip rounded-xl cursor-pointer"
+        <div
+            className="group relative w-full overflow-clip rounded-xl cursor-pointer"
+            style={{ height: height }}
         >
             <Link 
                 to={url}
@@ -110,19 +100,19 @@ function PortfolioItem({ text, url, imgUrl }: { text: string, url: string, imgUr
                     </div>
                 </div>
 
-                <div className="absolute flex items-center justify-center right-0.5 top-0.5 rounded-tr-[10px] rounded-br-[10px] h-19 w-12 bg-black/50">
+                <div className="absolute flex items-center justify-center right-0.5 top-0.5 rounded-tr-[10px] rounded-br-[10px] h-[calc(100%-4px)] w-12 bg-black/50">
                     <IoIosArrowForward className="size-8 text-amber-600 group-hover:text-amber-500 transition-color duration-300"/>
                 </div>
             </Link>
 
-            <p className=" absolute bottom-2 left-4 text-xl font-light text-amber-500 text-shadow-md/50 transition-all duration-300 group-hover:text-amber-400 group-hover:text-shadow-2xl/75">
+            <p className="absolute bottom-2 left-4 text-xl font-light text-amber-500 text-shadow-md/50 transition-all duration-300 group-hover:text-amber-400 group-hover:text-shadow-2xl/75">
                 {text}
             </p>
-        </motion.li>
+        </div>
     );
 }
 
-function Divider() {
+export function Divider() {
     return (
         <span className="my-4 w-full h-px bg-linear-to-r from-orange-600/75 to-orange-400/85" />
     );
@@ -137,16 +127,26 @@ const list = {
     }
 }
 
+const item = {
+    hidden: { opacity: 0 },
+    show: { 
+        opacity: 1, 
+        transition: {
+            duration: 2.5
+        }
+    }
+}
+
 export default function Home() {
   return (
     <main className="flex w-full flex-col items-center p-5">
-        <WelcomeHeader />
+        <H2 text={'Welcome.'} />
 
         <HelloWorldWelcome />
 
         <Divider />
 
-        <H2 text={"My Portfolio"} pathName={'/portfolio'} />
+        <HomeH3 text={"My Portfolio"} pathName={'/portfolio'} />
 
         <motion.ul 
             variants={list}
@@ -154,23 +154,44 @@ export default function Home() {
             animate="show"
             className="flex w-full flex-col items-center space-y-3"
         >
-            <PortfolioItem 
-                text={'Win / Doc / Nav Interfaces'}
-                url={'https://window-doc-nav.netlify.app'}
-                imgUrl={'./src/public/win-doc-nav-interfaces.png'}
-            />
+            <motion.li
+                variants={item}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 1.03 }}
+                className={'w-full'}
+            >
+                <PortfolioItemPreview 
+                    text={'Window Interface API'}
+                    url={'https://window-doc-nav.netlify.app'}
+                    imgUrl={'./src/public/win-doc-nav-interfaces.png'}
+                />
+            </motion.li>
 
-            <PortfolioItem 
-                text={'myBookShelf'}
-                url={'https://my-bookshelf-wg3p.onrender.com/'}
-                imgUrl={'./src/public/my-bookshelf.png'}
-            />
+            <motion.li
+                variants={item}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 1.03 }}
+                className={'w-full'}
+            >
+                <PortfolioItemPreview 
+                    text={'myBookShelf'}
+                    url={'https://my-bookshelf-wg3p.onrender.com/'}
+                    imgUrl={'./src/public/my-bookshelf.png'}
+                />
+            </motion.li>
 
-            <PortfolioItem 
-                text={'myNumberArray'}
-                url={'https://my-number-array.netlify.app/'}
-                imgUrl={'./src/public/my-number-array.png'}
-            />
+            <motion.li
+                variants={item}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 1.03 }}
+                className={'w-full'}
+            >
+                <PortfolioItemPreview 
+                    text={'myNumberArray'}
+                    url={'https://my-number-array.netlify.app/'}
+                    imgUrl={'./src/public/my-number-array.png'}
+                />
+            </motion.li>
 
             <div className="text-xl text-orange-400 font-light">
                 <Link to='/portfolio'>
@@ -181,13 +202,13 @@ export default function Home() {
 
         <Divider />
 
-        <H2 text={"About Me"} pathName={'/about'} />
+        <HomeH3 text={"About Me"} pathName={'/about'} />
 
         <p className="text-left self-start text-base/5 text-orange-100/95 text-shadow-sm/15">My background, my proficiencies, and some more about me.</p>
 
         <Divider />
 
-        <H2 text={"Contact"} pathName={'/contact'} />
+        <HomeH3 text={"Contact"} pathName={'/contact'} />
 
         <p className="text-left self-start text-base/5 text-orange-100/95 text-shadow-sm/15">Let's get in touch!</p>
 
