@@ -47,7 +47,7 @@ export default function Header({ setGlobalNavOpen }: HeaderType) {
       />
 
       <Link to={'/'}>
-        <h1 className="group text-2xl font-extralight tracking-wider cursor-pointer *:transition-colors *:duration-700 *:ease-in-out">
+        <p className="group text-2xl font-extralight tracking-wider cursor-pointer *:transition-colors *:duration-700 *:ease-in-out">
           <span className="bg-radial-[at_60%_-10%] from-amber-500/90 to-orange-500 bg-clip-text text-transparent group-hover:bg-radial-[at_66%_0%] group-hover:from-amber-500 group-hover:from-40% group-hover:to-orange-400">
             mike lind
           </span>
@@ -59,7 +59,7 @@ export default function Header({ setGlobalNavOpen }: HeaderType) {
           <span className="group-hover:bg-radial-[at_33%_0% bg-radial-[at_40%_10%] from-fuchsia-500 to-fuchsia-600 bg-clip-text text-transparent group-hover:from-fuchsia-500 group-hover:from-40% group-hover:to-fuchsia-700">
             web dev
           </span>
-        </h1>
+        </p>
       </Link>
 
       <DarkModeToggle />

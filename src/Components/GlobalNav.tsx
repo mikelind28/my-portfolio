@@ -4,7 +4,14 @@ import { IoClose } from "react-icons/io5";
 import { LuExternalLink } from "react-icons/lu";
 import { NavLink, useLocation } from "react-router";
 
-function AnimatedLink({ children, url, newTab, setGlobalNavOpen }: { children: ReactNode, url: string, newTab: boolean, setGlobalNavOpen: React.Dispatch<React.SetStateAction<boolean>> }) {
+type AnimatedLinkType = {
+  children: ReactNode; 
+  url: string; 
+  newTab: boolean; 
+  setGlobalNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function AnimatedLink({ children, url, newTab, setGlobalNavOpen }: AnimatedLinkType) {
   let location = useLocation();
 
   return (
