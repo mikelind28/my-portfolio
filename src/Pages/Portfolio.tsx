@@ -16,16 +16,16 @@ function PortfolioItem({ title, children }: PortfolioItemType) {
     <div className="relative self-start">
       <div
         onClick={() => setOpen(!open)}
-        className="flex cursor-pointer items-start gap-2"
+        className="group flex cursor-pointer items-start gap-2"
       >
         <motion.div
           animate={!open ? { rotate: -90 } : {}}
           style={{ transformOrigin: "center" }}
         >
-          <IoIosArrowDown className="size-8 text-amber-600" />
+          <IoIosArrowDown className="size-8 text-amber-600 group-hover:text-amber-500 transition-all duration-700" />
         </motion.div>
 
-        <h2 className="mb-2 w-fit bg-radial-[at_40%_-10%] from-amber-500 to-orange-700 bg-clip-text text-2xl font-light text-nowrap text-transparent">
+        <h2 className="mb-2 w-fit bg-radial-[at_40%_-10%] from-amber-500 to-orange-700 bg-clip-text text-2xl font-light text-nowrap text-transparent transition-colors duration-700 group-hover:from-amber-400 group-hover:to-orange-600">
           {title}
         </h2>
       </div>
@@ -67,7 +67,7 @@ function PortfolioItemLinks({ appUrl, gitHubUrl, img }: PortfolioItemLinksType) 
           "--img": `url(/src/images/screenshots/${img})`,
         } as React.CSSProperties
       }
-      className="relative mb-4 flex h-30 w-full items-center justify-center gap-2 overflow-hidden rounded-xl border-2 border-transparent p-4 text-center shadow-[inset_0_5px_20px_5px_rgba(0,0,0,0.75)] transition-all duration-500 [background:border-box_var(--border-color)] before:absolute before:inset-0 before:z-0 before:scale-105 before:rounded-[inherit] before:bg-(image:--img) before:bg-cover before:bg-position-[center_top_10%] before:opacity-80 before:blur-[3px] before:brightness-50 before:transition-all before:duration-500 before:content-[''] hover:brightness-120 hover:before:blur-[1px]"
+      className="relative mt-2 mb-4 flex h-30 w-full items-center justify-center gap-2 overflow-hidden rounded-xl border-2 border-transparent p-4 text-center shadow-[inset_0_5px_20px_5px_rgba(0,0,0,0.75)] transition-all duration-500 [background:border-box_var(--border-color)] before:absolute before:inset-0 before:z-0 before:scale-105 before:rounded-[inherit] before:bg-(image:--img) before:bg-cover before:bg-position-[center_top_10%] before:opacity-80 before:blur-[3px] before:brightness-50 before:transition-all before:duration-500 before:content-[''] hover:brightness-120 hover:before:blur-[1px]"
     >
       <motion.div
         onHoverStart={() => setDivOneHover(true)}
@@ -117,7 +117,7 @@ export default function Portfolio() {
         <PortfolioItem title={"Window Interface API"}>
           <PortfolioItemLinks
             appUrl={"https://window-doc-nav.netlify.app"}
-            gitHubUrl={""}
+            gitHubUrl={"https://github.com/mikelind28/window-interface-api"}
             img={"win-doc-nav-interfaces.png"}
           />
 
@@ -134,7 +134,7 @@ export default function Portfolio() {
         <PortfolioItem title={"myBookShelf"}>
           <PortfolioItemLinks
             appUrl={"https://my-bookshelf-wg3p.onrender.com/"}
-            gitHubUrl={""}
+            gitHubUrl={"https://github.com/mikelind28/my-bookshelf"}
             img={"my-bookshelf.png"}
           />
 
@@ -152,7 +152,7 @@ export default function Portfolio() {
         <PortfolioItem title={"myNumberArray"}>
           <PortfolioItemLinks
             appUrl={"https://my-number-array.netlify.app/"}
-            gitHubUrl={""}
+            gitHubUrl={"https://github.com/mikelind28/my-number-array"}
             img={"my-number-array.png"}
           />
 
@@ -168,7 +168,7 @@ export default function Portfolio() {
         <PortfolioItem title={"Nonprofit Template"}>
           <PortfolioItemLinks
             appUrl={"https://nonprofit-template.netlify.app/"}
-            gitHubUrl={""}
+            gitHubUrl={"https://github.com/mikelind28/nonprofit-template"}
             img={"nonprofit-template.png"}
           />
 

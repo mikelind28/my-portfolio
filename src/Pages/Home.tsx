@@ -7,7 +7,7 @@ import Divider from "../Components/Divider";
 
 function HelloWorldWelcome() {
   return (
-    <div className="relative mt-2 mb-4 flex h-fit w-full place-items-center justify-center overflow-visible rounded-xl p-4">
+    <div className="relative mt-2 mb-4 flex h-fit w-full items-center justify-center overflow-visible rounded-xl p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.75 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -140,9 +140,35 @@ export default function Home() {
           />
         </motion.li>
 
-        <div className="text-xl font-light text-orange-400">
-          <Link to="/portfolio">See all...</Link>
-        </div>
+        <Link 
+            to="/portfolio"
+        >
+            <motion.div 
+                whileHover='hover'
+                className="group relative m-2 px-8 py-2 h-fit w-fit flex items-center justify-center text-xl font-light text-orange-400 overflow-visible"
+            >
+                <motion.div
+                    variants={{
+                        hover: { opacity: 1, scale: 1 },
+                    }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    transition={{ duration: 1 }}
+                    className="
+                        absolute inset-0 -z-10 rounded-xl
+                        bg-clip-content bg-radial
+                        from-orange-500/50 from-40%
+                        to-orange-900/50
+                        blur-lg
+                        "
+                ></motion.div>
+
+                <p
+                    className="group-hover:drop-shadow-md/66 transition-all duration-1000"
+                >
+                    See all...
+                </p>
+            </motion.div>
+        </Link>
       </motion.ul>
 
       <Divider />
