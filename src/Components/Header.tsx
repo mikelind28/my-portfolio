@@ -35,11 +35,11 @@ function DarkModeToggle() {
 }
 
 type HeaderType = {
-  globalNavOpen: boolean;
-  setGlobalNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  dropDownNavOpen: boolean;
+  setDropDownNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function Header({ globalNavOpen, setGlobalNavOpen }: HeaderType) {
+export default function Header({ dropDownNavOpen, setDropDownNavOpen }: HeaderType) {
   const { scrollY } = useScroll();
   const [scrollDirection, setScrollDirection] = useState("down");
 
@@ -51,18 +51,18 @@ export default function Header({ globalNavOpen, setGlobalNavOpen }: HeaderType) 
   return (
     <motion.header
       layout
-      className={`z-50 flex items-center justify-between p-4 pb-6 bg-linear-to-b from-dark-violet4 from-75% to-transparent ${scrollDirection === 'up' ? 'sticky top-0' : 'static'}`}
+      className={`z-50 flex items-center justify-between p-4 pb-6 bg-linear-to-b from-dark-violet4 from-90% to-transparent ${scrollDirection === 'up' ? 'sticky top-0' : 'static'}`}
     >
       {
-        globalNavOpen
+        dropDownNavOpen
         ? 
         <IoClose
-          onClick={() => setGlobalNavOpen(false)}
+          onClick={() => setDropDownNavOpen(false)}
           className="mr-2 cursor-pointer text-2xl text-white"
         />
         : 
         <IoMenuOutline
-          onClick={() => setGlobalNavOpen(true)}
+          onClick={() => setDropDownNavOpen(true)}
           className="mr-2 cursor-pointer text-2xl text-white"
         />
       }

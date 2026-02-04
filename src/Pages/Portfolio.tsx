@@ -69,33 +69,29 @@ function PortfolioItemLinks({ appUrl, gitHubUrl, img }: PortfolioItemLinksType) 
       }
       className="relative mt-2 mb-4 flex h-30 w-full items-center justify-center gap-2 overflow-hidden rounded-xl border-2 border-transparent p-4 text-center shadow-[inset_0_5px_20px_5px_rgba(0,0,0,0.75)] transition-all duration-500 [background:border-box_var(--border-color)] before:absolute before:inset-0 before:z-0 before:scale-105 before:rounded-[inherit] before:bg-(image:--img) before:bg-cover before:bg-position-[center_top_10%] before:opacity-80 before:blur-[3px] before:brightness-50 before:transition-all before:duration-500 before:content-[''] hover:brightness-120 hover:before:blur-[1px]"
     >
-      <motion.div
+      <motion.a
+        href={appUrl}
         onHoverStart={() => setDivOneHover(true)}
         onHoverEnd={() => setDivOneHover(false)}
         className={`group z-10 flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-black/50 text-xl transition-all duration-500 hover:origin-[25%] hover:scale-110 hover:drop-shadow-lg hover:drop-shadow-black/75 ${divTwoHover ? "scale-90" : ""}`}
       >
-        <a
-          href={appUrl}
-          className="flex items-center gap-2 text-xl font-light text-amber-500 drop-shadow-md/25"
-        >
+        <div className="flex items-center gap-2 text-xl font-light text-amber-500 drop-shadow-md/25">
           <p>App</p>
           <LuExternalLink />
-        </a>
-      </motion.div>
+        </div>
+      </motion.a>
 
-      <motion.div
+      <motion.a
+        href={gitHubUrl}
         onHoverStart={() => setDivTwoHover(true)}
         onHoverEnd={() => setDivTwoHover(false)}
         className={`group z-10 flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-black/50 text-xl transition-all duration-500 hover:origin-[75%] hover:scale-110 hover:drop-shadow-lg hover:drop-shadow-black/75 ${divOneHover ? "scale-90" : ""}`}
       >
-        <a
-          href={gitHubUrl}
-          className="flex items-center gap-2 text-xl font-light text-amber-500 drop-shadow-md/25"
-        >
+        <div className="flex items-center gap-2 text-xl font-light text-amber-500 drop-shadow-md/25">
           <p>GitHub</p>
           <LuExternalLink />
-        </a>
-      </motion.div>
+        </div>
+      </motion.a>
     </div>
   );
 }
@@ -110,7 +106,7 @@ function PortfolioItemDescription({ children }: PortfolioItemDescriptionType) {
 
 export default function Portfolio() {
   return (
-    <main className="w-full p-5 pt-0">
+    <main className="mx-auto w-full max-w-160 p-5 pt-0">
       <H1 text={"My Portfolio."} />
 
       <div className="flex h-fit w-full flex-col items-center">

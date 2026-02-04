@@ -1,13 +1,13 @@
 import { AnimatePresence, motion } from "motion/react";
 import Header from "./Components/Header";
-import GlobalNav from "./Components/GlobalNav";
+import DropDownNav from "./Components/DropdownNav";
 import "./index.css";
 import { useState } from "react";
 import { Outlet } from "react-router";
-import Sidebar from "./Components/Sidebar";
+import Sidebar from "./Components/SidebarNav";
 
 function App() {
-  const [globalNavOpen, setGlobalNavOpen] = useState(false);
+  const [dropDownNavOpen, setDropDownNavOpen] = useState(false);
 
   return (
     <motion.div
@@ -16,7 +16,7 @@ function App() {
       transition={{ duration: 1 }}
     >
         <AnimatePresence>
-          {globalNavOpen && (
+          {dropDownNavOpen && (
             <motion.div
               initial={{ y: "-100%", opacity: 5 }}
               animate={{ y: 0, opacity: 100 }}
@@ -24,15 +24,15 @@ function App() {
               exit={{ y: "-100%", opacity: 0 }}
               className="fixed z-100"
             >
-              <GlobalNav setGlobalNavOpen={setGlobalNavOpen} />
+              <DropDownNav setDropDownNavOpen={setDropDownNavOpen} />
             </motion.div>
           )}
         </AnimatePresence>
 
-        <Header globalNavOpen={globalNavOpen} setGlobalNavOpen={setGlobalNavOpen} />
+        <Header dropDownNavOpen={dropDownNavOpen} setDropDownNavOpen={setDropDownNavOpen} />
         
         <div className="sm:flex sm:gap-4">
-          <Sidebar globalNavOpen={globalNavOpen} />
+          <Sidebar dropDownNavOpen={dropDownNavOpen} />
           <Outlet />
         </div>
     </motion.div>

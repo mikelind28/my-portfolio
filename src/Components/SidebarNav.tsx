@@ -46,14 +46,14 @@ function AnimatedLink({ children, url, newTab }: AnimatedLinkType) {
   );
 }
 
-type SidebarType = {
-    globalNavOpen: boolean;
+type SidebarNavType = {
+    dropDownNavOpen: boolean;
 }
 
-export default function Sidebar({ globalNavOpen }: SidebarType) {
+export default function SidebarNav({ dropDownNavOpen }: SidebarNavType) {
   return (
     <AnimatePresence>
-    {globalNavOpen && (
+    {dropDownNavOpen && (
         <motion.div 
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: '12rem', opacity: 1 }}

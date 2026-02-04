@@ -8,10 +8,10 @@ type AnimatedLinkType = {
   children: ReactNode; 
   url: string; 
   newTab: boolean; 
-  setGlobalNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setDropDownNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function AnimatedLink({ children, url, newTab, setGlobalNavOpen }: AnimatedLinkType) {
+function AnimatedLink({ children, url, newTab, setDropDownNavOpen }: AnimatedLinkType) {
   let location = useLocation();
 
   return (
@@ -20,7 +20,7 @@ function AnimatedLink({ children, url, newTab, setGlobalNavOpen }: AnimatedLinkT
       initial="rest"
       whileHover="hover"
       animate="rest"
-      onClick={() => setGlobalNavOpen(false)}
+      onClick={() => setDropDownNavOpen(false)}
     >
       <NavLink
         to={url}
@@ -49,40 +49,40 @@ function AnimatedLink({ children, url, newTab, setGlobalNavOpen }: AnimatedLinkT
   );
 }
 
-type GlobalNavType = {
-  setGlobalNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
+type DropDownNavType = {
+  setDropDownNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function GlobalNav({ setGlobalNavOpen }: GlobalNavType) {
+export default function DropDownNav({ setDropDownNavOpen }: DropDownNavType) {
   return (
     <div className="from-dark-violet4 to-dark-violet3 h-dvh w-dvw bg-linear-to-b sm:hidden">
       <IoClose
-        onClick={() => setGlobalNavOpen(false)}
+        onClick={() => setDropDownNavOpen(false)}
         className="size-12 shrink-0 cursor-pointer pt-4 pl-2 text-white"
       />
 
       <nav>
         <ul className="flex flex-col gap-5 p-6 text-2xl text-pink-100 *:hover:text-pink-50">
-          <AnimatedLink url={"/"} newTab={false} setGlobalNavOpen={setGlobalNavOpen}>
+          <AnimatedLink url={"/"} newTab={false} setDropDownNavOpen={setDropDownNavOpen}>
             Home
           </AnimatedLink>
 
-          <AnimatedLink url={"/portfolio"} newTab={false} setGlobalNavOpen={setGlobalNavOpen}>
+          <AnimatedLink url={"/portfolio"} newTab={false} setDropDownNavOpen={setDropDownNavOpen}>
             Portfolio
           </AnimatedLink>
 
-          <AnimatedLink url={"/about"} newTab={false} setGlobalNavOpen={setGlobalNavOpen}>
+          <AnimatedLink url={"/about"} newTab={false} setDropDownNavOpen={setDropDownNavOpen}>
             About Me
           </AnimatedLink>
 
-          <AnimatedLink url={"/contact"} newTab={false} setGlobalNavOpen={setGlobalNavOpen}>
+          <AnimatedLink url={"/contact"} newTab={false} setDropDownNavOpen={setDropDownNavOpen}>
             Contact
           </AnimatedLink>
 
           <AnimatedLink 
             url={"https://github.com/mikelind28"}
             newTab={true}
-            setGlobalNavOpen={setGlobalNavOpen}
+            setDropDownNavOpen={setDropDownNavOpen}
           >
             <div className="flex items-center gap-2">
               GitHub <LuExternalLink />
