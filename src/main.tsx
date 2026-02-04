@@ -7,6 +7,7 @@ import App from "./App.tsx";
 import Home from "./Pages/Home.tsx";
 import About from "./Pages/About.tsx";
 import Portfolio from "./Pages/Portfolio.tsx";
+import Contact from "./Pages/Contact.tsx";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,11 @@ const router = createBrowserRouter([
       {
         path: 'portfolio',
         Component: Portfolio,
-      }
+      },
+      {
+        path: 'contact',
+        Component: Contact,
+      },
     ],
   },
 ]);

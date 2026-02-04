@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "motion/react";
 import Header from "./Components/Header";
-import DropDownNav from "./Components/DropdownNav";
+import DropDownNav from "./Components/DropDownNav";
 import "./index.css";
 import { useState } from "react";
 import { Outlet } from "react-router";
