@@ -86,7 +86,7 @@ const item = {
 
 export default function Home() {
   return (
-    <main className="flex w-full flex-col items-center p-5">
+    <main className="relative flex w-full max-w-160 flex-col items-center p-5 mx-auto">
       <H1 text={"Welcome."} />
 
       <HelloWorldWelcome />

@@ -1,7 +1,7 @@
 // import { TabGroup, TabList, Tab } from "@headlessui/react";
 import { motion } from "motion/react";
 import { useState } from "react";
-import { IoMenuOutline, IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
+import { IoClose, IoMenuOutline, IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import { Link } from "react-router";
 
 function DarkModeToggle() {
@@ -35,16 +35,26 @@ function DarkModeToggle() {
 }
 
 type HeaderType = {
+  globalNavOpen: boolean;
   setGlobalNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function Header({ setGlobalNavOpen }: HeaderType) {
+export default function Header({ globalNavOpen, setGlobalNavOpen }: HeaderType) {
   return (
     <header className="flex items-center justify-between p-4">
-      <IoMenuOutline
-        onClick={() => setGlobalNavOpen(true)}
-        className="mr-2 cursor-pointer text-2xl text-white"
-      />
+      {
+        globalNavOpen
+        ? 
+        <IoClose
+          onClick={() => setGlobalNavOpen(false)}
+          className="mr-2 cursor-pointer text-2xl text-white"
+        />
+        : 
+        <IoMenuOutline
+          onClick={() => setGlobalNavOpen(true)}
+          className="mr-2 cursor-pointer text-2xl text-white"
+        />
+      }
 
       <Link to={'/'}>
         <p className="group text-2xl font-extralight tracking-wider cursor-pointer *:transition-colors *:duration-700 *:ease-in-out">
