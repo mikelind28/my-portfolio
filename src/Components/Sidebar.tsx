@@ -60,10 +60,10 @@ export default function Sidebar({ globalNavOpen }: SidebarType) {
             exit={{ width: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "circInOut" }}
             style={{ overflow: "hidden" }}
-            className="from-dark-violet4 to-dark-violet3 h-dvh w-50 bg-linear-to-b hidden md:block md:left-0 text-nowrap"
+            className="from-dark-violet4 to-dark-violet3 h-dvh w-50 bg-linear-to-b hidden sm:block sticky top-20 text-nowrap"
         >
-            <nav>
-                <ul className="flex flex-col gap-5 p-6 text-2xl text-pink-100 *:hover:text-pink-50">
+          <nav>
+              <ul className="flex flex-col gap-5 p-6 text-2xl sm:text-xl text-pink-100 *:hover:text-pink-50">
                 <AnimatedLink url={"/"} newTab={false}>
                     Home
                 </AnimatedLink>
@@ -88,8 +88,8 @@ export default function Sidebar({ globalNavOpen }: SidebarType) {
                     GitHub <LuExternalLink />
                     </div>
                 </AnimatedLink>
-                </ul>
-            </nav>
+              </ul>
+          </nav>
         </motion.div>
     )}
     </AnimatePresence>

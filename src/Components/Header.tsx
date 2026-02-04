@@ -1,5 +1,5 @@
 // import { TabGroup, TabList, Tab } from "@headlessui/react";
-import { motion } from "motion/react";
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
 import { IoClose, IoMenuOutline, IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import { Link } from "react-router";
@@ -40,8 +40,19 @@ type HeaderType = {
 };
 
 export default function Header({ globalNavOpen, setGlobalNavOpen }: HeaderType) {
+  const { scrollY } = useScroll();
+  const [scrollDirection, setScrollDirection] = useState("down");
+
+  useMotionValueEvent(scrollY, "change", (current) => {
+    const diff = current - scrollY.getPrevious()!;
+    setScrollDirection(diff > 0 ? "down" : "up");
+  });
+
   return (
-    <header className="flex items-center justify-between p-4">
+    <motion.header
+      layout
+      className={`z-50 flex items-center justify-between p-4 pb-6 bg-linear-to-b from-dark-violet4 from-75% to-transparent ${scrollDirection === 'up' ? 'sticky top-0' : 'static'}`}
+    >
       {
         globalNavOpen
         ? 
@@ -73,6 +84,6 @@ export default function Header({ globalNavOpen, setGlobalNavOpen }: HeaderType) 
       </Link>
 
       <DarkModeToggle />
-    </header>
+    </motion.header>
   );
 }

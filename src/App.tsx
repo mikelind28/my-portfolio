@@ -31,7 +31,7 @@ function App() {
 
         <Header globalNavOpen={globalNavOpen} setGlobalNavOpen={setGlobalNavOpen} />
         
-        <div className="md:flex md:gap-4">
+        <div className="sm:flex sm:gap-4">
           <Sidebar globalNavOpen={globalNavOpen} />
           <Outlet />
         </div>

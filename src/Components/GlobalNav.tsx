@@ -55,7 +55,7 @@ type GlobalNavType = {
 
 export default function GlobalNav({ setGlobalNavOpen }: GlobalNavType) {
   return (
-    <div className="from-dark-violet4 to-dark-violet3 h-dvh w-dvw bg-linear-to-b md:hidden">
+    <div className="from-dark-violet4 to-dark-violet3 h-dvh w-dvw bg-linear-to-b sm:hidden">
       <IoClose
         onClick={() => setGlobalNavOpen(false)}
         className="size-12 shrink-0 cursor-pointer pt-4 pl-2 text-white"
