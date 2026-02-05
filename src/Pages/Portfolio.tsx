@@ -6,9 +6,9 @@ import { AnimatePresence, motion } from "motion/react";
 import { LuExternalLink } from "react-icons/lu";
 
 type PortfolioItemType = {
-    title: string;
-    children: ReactNode[];
-}
+  title: string;
+  children: ReactNode[];
+};
 function PortfolioItem({ title, children }: PortfolioItemType) {
   const [open, setOpen] = useState(true);
 
@@ -22,7 +22,7 @@ function PortfolioItem({ title, children }: PortfolioItemType) {
           animate={!open ? { rotate: -90 } : {}}
           style={{ transformOrigin: "center" }}
         >
-          <IoIosArrowDown className="size-8 text-amber-600 group-hover:text-amber-500 transition-all duration-700" />
+          <IoIosArrowDown className="size-8 text-amber-600 transition-all duration-700 group-hover:text-amber-500" />
         </motion.div>
 
         <h2 className="mb-2 w-fit bg-radial-[at_40%_-10%] from-amber-500 to-orange-700 bg-clip-text text-2xl font-light text-nowrap text-transparent transition-colors duration-700 group-hover:from-amber-400 group-hover:to-orange-600">
@@ -48,12 +48,16 @@ function PortfolioItem({ title, children }: PortfolioItemType) {
 }
 
 type PortfolioItemLinksType = {
-    appUrl: string;
-    gitHubUrl: string;
-    img: string;
-}
+  appUrl: string;
+  gitHubUrl: string;
+  img: string;
+};
 
-function PortfolioItemLinks({ appUrl, gitHubUrl, img }: PortfolioItemLinksType) {
+function PortfolioItemLinks({
+  appUrl,
+  gitHubUrl,
+  img,
+}: PortfolioItemLinksType) {
   const [divOneHover, setDivOneHover] = useState(false);
   const [divTwoHover, setDivTwoHover] = useState(false);
 
@@ -97,8 +101,8 @@ function PortfolioItemLinks({ appUrl, gitHubUrl, img }: PortfolioItemLinksType) 
 }
 
 type PortfolioItemDescriptionType = {
-    children: ReactNode;
-}
+  children: ReactNode;
+};
 
 function PortfolioItemDescription({ children }: PortfolioItemDescriptionType) {
   return <p className="mx-2 mt-4 self-start text-orange-100">{children}</p>;

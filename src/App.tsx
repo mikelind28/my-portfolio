@@ -8,18 +8,27 @@ import Sidebar from "./Components/SidebarNav";
 
 function App() {
   const [dropDownNavOpen, setDropDownNavOpen] = useState(false);
-  const [darkModeOn, setDarkModeOn] = useState(true);
+  const [darkModeOn, setDarkModeOn] = useState(
+    localStorage.getItem("theme") === "dark" ||
+      localStorage.getItem("theme") === null
+      ? true
+      : false,
+  );
 
   useEffect(() => {
-    const body = document.querySelector('body');
+    const body = document.querySelector("body");
     if (body) {
-      body.style.backgroundColor = darkModeOn ? 'var(--color-dark-violet4)' : 'var(--color-white)'
+      body.style.backgroundColor = darkModeOn
+        ? "var(--color-dark-violet4)"
+        : "var(--color-neutral-50)";
     }
 
-    const html = document.querySelector('html');
+    const html = document.querySelector("html");
     if (html) {
-      html.setAttribute('data-theme', darkModeOn ? '' : 'light');
+      html.setAttribute("data-theme", darkModeOn ? "" : "light");
     }
+
+    localStorage.setItem("theme", darkModeOn ? "dark" : "light");
   }, [darkModeOn]);
 
   return (
@@ -28,30 +37,30 @@ function App() {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-        <AnimatePresence>
-          {dropDownNavOpen && (
-            <motion.div
-              initial={{ y: "-100%", opacity: 5 }}
-              animate={{ y: 0, opacity: 100 }}
-              transition={{ type: "tween", ease: "circOut", duration: 0.5 }}
-              exit={{ y: "-100%", opacity: 0 }}
-              className="fixed z-100"
-            >
-              <DropDownNav setDropDownNavOpen={setDropDownNavOpen} />
-            </motion.div>
-          )}
-        </AnimatePresence>
+      <AnimatePresence>
+        {dropDownNavOpen && (
+          <motion.div
+            initial={{ y: "-100%", opacity: 5 }}
+            animate={{ y: 0, opacity: 100 }}
+            transition={{ type: "tween", ease: "circOut", duration: 0.5 }}
+            exit={{ y: "-100%", opacity: 0 }}
+            className="fixed z-100"
+          >
+            <DropDownNav setDropDownNavOpen={setDropDownNavOpen} />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-        <Header 
-          dropDownNavOpen={dropDownNavOpen} 
-          setDropDownNavOpen={setDropDownNavOpen} 
-          setDarkModeOn={setDarkModeOn}
-        />
-        
-        <div className="sm:flex sm:gap-4">
-          <Sidebar dropDownNavOpen={dropDownNavOpen} />
-          <Outlet />
-        </div>
+      <Header
+        dropDownNavOpen={dropDownNavOpen}
+        setDropDownNavOpen={setDropDownNavOpen}
+        setDarkModeOn={setDarkModeOn}
+      />
+
+      <div className="sm:flex sm:gap-4">
+        <Sidebar dropDownNavOpen={dropDownNavOpen} />
+        <Outlet />
+      </div>
     </motion.div>
   );
 }

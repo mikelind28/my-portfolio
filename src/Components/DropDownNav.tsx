@@ -5,13 +5,18 @@ import { LuExternalLink } from "react-icons/lu";
 import { NavLink, useLocation } from "react-router";
 
 type AnimatedLinkType = {
-  children: ReactNode; 
-  url: string; 
-  newTab: boolean; 
+  children: ReactNode;
+  url: string;
+  newTab: boolean;
   setDropDownNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+};
 
-function AnimatedLink({ children, url, newTab, setDropDownNavOpen }: AnimatedLinkType) {
+function AnimatedLink({
+  children,
+  url,
+  newTab,
+  setDropDownNavOpen,
+}: AnimatedLinkType) {
   let location = useLocation();
 
   return (
@@ -24,10 +29,12 @@ function AnimatedLink({ children, url, newTab, setDropDownNavOpen }: AnimatedLin
     >
       <NavLink
         to={url}
-        target={ newTab ? "_blank" : "_self"} 
+        target={newTab ? "_blank" : "_self"}
         rel="noopener noreferrer"
-        className={({ isActive }) => 
-          isActive ? 'font-extrabold cursor-default' : 'cursor-pointer font-light tracking'
+        className={({ isActive }) =>
+          isActive
+            ? "light:text-neutral-900 light:font-bold cursor-default font-extrabold"
+            : "tracking cursor-pointer font-light"
         }
       >
         {children}
@@ -55,31 +62,47 @@ type DropDownNavType = {
 
 export default function DropDownNav({ setDropDownNavOpen }: DropDownNavType) {
   return (
-    <div className="from-dark-violet4 to-dark-violet3 light:from-white light:to-fuchsia-100 h-dvh w-dvw bg-linear-to-b sm:hidden">
+    <div className="from-dark-violet4 to-dark-violet3 light:from-white light:from-10% light:via-orange-100 light:via-70% light:to-fuchsia-100 h-dvh w-dvw bg-linear-to-b sm:hidden">
       <IoClose
         onClick={() => setDropDownNavOpen(false)}
-        className="size-12 shrink-0 cursor-pointer pt-4 pl-2 text-white light:text-fuchsia-950"
+        className="light:text-neutral-900 size-12 shrink-0 cursor-pointer pt-4 pl-2 text-white"
       />
 
       <nav>
-        <ul className="flex flex-col gap-5 p-6 text-2xl text-pink-100 light:text-fuchsia-950 *:hover:light:text-fuchsia-900 *:hover:text-pink-50">
-          <AnimatedLink url={"/"} newTab={false} setDropDownNavOpen={setDropDownNavOpen}>
+        <ul className="light:text-neutral-950/85 *:hover:light:text-neutral-900 flex flex-col gap-5 p-6 text-2xl text-pink-100 *:hover:text-pink-50">
+          <AnimatedLink
+            url={"/"}
+            newTab={false}
+            setDropDownNavOpen={setDropDownNavOpen}
+          >
             Home
           </AnimatedLink>
 
-          <AnimatedLink url={"/portfolio"} newTab={false} setDropDownNavOpen={setDropDownNavOpen}>
+          <AnimatedLink
+            url={"/portfolio"}
+            newTab={false}
+            setDropDownNavOpen={setDropDownNavOpen}
+          >
             Portfolio
           </AnimatedLink>
 
-          <AnimatedLink url={"/about"} newTab={false} setDropDownNavOpen={setDropDownNavOpen}>
+          <AnimatedLink
+            url={"/about"}
+            newTab={false}
+            setDropDownNavOpen={setDropDownNavOpen}
+          >
             About Me
           </AnimatedLink>
 
-          <AnimatedLink url={"/contact"} newTab={false} setDropDownNavOpen={setDropDownNavOpen}>
+          <AnimatedLink
+            url={"/contact"}
+            newTab={false}
+            setDropDownNavOpen={setDropDownNavOpen}
+          >
             Contact
           </AnimatedLink>
 
-          <AnimatedLink 
+          <AnimatedLink
             url={"https://github.com/mikelind28"}
             newTab={true}
             setDropDownNavOpen={setDropDownNavOpen}

@@ -3,9 +3,9 @@ import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router";
 
 type H2LinkType = {
-    text: string; 
-    pathName: string;
-}
+  text: string;
+  pathName: string;
+};
 
 export default function H2Link({ text, pathName }: H2LinkType) {
   return (
@@ -15,7 +15,7 @@ export default function H2Link({ text, pathName }: H2LinkType) {
           initial={{ x: "150vw" }}
           animate={{ x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="w-fit bg-radial-[at_40%_-10%] from-amber-500 to-orange-700 bg-clip-text text-3xl font-light text-nowrap text-transparent transition-colors duration-700 group-hover:from-amber-400 group-hover:to-orange-600"
+          className="light:from-orange-400 light:to-orange-700 w-fit bg-radial-[at_40%_-10%] from-amber-500 to-orange-700 bg-clip-text text-3xl font-light text-nowrap text-transparent transition-colors duration-700 group-hover:from-amber-400 group-hover:to-orange-600"
         >
           {text}
         </motion.h2>
@@ -26,7 +26,7 @@ export default function H2Link({ text, pathName }: H2LinkType) {
           transition={{ delay: 0.1, duration: 1.1, ease: "easeOut" }}
           className="relative flex w-full items-center"
         >
-          <IoIosArrowForward className="absolute right-[calc((100%)-(--spacing(6)))] size-8 text-amber-600 transition-all duration-700 group-hover:right-0 group-active:right-0 group-hover:text-amber-500" />
+          <IoIosArrowForward className="light:text-orange-600 light:group-hover:text-orange-500 absolute right-[calc((100%)-(--spacing(6)))] size-8 text-amber-600 transition-all duration-700 group-hover:right-0 group-hover:text-amber-500 group-active:right-0" />
         </motion.div>
       </motion.div>
     </Link>
