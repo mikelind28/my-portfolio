@@ -1,4 +1,4 @@
-import { animate, delayInSeconds, motion, useScroll, useTransform } from "motion/react";
+import { animate, motion, useScroll, useTransform } from "motion/react";
 import H1 from "../Components/H1";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 // CHANGING BG COLOR WITH SCROLL:
