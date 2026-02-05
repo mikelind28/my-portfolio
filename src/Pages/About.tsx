@@ -32,7 +32,7 @@ function ProficiencyListItem({ text, img }: ProficiencyListItemType) {
     <li className="rounded-sm bg-orange-950/90 px-2 py-1 inset-shadow-sm/25 inset-shadow-fuchsia-950">
       <div className="flex items-center gap-2">
         <img
-          src={`./src/images/proficiency-logos/${img}`}
+          src={`/images/proficiency-logos/${img}`}
           className="h-full w-5 rounded-xs shadow-xs/90 shadow-fuchsia-950"
         />
         <p className="text-xl">{text}</p>

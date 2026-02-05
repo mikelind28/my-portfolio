@@ -44,7 +44,7 @@ function PortfolioItemPreview({ text, url, img, height = 80 }: PortfolioItemPrev
                 "--border-color": `radial-gradient(circle at 25% 25%,
                         var(--color-orange-500) 0%,
                         var(--color-fuchsia-700) 100%)`,
-                "--img": `url(/src/images/screenshots/${img})`, 
+                "--img": `url(/images/screenshots/${img})`, 
             } as React.CSSProperties
         }
     >

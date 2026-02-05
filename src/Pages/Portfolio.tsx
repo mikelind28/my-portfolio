@@ -64,7 +64,7 @@ function PortfolioItemLinks({ appUrl, gitHubUrl, img }: PortfolioItemLinksType) 
           "--border-color": `radial-gradient(circle at 25% 25%,
                     var(--color-orange-500) 0%,
                     var(--color-fuchsia-700) 100%)`,
-          "--img": `url(/src/images/screenshots/${img})`,
+          "--img": `url(/images/screenshots/${img})`,
         } as React.CSSProperties
       }
       className="relative mt-2 mb-4 flex h-30 w-full items-center justify-center gap-2 overflow-hidden rounded-xl border-2 border-transparent p-4 text-center shadow-[inset_0_5px_20px_5px_rgba(0,0,0,0.75)] transition-all duration-500 [background:border-box_var(--border-color)] before:absolute before:inset-0 before:z-0 before:scale-105 before:rounded-[inherit] before:bg-(image:--img) before:bg-cover before:bg-position-[center_top_10%] before:opacity-80 before:blur-[3px] before:brightness-50 before:transition-all before:duration-500 before:content-[''] hover:brightness-120 hover:before:blur-[1px]"
