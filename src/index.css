@@ -6,3 +6,5 @@
   --color-dark-violet3: oklch(0.1496 0.0715 305.42);
   --color-dark-violet4: oklch(0.1267 0.0616 305.42);
 }
+
+@custom-variant light (&:where([data-theme=light], [data-theme=light] *));

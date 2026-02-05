@@ -55,14 +55,14 @@ type DropDownNavType = {
 
 export default function DropDownNav({ setDropDownNavOpen }: DropDownNavType) {
   return (
-    <div className="from-dark-violet4 to-dark-violet3 h-dvh w-dvw bg-linear-to-b sm:hidden">
+    <div className="from-dark-violet4 to-dark-violet3 light:from-white light:to-fuchsia-100 h-dvh w-dvw bg-linear-to-b sm:hidden">
       <IoClose
         onClick={() => setDropDownNavOpen(false)}
-        className="size-12 shrink-0 cursor-pointer pt-4 pl-2 text-white"
+        className="size-12 shrink-0 cursor-pointer pt-4 pl-2 text-white light:text-fuchsia-950"
       />
 
       <nav>
-        <ul className="flex flex-col gap-5 p-6 text-2xl text-pink-100 *:hover:text-pink-50">
+        <ul className="flex flex-col gap-5 p-6 text-2xl text-pink-100 light:text-fuchsia-950 *:hover:light:text-fuchsia-900 *:hover:text-pink-50">
           <AnimatedLink url={"/"} newTab={false} setDropDownNavOpen={setDropDownNavOpen}>
             Home
           </AnimatedLink>

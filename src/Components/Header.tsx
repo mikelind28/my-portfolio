@@ -1,34 +1,42 @@
 // import { TabGroup, TabList, Tab } from "@headlessui/react";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoClose, IoMenuOutline, IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import { Link } from "react-router";
 
-function DarkModeToggle() {
-  const [isOn, setIsOn] = useState(false);
+type DarkModeToggleType = {
+  setDarkModeOn: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function DarkModeToggle({ setDarkModeOn }: DarkModeToggleType ) {
+  const [isOn, setIsOn] = useState(true);
 
   const toggleSwitch = () => setIsOn(!isOn);
+
+  useEffect(() => {
+    isOn ? setDarkModeOn(true) : setDarkModeOn(false);
+  }, [isOn]);
 
   return (
     <button
       onClick={toggleSwitch}
-      className={`flex h-7 w-14 cursor-pointer items-center justify-between rounded-full bg-white/15`}
+      className={`flex h-7 w-14 cursor-pointer items-center justify-between rounded-full bg-white/15 light:bg-fuchsia-800/40`}
     >
       <motion.div
-        animate={{ x: isOn ? 28 : 0 }}
+        animate={{ x: isOn ? 0 : 28 }}
         transition={{
           type: "spring",
           stiffness: 300,
           damping: 20,
         }}
-        className={`absolute m-0.5 size-6 rounded-full bg-white/75 ${isOn ? "justify-self-start" : "justify-self-end"}`}
+        className={`absolute m-0.5 size-6 rounded-full bg-white/75`}
       />
 
       <IoMoonOutline
-        className={`z-10 m-1.5 justify-self-start transition-colors duration-700 ${isOn ? "text-white" : "text-black"}`}
+        className={`z-10 m-1.5 justify-self-start transition-colors duration-700 ${isOn ? "text-fuchsia-950" : "text-white"}`}
       />
       <IoSunnyOutline
-        className={`z-10 m-1.5 justify-self-end transition-colors duration-700 ${isOn ? "text-black" : "text-white"}`}
+        className={`z-10 m-1.5 justify-self-end transition-colors duration-700 ${isOn ? "text-white" : "text-fuchsia-950"}`}
       />
     </button>
   );
@@ -37,9 +45,10 @@ function DarkModeToggle() {
 type HeaderType = {
   dropDownNavOpen: boolean;
   setDropDownNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setDarkModeOn: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function Header({ dropDownNavOpen, setDropDownNavOpen }: HeaderType) {
+export default function Header({ dropDownNavOpen, setDropDownNavOpen, setDarkModeOn }: HeaderType) {
   const { scrollY } = useScroll();
   const [scrollDirection, setScrollDirection] = useState("down");
 
@@ -51,19 +60,19 @@ export default function Header({ dropDownNavOpen, setDropDownNavOpen }: HeaderTy
   return (
     <motion.header
       layout
-      className={`z-50 flex items-center justify-between p-4 pb-6 bg-linear-to-b from-dark-violet4 from-90% to-transparent ${scrollDirection === 'up' ? 'sticky top-0' : 'static'}`}
+      className={`z-50 flex items-center justify-between p-4 pb-6 bg-linear-to-b from-dark-violet4 light:from-white from-90% to-transparent ${scrollDirection === 'up' ? 'sticky top-0' : 'static'}`}
     >
       {
         dropDownNavOpen
         ? 
         <IoClose
           onClick={() => setDropDownNavOpen(false)}
-          className="mr-2 cursor-pointer text-2xl text-white"
+          className="mr-2 cursor-pointer text-2xl text-white light:text-fuchsia-950"
         />
         : 
         <IoMenuOutline
           onClick={() => setDropDownNavOpen(true)}
-          className="mr-2 cursor-pointer text-2xl text-white"
+          className="mr-2 cursor-pointer text-2xl text-white light:text-fuchsia-950"
         />
       }
 
@@ -83,7 +92,7 @@ export default function Header({ dropDownNavOpen, setDropDownNavOpen }: HeaderTy
         </p>
       </Link>
 
-      <DarkModeToggle />
+      <DarkModeToggle setDarkModeOn={setDarkModeOn} />
     </motion.header>
   );
 }
