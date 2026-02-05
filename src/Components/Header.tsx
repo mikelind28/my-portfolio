@@ -30,7 +30,7 @@ function DarkModeToggle({ setDarkModeOn }: DarkModeToggleType) {
   return (
     <button
       onClick={toggleSwitch}
-      className={`light:bg-fuchsia-600/30 light:inset-shadow-xs/20 flex h-7 w-14 cursor-pointer items-center justify-between rounded-full bg-white/15`}
+      className={`light:bg-fuchsia-700/30 light:inset-shadow-xs/20 flex h-7 w-14 cursor-pointer items-center justify-between rounded-full bg-white/15`}
     >
       <motion.div
         animate={{ x: isOn ? 0 : 28 }}
@@ -74,7 +74,7 @@ export default function Header({
   return (
     <motion.header
       layout
-      className={`from-dark-violet4 light:from-white light:to-white light:drop-shadow-sm/8 z-50 flex items-center justify-between bg-linear-to-b from-90% to-transparent p-4 pb-6 ${scrollDirection === "up" ? "sticky top-0" : "static"}`}
+      className={`from-dark-violet4 light:from-white light:to-white light:drop-shadow-sm/15 z-50 flex items-center justify-between bg-linear-to-b from-90% to-transparent p-4 pb-6 ${scrollDirection === "up" ? "sticky top-0" : "static"}`}
     >
       {dropDownNavOpen ? (
         <IoClose
@@ -90,15 +90,15 @@ export default function Header({
 
       <Link to={"/"}>
         <p className="group cursor-pointer text-2xl font-extralight tracking-wider *:transition-colors *:duration-700 *:ease-in-out">
-          <span className="light:from-orange-400 light:to-orange-600 group-hover:light:from-amber-500 group-hover:light:to-orange-500 bg-radial-[at_60%_-10%] from-amber-500/90 to-orange-500 bg-clip-text text-transparent group-hover:bg-radial-[at_66%_0%] group-hover:from-amber-500 group-hover:from-40% group-hover:to-orange-400">
+          <span className="light:from-orange-400 light:via-orange-600 light:to-orange-700 group-hover:light:from-amber-400 group-hover:light:via-orange-500 group-hover:light:to-orange-600 bg-radial-[at_60%_-10%] from-amber-500/90 to-orange-500 bg-clip-text text-transparent group-hover:bg-radial-[at_66%_0%] group-hover:from-amber-500 group-hover:from-40% group-hover:to-orange-400">
             mike lind
           </span>
 
-          <span className="light:from-fuchsia-500/50 light:to-fuchsia-600 light:group-hover:from-fuchsia-400 light:group-hover:to-fuchsia-500 bg-linear-to-b from-fuchsia-600/85 to-fuchsia-700/66 bg-clip-text text-transparent group-hover:bg-linear-to-b group-hover:from-fuchsia-500 group-hover:to-fuchsia-600">
+          <span className="light:from-orange-500/75 light:via-fuchsia-500/75 light:to-fuchsia-600 light:group-hover:from-fuchsia-400 light:group-hover:to-fuchsia-500 bg-linear-to-b from-fuchsia-600/85 to-fuchsia-700/66 bg-clip-text text-transparent group-hover:bg-linear-to-b group-hover:from-fuchsia-500 group-hover:to-fuchsia-600">
             {" | "}
           </span>
 
-          <span className="group-hover:bg-radial-[at_33%_0% light:group-hover:from-fuchsia-400 light:group-hover:to-fuchsia-500 bg-radial-[at_40%_10%] from-fuchsia-500 to-fuchsia-600 bg-clip-text text-transparent group-hover:from-fuchsia-500 group-hover:from-40% group-hover:to-fuchsia-700">
+          <span className="group-hover:bg-radial-[at_33%_0% light:group-hover:from-fuchsia-400 light:via-fuchsia-600 light:to-fuchsia-800 light:group-hover:to-fuchsia-500 bg-radial-[at_40%_10%] from-fuchsia-500 to-fuchsia-600 bg-clip-text text-transparent group-hover:from-fuchsia-500 group-hover:from-40% group-hover:to-fuchsia-700">
             web dev
           </span>
         </p>

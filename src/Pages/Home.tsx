@@ -7,7 +7,7 @@ import Divider from "../Components/Divider";
 
 function HelloWorldWelcome() {
   return (
-    <div className="relative mt-2 mb-4 flex h-fit w-full items-center justify-center overflow-visible rounded-xl p-4">
+    <div className="relative mt-2 mb-4 light:my-0 flex h-fit w-full items-center justify-center overflow-visible rounded-xl p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.75 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -20,7 +20,7 @@ function HelloWorldWelcome() {
           Hello, world.
         </p>
 
-        <p className="light:text-neutral-700 light:text-shadow-none text-center text-base/5 text-orange-100/95 text-shadow-sm">
+        <p className="light:text-fuchsia-800 light:text-shadow-none text-center text-base/5 text-orange-100/95 text-shadow-sm">
           Welcome to my site. I'm excited to share my work with you!
         </p>
       </div>
@@ -46,7 +46,7 @@ function PortfolioItemPreview({
       className="relative mb-1 flex h-30 w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-xl border-2 border-transparent p-4 text-center light:shadow-[inset_0_5px_10px_5px_rgba(0,0,0,0.25)] shadow-[inset_0_5px_20px_5px_rgba(0,0,0,0.75)] transition-all duration-500 [background:border-box_var(--border-color)] light:[background:border-box_var(--border-color-light)] 
       before:absolute before:inset-0 before:z-0 before:scale-105 before:rounded-[inherit] before:bg-(image:--img) before:bg-cover before:bg-position-[center_top_10%] before:opacity-80 before:blur-[3px] before:brightness-50 before:transition-all before:duration-500 before:content-[''] 
       hover:brightness-120 hover:before:blur-[1px]
-      light:before:brightness-100
+      light:before:brightness-100 light:before:opacity-50
       "
       style={
         {
@@ -102,89 +102,95 @@ export default function Home() {
 
       <Divider />
 
-      <H2Link text={"My Portfolio"} pathName={"/portfolio"} />
+      <div className="w-full light:bg-white light:rounded-xl light:p-4 light:shadow-sm/15">
+        <H2Link text={"My Portfolio"} pathName={"/portfolio"} />
 
-      <motion.ul
-        variants={list}
-        initial="hidden"
-        animate="show"
-        className="flex w-full flex-col items-center space-y-3"
-      >
-        <motion.li
-          variants={item}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 1.03 }}
-          className={"w-full"}
+        <motion.ul
+          variants={list}
+          initial="hidden"
+          animate="show"
+          className="flex w-full flex-col items-center space-y-3"
         >
-          <PortfolioItemPreview
-            text={"Window Interface API"}
-            url={"https://window-doc-nav.netlify.app"}
-            img={"win-doc-nav-interfaces.png"}
-          />
-        </motion.li>
-
-        <motion.li
-          variants={item}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 1.03 }}
-          className={"w-full"}
-        >
-          <PortfolioItemPreview
-            text={"myBookShelf"}
-            url={"https://my-bookshelf-wg3p.onrender.com/"}
-            img={"my-bookshelf.png"}
-          />
-        </motion.li>
-
-        <motion.li
-          variants={item}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 1.03 }}
-          className={"w-full"}
-        >
-          <PortfolioItemPreview
-            text={"myNumberArray"}
-            url={"https://my-number-array.netlify.app/"}
-            img={"my-number-array.png"}
-          />
-        </motion.li>
-
-        <Link to="/portfolio">
-          <motion.div
-            whileHover="hover"
-            className="light:text-orange-600 group relative m-2 flex h-fit w-fit items-center justify-center overflow-visible px-8 py-2 text-xl font-light text-orange-400"
+          <motion.li
+            variants={item}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 1.03 }}
+            className={"w-full"}
           >
+            <PortfolioItemPreview
+              text={"Window Interface API"}
+              url={"https://window-doc-nav.netlify.app"}
+              img={"win-doc-nav-interfaces.png"}
+            />
+          </motion.li>
+
+          <motion.li
+            variants={item}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 1.03 }}
+            className={"w-full"}
+          >
+            <PortfolioItemPreview
+              text={"myBookShelf"}
+              url={"https://my-bookshelf-wg3p.onrender.com/"}
+              img={"my-bookshelf.png"}
+            />
+          </motion.li>
+
+          <motion.li
+            variants={item}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 1.03 }}
+            className={"w-full"}
+          >
+            <PortfolioItemPreview
+              text={"myNumberArray"}
+              url={"https://my-number-array.netlify.app/"}
+              img={"my-number-array.png"}
+            />
+          </motion.li>
+
+          <Link to="/portfolio">
             <motion.div
-              variants={{
-                hover: { opacity: 1, scale: 1 },
-              }}
-              initial={{ opacity: 0, scale: 0 }}
-              transition={{ duration: 1 }}
-              className="absolute inset-0 -z-10 rounded-xl light:bg-none bg-radial from-orange-500/50 from-40% to-orange-900/50 bg-clip-content blur-lg"
-            ></motion.div>
+              whileHover="hover"
+              className="light:text-orange-700 group relative m-2 flex h-fit w-fit items-center justify-center overflow-visible px-8 py-2 text-xl font-light text-orange-400"
+            >
+              <motion.div
+                variants={{
+                  hover: { opacity: 1, scale: 1 },
+                }}
+                initial={{ opacity: 0, scale: 0 }}
+                transition={{ duration: 1 }}
+                className="absolute inset-0 -z-10 rounded-xl light:bg-none bg-radial from-orange-500/50 from-40% to-orange-900/50 bg-clip-content blur-lg"
+              ></motion.div>
 
-            <p className="transition-all light:duration-300 duration-1000 light:group-hover:drop-shadow-none light:group-hover:text-orange-500 light:group-hover:underline light:group-hover:underline-offset-3 light:group-hover:decoration-1 light:group-hover:decoration-orange-500 group-hover:drop-shadow-md/66">
-              See all...
-            </p>
-          </motion.div>
-        </Link>
-      </motion.ul>
-
-      <Divider />
-
-      <H2Link text={"About Me"} pathName={"/about"} />
-
-      <p className="self-start text-left text-base/5 text-orange-100/95 text-shadow-sm/15">
-        My background, my proficiencies, and some more about me.
-      </p>
+              <p className="transition-all light:duration-300 duration-1000 light:group-hover:drop-shadow-none light:group-hover:text-orange-600 light:group-hover:underline light:decoration-orange-500/0 light:group-hover:underline-offset-3 light:group-hover:decoration-1 light:group-hover:decoration-orange-500/75 group-hover:drop-shadow-md/66">
+                See all...
+              </p>
+            </motion.div>
+          </Link>
+        </motion.ul>
+      </div>
 
       <Divider />
 
-      <H2Link text={"Contact"} pathName={"/contact"} />
+      <div className="w-full light:bg-white light:rounded-xl light:p-4 light:shadow-sm/15">
+        <H2Link text={"About Me"} pathName={"/about"} />
 
-      <p className="self-start text-left text-base/5 text-orange-100/95 text-shadow-sm/15">
-        Let's get in touch!
-      </p>
+        <p className="light:text-fuchsia-950 light:font-light light:text-shadow-none self-start text-left text-base/5 text-orange-100/95 text-shadow-sm/15">
+          My background, my proficiencies, and some more about me.
+        </p>
+      </div>
+
+      <Divider />
+
+      <div className="w-full light:bg-white light:rounded-xl light:p-4 light:shadow-sm/15">
+        <H2Link text={"Contact"} pathName={"/contact"} />
+
+        <p className="light:text-fuchsia-950 light:font-light light:text-shadow-none self-start text-left text-base/5 text-orange-100/95 text-shadow-sm/15">
+          Let's get in touch!
+        </p>
+      </div>
 
       <Divider />
     </main>
