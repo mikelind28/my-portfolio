@@ -12,26 +12,6 @@ import { DarkModeOnContext } from "../App";
 import { IoPause, IoRefresh } from "react-icons/io5";
 import { IoPlay } from "react-icons/io5";
 
-// CHANGING BG COLOR WITH SCROLL:
-// const containerRef = useRef<HTMLDivElement | null>(null);
-// const { scrollYProgress } = useScroll({ container: containerRef });
-
-// const { innerLightness, outerLightness, innerChroma, outerChroma, innerHue, outerHue } = useTransform(scrollYProgress, [0, 1], {
-//     innerLightness: [0.452, 0.47],
-//     outerLightness: [0.401, 0.408],
-//     innerChroma: [0.211, 0.157],
-//     outerChroma: [0.17, 0.123],
-//     innerHue: [324.591, 37.304],
-//     outerHue: [325.612, 38.172]
-// });
-
-// const background = useTransform([innerLightness, outerLightness, innerChroma, outerChroma, innerHue, outerHue], ([il, ol, ic, oc, ih, oh]) =>
-//     `radial-gradient(
-//         circle,
-//         oklch(${il} ${ic} ${ih} / 0.8) 40%,
-//         oklch(${ol} ${oc} ${oh} / 0.5) 100%
-//     )`
-// );
 const item = {
   hidden: { opacity: 0 },
   show: {
@@ -97,6 +77,7 @@ function GlowingBackground({ children, glowClass }: GlowingBackgroundType) {
     [0, 0.5, 1],
     [0.3, 1.2, 0.3],
   );
+
   const filter = useTransform(brightness, (b) =>
     darkModeOn ? `blur(24px) brightness(${b})` : `blur(0px) brightness(100%)`,
   );
@@ -233,14 +214,14 @@ export default function About() {
             {animationState === "playing" && (
               <IoPause
                 onClick={() => setAnimationState("paused")}
-                className="absolute top-4 right-4 size-6 text-fuchsia-900/75"
+                className="absolute top-4 right-4 size-6 light:text-fuchsia-900/75 text-fuchsia-700/75"
               />
             )}
 
             {animationState === "paused" && (
               <IoPlay
                 onClick={() => setAnimationState("playing")}
-                className="absolute top-4 right-4 size-6 text-fuchsia-900/75"
+                className="absolute top-4 right-4 size-6 light:text-fuchsia-900/75 text-fuchsia-700/75"
               />
             )}
 
@@ -250,11 +231,11 @@ export default function About() {
                   setResetTrigger((prev) => prev + 1);
                   setAnimationState("playing");
                 }}
-                className="absolute top-4 right-4 size-6 text-fuchsia-900/75"
+                className="absolute top-4 right-4 size-6 light:text-fuchsia-900/75 text-fuchsia-700/75"
               />
             )}
 
-            <p className="light:text-transparent light:bg-clip-text light:bg-linear-to-b light:from-orange-600 light:to-fuchsia-700 light:text-shadow-none mx-4 font-mono text-base/6 whitespace-pre-line text-orange-100/95 text-shadow-sm">
+            <p className="text-transparent bg-clip-text bg-linear-to-b light:from-orange-600 light:to-fuchsia-700 light:text-shadow-none mx-4 font-mono text-base/6 whitespace-pre-line from-orange-50/85 to-orange-50 text-shadow-sm">
               <UseAnimatedText
                 animationState={animationState}
                 setAnimationState={setAnimationState}
@@ -300,7 +281,7 @@ export default function About() {
           <div className="m-8 px-6 text-center">
             <AboutH2 text={"Miscellaneous"} />
 
-            <p className="light:text-transparent light:bg-clip-text light:bg-linear-to-b light:from-fuchsia-700 light:to-green-700 light:text-shadow-none mx-4 font-mono text-base/6 whitespace-pre-line text-orange-100/95 text-shadow-sm">
+            <p className="text-transparent bg-clip-text bg-linear-to-b light:from-fuchsia-700 light:to-green-700 light:text-shadow-none mx-4 font-mono text-base/6 whitespace-pre-line from-orange-50/85 to-orange-50 text-shadow-sm">
               <UseAnimatedText
                 animationState={animationState}
                 setAnimationState={setAnimationState}

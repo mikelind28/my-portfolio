@@ -43,7 +43,7 @@ function AnimatedFooterLink({ children, url, newTab }: AnimatedFooterLinkType) {
           ease: "easeOut",
         }}
         style={{ originX: 0 }}
-        className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-current"
+        className="absolute -bottom-0.5 left-0 h-px w-full bg-current"
       />
     </motion.li>
   );
@@ -57,40 +57,42 @@ export default function Footer() {
             initial={{ y: '200%' }}
             animate={{ y: 0 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="relative h-full w-full max-w-160 mx-auto flex items-start justify-center overflow-visible rounded-xl p-4"
+            className="w-full light:p-4 p-5 max-w-160"
         >
+          <div className="light:my-0 relative h-fit w-full overflow-visible rounded-xl p-4 pt-0 pb-8">
             <motion.div
-                initial={{ opacity: darkModeOn ? 0 : 1, scale: darkModeOn ? 0.75 : 1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 2, ease: "easeInOut" }}
-                className="light:bg-linear-to-b light:from-white light:to-white light:shadow-sm/15 light:blur-none light:h-full light:w-full absolute -z-10 h-[150%] w-[95%] rounded-xl bg-radial from-fuchsia-900/40 from-40% to-fuchsia-950/10 bg-clip-content blur-lg"
+              initial={{ opacity: darkModeOn ? 0 : 1, scale: darkModeOn ? 0.75 : 1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+              className="light:bg-linear-to-b light:from-white light:to-white light:shadow-sm/15 light:blur-none light:justify-self-center absolute -z-10 h-[150%] w-[95%] rounded-xl bg-radial from-fuchsia-900/40 from-40% to-fuchsia-950/10 bg-clip-content blur-lg"
             ></motion.div>
-
+            
             <nav>
-                <ul className="light:text-fuchsia-950/85 *:hover:light:text-fuchsia-950 flex flex-col items-center gap-3 p-6 pt-18 text-sm text-pink-200/90 *:hover:text-pink-50">
-                    <AnimatedFooterLink url={"/"} newTab={false}>
-                        Home
-                    </AnimatedFooterLink>
-    
-                    <AnimatedFooterLink url={"/portfolio"} newTab={false}>
-                        Portfolio
-                    </AnimatedFooterLink>
-    
-                    <AnimatedFooterLink url={"/about"} newTab={false}>
-                        About Me
-                    </AnimatedFooterLink>
-    
-                    <AnimatedFooterLink url={"/contact"} newTab={false}>
-                        Contact
-                    </AnimatedFooterLink>
-    
-                    <AnimatedFooterLink url={"https://github.com/mikelind28"} newTab={true}>
-                        <div className="flex items-center gap-2">
-                            GitHub <LuExternalLink />
-                        </div>
-                    </AnimatedFooterLink>
-                </ul>
+              <ul className="light:text-fuchsia-950/85 *:hover:light:text-fuchsia-950 flex flex-col items-center gap-3 light:pt-12 pt-14 text-sm text-pink-200/90 *:hover:text-pink-50">
+                  <AnimatedFooterLink url={"/"} newTab={false}>
+                      Home
+                  </AnimatedFooterLink>
+  
+                  <AnimatedFooterLink url={"/portfolio"} newTab={false}>
+                      Portfolio
+                  </AnimatedFooterLink>
+  
+                  <AnimatedFooterLink url={"/about"} newTab={false}>
+                      About Me
+                  </AnimatedFooterLink>
+  
+                  <AnimatedFooterLink url={"/contact"} newTab={false}>
+                      Contact
+                  </AnimatedFooterLink>
+  
+                  <AnimatedFooterLink url={"https://github.com/mikelind28"} newTab={true}>
+                      <div className="flex items-center gap-2">
+                          GitHub <LuExternalLink />
+                      </div>
+                  </AnimatedFooterLink>
+              </ul>
             </nav>
+          </div>
         </motion.footer>
     );
 }

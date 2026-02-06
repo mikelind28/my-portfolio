@@ -14,7 +14,7 @@ function PortfolioItem({ title, children }: PortfolioItemType) {
   const [open, setOpen] = useState(true);
 
   return (
-    <div className="light:bg-white light:shadow-sm/15 light:rounded-xl light:px-4 light:py-6 w-full relative self-start">
+    <div className="light:bg-white light:shadow-md/25 light:rounded-xl light:px-4 light:py-6 w-full relative self-start">
       <div
         onClick={() => setOpen(!open)}
         className="group flex cursor-pointer items-start gap-2"

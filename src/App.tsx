@@ -65,7 +65,7 @@ function App() {
         <div className="sm:flex sm:gap-4 min-h-dvh h-full">
           <Sidebar dropDownNavOpen={dropDownNavOpen} />
           
-          <div className="flex flex-col mx-auto min-h-dvh h-full justify-between overflow-hidden">
+          <div className="flex flex-col items-center min-h-dvh h-full w-full justify-between overflow-hidden">
             <Outlet />
             <Footer />
           </div>
