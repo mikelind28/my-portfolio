@@ -7,13 +7,14 @@ import { LuExternalLink } from "react-icons/lu";
 
 type PortfolioItemType = {
   title: string;
-  children: ReactNode[];
+  children: ReactNode | ReactNode[];
 };
+
 function PortfolioItem({ title, children }: PortfolioItemType) {
   const [open, setOpen] = useState(true);
 
   return (
-    <div className="relative self-start">
+    <div className="light:bg-white light:shadow-sm/15 light:rounded-xl light:px-4 light:py-6 w-full relative self-start">
       <div
         onClick={() => setOpen(!open)}
         className="group flex cursor-pointer items-start gap-2"
@@ -68,10 +69,13 @@ function PortfolioItemLinks({
           "--border-color": `radial-gradient(circle at 25% 25%,
                     var(--color-orange-500) 0%,
                     var(--color-fuchsia-700) 100%)`,
+          "--border-color-light": `radial-gradient(circle at 25% 25%,
+                    var(--color-amber-500) 0%,
+                    var(--color-fuchsia-700) 100%)`,
           "--img": `url(/images/screenshots/${img})`,
         } as React.CSSProperties
       }
-      className="relative mt-2 mb-4 flex h-30 w-full items-center justify-center gap-2 overflow-hidden rounded-xl border-2 border-transparent p-4 text-center shadow-[inset_0_5px_20px_5px_rgba(0,0,0,0.75)] transition-all duration-500 [background:border-box_var(--border-color)] before:absolute before:inset-0 before:z-0 before:scale-105 before:rounded-[inherit] before:bg-(image:--img) before:bg-cover before:bg-position-[center_top_10%] before:opacity-80 before:blur-[3px] before:brightness-50 before:transition-all before:duration-500 before:content-[''] hover:brightness-120 hover:before:blur-[1px]"
+      className="light:shadow-[inset_0_5px_10px_5px_rgba(0,0,0,0.25)] light:[background:border-box_var(--border-color-light)] light:before:brightness-100 light:before:opacity-50 relative mt-2 mb-4 flex h-30 w-full items-center justify-center gap-2 overflow-hidden rounded-xl border-2 border-transparent p-4 text-center shadow-[inset_0_5px_20px_5px_rgba(0,0,0,0.75)] transition-all duration-500 [background:border-box_var(--border-color)] before:absolute before:inset-0 before:z-0 before:scale-105 before:rounded-[inherit] before:bg-(image:--img) before:bg-cover before:bg-position-[center_top_10%] before:opacity-80 before:blur-[3px] before:brightness-50 before:transition-all before:duration-500 before:content-[''] hover:brightness-120 hover:before:blur-[1px]"
     >
       <motion.a
         href={appUrl}
@@ -105,12 +109,13 @@ type PortfolioItemDescriptionType = {
 };
 
 function PortfolioItemDescription({ children }: PortfolioItemDescriptionType) {
-  return <p className="mx-2 mt-4 self-start text-orange-100">{children}</p>;
+  return <p className="light:text-fuchsia-950 light:font-light mx-2 mt-4 self-start text-orange-100">{children}</p>;
 }
 
 export default function Portfolio() {
   return (
-    <main className="mx-auto w-full max-w-160 p-5 pt-0">
+    <main className="mx-auto w-full max-w-160 p-5">
+      <title>Mike Lind | Web Dev - Portfolio</title>
       <H1 text={"My Portfolio."} />
 
       <div className="flex h-fit w-full flex-col items-center">
@@ -175,6 +180,14 @@ export default function Portfolio() {
           <PortfolioItemDescription>
             <span className="italic">Nonprofit Template</span> is a single-page
             React application that simulates a basic nonprofit website.
+          </PortfolioItemDescription>
+        </PortfolioItem>
+
+        <Divider />
+
+        <PortfolioItem title={"And more..."}>
+          <PortfolioItemDescription>
+            More coming soon! Ask me what I'm working on :-)
           </PortfolioItemDescription>
         </PortfolioItem>
 

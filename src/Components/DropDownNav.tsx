@@ -33,7 +33,7 @@ function AnimatedLink({
         rel="noopener noreferrer"
         className={({ isActive }) =>
           isActive
-            ? "light:text-neutral-900 light:font-bold cursor-default font-extrabold"
+            ? "light:text-fuchsia-950 light:font-bold cursor-default font-extrabold"
             : "tracking cursor-pointer font-light"
         }
       >
@@ -65,11 +65,11 @@ export default function DropDownNav({ setDropDownNavOpen }: DropDownNavType) {
     <div className="from-dark-violet4 to-dark-violet3 light:from-white light:from-40% light:via-orange-100 light:via-80% light:to-fuchsia-200 h-dvh w-dvw bg-linear-to-b sm:hidden">
       <IoClose
         onClick={() => setDropDownNavOpen(false)}
-        className="light:text-neutral-900 size-12 shrink-0 cursor-pointer pt-4 pl-2 text-white"
+        className="light:text-fuchsia-950 size-12 shrink-0 cursor-pointer pt-4 pl-2 text-white"
       />
 
       <nav>
-        <ul className="light:text-neutral-950/85 *:hover:light:text-neutral-900 flex flex-col gap-5 p-6 text-2xl text-pink-100 *:hover:text-pink-50">
+        <ul className="light:text-fuchsia-950/85 *:hover:light:text-fuchsia-950 flex flex-col gap-5 p-6 text-2xl text-pink-100 *:hover:text-pink-50">
           <AnimatedLink
             url={"/"}
             newTab={false}

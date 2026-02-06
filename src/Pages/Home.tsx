@@ -4,12 +4,16 @@ import { Link } from "react-router";
 import H1 from "../Components/H1";
 import H2Link from "../Components/H2Link";
 import Divider from "../Components/Divider";
+import { useContext } from "react";
+import { DarkModeOnContext } from "../App";
 
 function HelloWorldWelcome() {
+  const darkModeOn = useContext(DarkModeOnContext);
+
   return (
     <div className="light:my-0 relative mt-2 mb-4 flex h-fit w-full items-center justify-center overflow-visible rounded-xl p-4">
       <motion.div
-        initial={{ opacity: 0, scale: 0.75 }}
+        initial={{ opacity: darkModeOn ? 0 : 1, scale: darkModeOn ? 0.75 : 1 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 2, ease: "easeInOut" }}
         className="light:bg-linear-to-b light:from-white light:to-white light:shadow-sm/15 light:blur-none light:h-full light:w-full absolute -z-10 h-[95%] w-[95%] rounded-xl bg-radial from-fuchsia-800/80 from-40% to-fuchsia-900/50 bg-clip-content blur-lg"

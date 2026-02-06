@@ -222,6 +222,7 @@ export default function About() {
 
   return (
     <main className="light:gap-0 mx-auto flex h-fit w-full max-w-120 flex-col gap-4 p-2 pt-5">
+      <title>Mike Lind | Web Dev - About</title>
       <H1 text={"About Me."} />
 
       <div className="light:gap-3 light:px-2 mb-8 flex flex-col gap-8 px-4">
