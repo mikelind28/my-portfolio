@@ -22,7 +22,7 @@ function App() {
     if (body) {
       body.style.backgroundColor = darkModeOn
         ? "var(--color-dark-violet4)"
-        : "var(--color-neutral-50)";
+        : "var(--color-neutral-100)";
     }
 
     const html = document.querySelector("html");

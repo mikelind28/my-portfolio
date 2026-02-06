@@ -7,7 +7,7 @@ import Divider from "../Components/Divider";
 
 function HelloWorldWelcome() {
   return (
-    <div className="relative mt-2 mb-4 light:my-0 flex h-fit w-full items-center justify-center overflow-visible rounded-xl p-4">
+    <div className="light:my-0 relative mt-2 mb-4 flex h-fit w-full items-center justify-center overflow-visible rounded-xl p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.75 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -43,11 +43,7 @@ function PortfolioItemPreview({
 }: PortfolioItemPreviewType) {
   return (
     <div
-      className="relative mb-1 flex h-30 w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-xl border-2 border-transparent p-4 text-center light:shadow-[inset_0_5px_10px_5px_rgba(0,0,0,0.25)] shadow-[inset_0_5px_20px_5px_rgba(0,0,0,0.75)] transition-all duration-500 [background:border-box_var(--border-color)] light:[background:border-box_var(--border-color-light)] 
-      before:absolute before:inset-0 before:z-0 before:scale-105 before:rounded-[inherit] before:bg-(image:--img) before:bg-cover before:bg-position-[center_top_10%] before:opacity-80 before:blur-[3px] before:brightness-50 before:transition-all before:duration-500 before:content-[''] 
-      hover:brightness-120 hover:before:blur-[1px]
-      light:before:brightness-100 light:before:opacity-50
-      "
+      className="light:shadow-[inset_0_5px_10px_5px_rgba(0,0,0,0.25)] light:[background:border-box_var(--border-color-light)] light:before:brightness-100 light:before:opacity-50 relative mb-1 flex h-30 w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-xl border-2 border-transparent p-4 text-center shadow-[inset_0_5px_20px_5px_rgba(0,0,0,0.75)] transition-all duration-500 [background:border-box_var(--border-color)] before:absolute before:inset-0 before:z-0 before:scale-105 before:rounded-[inherit] before:bg-(image:--img) before:bg-cover before:bg-position-[center_top_10%] before:opacity-80 before:blur-[3px] before:brightness-50 before:transition-all before:duration-500 before:content-[''] hover:brightness-120 hover:before:blur-[1px]"
       style={
         {
           height: height,
@@ -63,7 +59,7 @@ function PortfolioItemPreview({
     >
       <Link to={url} target="_blank" rel="noopener noreferrer">
         <div className="absolute top-0 right-0 flex h-full w-12 items-center justify-center rounded-tr-[inherit] rounded-br-[inherit] bg-black/50">
-          <IoIosArrowForward className="transition-color size-8 light:text-amber-500 text-amber-600 duration-300 group-hover:text-amber-500" />
+          <IoIosArrowForward className="transition-color light:text-amber-500 size-8 text-amber-600 duration-300 group-hover:text-amber-500" />
         </div>
       </Link>
 
@@ -102,7 +98,7 @@ export default function Home() {
 
       <Divider />
 
-      <div className="w-full light:bg-white light:rounded-xl light:p-4 light:shadow-sm/15">
+      <div className="light:bg-white light:rounded-xl light:p-4 light:shadow-sm/15 w-full">
         <H2Link text={"My Portfolio"} pathName={"/portfolio"} />
 
         <motion.ul
@@ -161,10 +157,10 @@ export default function Home() {
                 }}
                 initial={{ opacity: 0, scale: 0 }}
                 transition={{ duration: 1 }}
-                className="absolute inset-0 -z-10 rounded-xl light:bg-none bg-radial from-orange-500/50 from-40% to-orange-900/50 bg-clip-content blur-lg"
+                className="light:bg-none absolute inset-0 -z-10 rounded-xl bg-radial from-orange-500/50 from-40% to-orange-900/50 bg-clip-content blur-lg"
               ></motion.div>
 
-              <p className="transition-all light:duration-300 duration-1000 light:group-hover:drop-shadow-none light:group-hover:text-orange-600 light:group-hover:underline light:decoration-orange-500/0 light:group-hover:underline-offset-3 light:group-hover:decoration-1 light:group-hover:decoration-orange-500/75 group-hover:drop-shadow-md/66">
+              <p className="light:duration-300 light:group-hover:drop-shadow-none light:group-hover:text-orange-600 light:group-hover:underline light:decoration-orange-500/0 light:group-hover:underline-offset-3 light:group-hover:decoration-1 light:group-hover:decoration-orange-500/75 transition-all duration-1000 group-hover:drop-shadow-md/66">
                 See all...
               </p>
             </motion.div>
@@ -174,7 +170,7 @@ export default function Home() {
 
       <Divider />
 
-      <div className="w-full light:bg-white light:rounded-xl light:p-4 light:shadow-sm/15">
+      <div className="light:bg-white light:rounded-xl light:p-4 light:shadow-sm/15 w-full">
         <H2Link text={"About Me"} pathName={"/about"} />
 
         <p className="light:text-fuchsia-950 light:font-light light:text-shadow-none self-start text-left text-base/5 text-orange-100/95 text-shadow-sm/15">
@@ -184,7 +180,7 @@ export default function Home() {
 
       <Divider />
 
-      <div className="w-full light:bg-white light:rounded-xl light:p-4 light:shadow-sm/15">
+      <div className="light:bg-white light:rounded-xl light:p-4 light:shadow-sm/15 w-full">
         <H2Link text={"Contact"} pathName={"/contact"} />
 
         <p className="light:text-fuchsia-950 light:font-light light:text-shadow-none self-start text-left text-base/5 text-orange-100/95 text-shadow-sm/15">
