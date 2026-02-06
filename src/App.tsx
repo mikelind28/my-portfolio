@@ -5,6 +5,7 @@ import "./index.css";
 import { createContext, useEffect, useState } from "react";
 import { Outlet } from "react-router";
 import Sidebar from "./Components/SidebarNav";
+import Footer from "./Components/Footer";
 
 export const DarkModeOnContext = createContext(true);
 
@@ -39,6 +40,7 @@ function App() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
+        className="min-h-dvh h-full"
       >
         <AnimatePresence>
           {dropDownNavOpen && (
@@ -60,9 +62,13 @@ function App() {
           setDarkModeOn={setDarkModeOn}
         />
 
-        <div className="sm:flex sm:gap-4">
+        <div className="sm:flex sm:gap-4 min-h-dvh h-full">
           <Sidebar dropDownNavOpen={dropDownNavOpen} />
-          <Outlet />
+          
+          <div className="flex flex-col mx-auto min-h-dvh h-full justify-between overflow-hidden">
+            <Outlet />
+            <Footer />
+          </div>
         </div>
       </motion.div>
     </DarkModeOnContext>

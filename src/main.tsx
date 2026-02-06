@@ -9,6 +9,9 @@ import About from "./Pages/About.tsx";
 import Portfolio from "./Pages/Portfolio.tsx";
 import Contact from "./Pages/Contact.tsx";
 
+// TODO: add error element!
+// TODO: use images for web rather than jpg/png
+// TODO: add README
 const router = createBrowserRouter([
   {
     path: "/",
