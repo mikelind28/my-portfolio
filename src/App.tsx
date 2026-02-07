@@ -7,20 +7,14 @@ import { Outlet } from "react-router";
 import Sidebar from "./Components/SidebarNav";
 import Footer from "./Components/Footer";
 
-export const DarkModeOnContext = createContext(true);
+export const DarkModeOnContext = createContext<boolean | undefined>(undefined);
 
 function App() {
   const [dropDownNavOpen, setDropDownNavOpen] = useState(false);
-  const [darkModeOn, setDarkModeOn] = useState(
-    localStorage.getItem("theme") === "dark" ||
-      localStorage.getItem("theme") === null
-      ? true
-      : false,
-  );
-
-  useEffect(() => {
-    localStorage.setItem("theme", darkModeOn ? "dark" : "light");
-  }, []);
+  const [darkModeOn, setDarkModeOn] = useState(() => {
+    const theme = localStorage.getItem("theme");
+    return theme === "dark" || theme === null;
+  });
 
   useEffect(() => {
     const body = document.querySelector("body");
