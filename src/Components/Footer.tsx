@@ -59,7 +59,7 @@ export default function Footer() {
             transition={{ duration: 1.5, ease: "easeOut" }}
             className="w-full light:p-4 p-5 max-w-160"
         >
-          <div className="light:my-0 relative h-fit w-full overflow-visible rounded-xl p-4 pt-0 pb-8">
+          <div className="light:my-0 light:flex light:justify-center relative h-fit w-full overflow-visible rounded-xl p-4 pt-0 pb-8">
             <motion.div
               initial={{ opacity: darkModeOn ? 0 : 1, scale: darkModeOn ? 0.75 : 1 }}
               animate={{ opacity: 1, scale: 1 }}

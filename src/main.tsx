@@ -8,14 +8,15 @@ import Home from "./Pages/Home.tsx";
 import About from "./Pages/About.tsx";
 import Portfolio from "./Pages/Portfolio.tsx";
 import Contact from "./Pages/Contact.tsx";
+import RootErrorElement from "./Pages/RootErrorElement.tsx";
 
-// TODO: add error element!
 // TODO: use images for web rather than jpg/png
-// TODO: add README
+// TODO: add Motion to proficiencies
 const router = createBrowserRouter([
   {
     path: "/",
     Component: App,
+    errorElement: <RootErrorElement />,
     children: [
       {
         index: true,

@@ -79,8 +79,12 @@ function GlowingBackground({ children, glowClass }: GlowingBackgroundType) {
   );
 
   const filter = useTransform(brightness, (b) =>
-    darkModeOn ? `blur(24px) brightness(${b})` : `blur(0px) brightness(100%)`,
+    darkModeOn ? `blur(24px) brightness(${b})` : `blur(0px) brightness(100%)`
   );
+
+  useEffect(() => {
+    filter.set(darkModeOn ? `blur(24px) brightness(${brightness.get()})` : `blur(0px) brightness(100%)`);
+  }, [darkModeOn, filter, brightness]);
 
   return (
     <div ref={ref} className="relative flex w-full flex-col items-center">
@@ -176,12 +180,6 @@ function UseAnimatedText({
       console.log("paused");
     }
   }, [animationState]);
-
-  // useEffect(() => {
-  //   if (animationState === 'playing' && cursor >= text.split(delimiter).length) {
-  //     setResetTrigger(prev => prev + 1);
-  //   }
-  // }, [animationState, cursor, text]);
 
   return text.split(delimiter).slice(0, cursor).join(delimiter);
 }
