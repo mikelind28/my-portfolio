@@ -284,7 +284,7 @@ export default function About() {
                 animationState={animationState}
                 setAnimationState={setAnimationState}
                 resetTrigger={resetTrigger}
-                text={`In my free time, I enjoy spending time with my wife, along with our dog and cat. We love exploring the many nature preserves surrounding the Twin Cities. I frequently oscillate between practicing piano, guitar, drums, and digital mixing. My latest gaming obsessions include Hollow Knight: Silksong and Baldur's Gate 3.`}
+                text={`In my free time, I enjoy spending time with my wife, our dog, and our cat. I love exploring the many nature preserves surrounding the Twin Cities and maintaining a prairie yard. I frequently oscillate between practicing piano, guitar, drums, and digital mixing. My latest gaming obsessions include Hollow Knight: Silksong and Baldur's Gate 3.`}
               />
             </p>
           </div>

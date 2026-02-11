@@ -12,6 +12,7 @@ import RootErrorElement from "./Pages/RootErrorElement.tsx";
 
 // TODO: use images for web rather than jpg/png
 // TODO: add Motion to proficiencies
+// TODO: light mode first?
 const router = createBrowserRouter([
   {
     path: "/",

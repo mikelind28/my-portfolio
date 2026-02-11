@@ -46,7 +46,8 @@ function PortfolioItemPreview({
   height = 80,
 }: PortfolioItemPreviewType) {
   return (
-    <div
+    <a
+      href={url} target="_blank" rel="noopener noreferrer"
       className="light:shadow-[inset_0_5px_10px_5px_rgba(0,0,0,0.25)] light:[background:border-box_var(--border-color-light)] light:before:brightness-100 light:before:opacity-50 relative mb-1 flex h-30 w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-xl border-2 border-transparent p-4 text-center shadow-[inset_0_5px_20px_5px_rgba(0,0,0,0.75)] transition-all duration-500 [background:border-box_var(--border-color)] before:absolute before:inset-0 before:z-0 before:scale-105 before:rounded-[inherit] before:bg-(image:--img) before:bg-cover before:bg-position-[center_top_10%] before:opacity-80 before:blur-[3px] before:brightness-50 before:transition-all before:duration-500 before:content-[''] hover:brightness-120 hover:before:blur-[1px]"
       style={
         {
@@ -61,16 +62,14 @@ function PortfolioItemPreview({
         } as React.CSSProperties
       }
     >
-      <Link to={url} target="_blank" rel="noopener noreferrer">
-        <div className="absolute top-0 right-0 flex h-full w-12 items-center justify-center rounded-tr-[inherit] rounded-br-[inherit] bg-black/50">
-          <IoIosArrowForward className="transition-color light:text-amber-500 size-8 text-amber-600 duration-300 group-hover:text-amber-500" />
-        </div>
-      </Link>
+      <div className="absolute top-0 right-0 flex h-full w-12 items-center justify-center rounded-tr-[inherit] rounded-br-[inherit] bg-black/50">
+        <IoIosArrowForward className="transition-color light:text-amber-500 size-8 text-amber-600 duration-300 group-hover:text-amber-500" />
+      </div>
 
       <p className="bg-dark-violet4/50 group-hover:text-shadow-2xl/75 group-hover:bg-dark-violet4/75 absolute top-5.5 left-3 rounded-md px-2 py-1 text-xl font-light text-amber-500 transition-all duration-300 text-shadow-md/50 group-hover:text-amber-400">
         {text}
       </p>
-    </div>
+    </a>
   );
 }
 
