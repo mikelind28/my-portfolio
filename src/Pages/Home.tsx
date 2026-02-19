@@ -149,25 +149,28 @@ export default function Home() {
             />
           </motion.li>
 
-          <Link to="/portfolio">
-            <motion.div
-              whileHover="hover"
-              className="light:text-orange-700 group relative m-2 flex h-fit w-fit items-center justify-center overflow-visible px-8 py-2 text-xl font-light text-orange-400"
-            >
-              <motion.div
-                variants={{
-                  hover: { opacity: 1, scale: 1 },
-                }}
-                initial={{ opacity: 0, scale: 0 }}
-                transition={{ duration: 1 }}
-                className="light:bg-none absolute inset-0 -z-10 rounded-xl bg-radial from-orange-500/50 from-40% to-orange-900/50 bg-clip-content blur-lg"
-              ></motion.div>
+          <li>
 
-              <p className="light:duration-300 light:group-hover:drop-shadow-none light:group-hover:text-orange-600 light:group-hover:underline light:decoration-orange-500/0 light:group-hover:underline-offset-3 light:group-hover:decoration-1 light:group-hover:decoration-orange-500/75 transition-all duration-1000 group-hover:drop-shadow-md/66">
-                See all...
-              </p>
-            </motion.div>
-          </Link>
+            <Link to="/portfolio">
+              <motion.div
+                whileHover="hover"
+                className="light:text-orange-700 group relative m-2 flex h-fit w-fit items-center justify-center overflow-visible px-8 py-2 text-xl font-light text-orange-400"
+              >
+                <motion.div
+                  variants={{
+                    hover: { opacity: 1, scale: 1 },
+                  }}
+                  initial={{ opacity: 0, scale: 0 }}
+                  transition={{ duration: 1 }}
+                  className="light:bg-none absolute inset-0 -z-10 rounded-xl bg-radial from-orange-500/50 from-40% to-orange-900/50 bg-clip-content blur-lg"
+                ></motion.div>
+
+                <p className="light:duration-300 light:group-hover:drop-shadow-none light:group-hover:text-orange-600 light:group-hover:underline light:decoration-orange-500/0 light:group-hover:underline-offset-3 light:group-hover:decoration-1 light:group-hover:decoration-orange-500/75 transition-all duration-1000 group-hover:drop-shadow-md/66">
+                  See all...
+                </p>
+              </motion.div>
+            </Link>
+          </li>
         </motion.ul>
       </div>
 

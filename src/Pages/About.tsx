@@ -37,6 +37,7 @@ function ProficiencyListItem({ text, img }: ProficiencyListItemType) {
         <img
           src={`/images/proficiency-logos/${img}`}
           className="h-full w-5 rounded-xs drop-shadow-xs/75"
+          alt={`${text} logo`}
         />
         <p className="light:text-transparent light:bg-clip-text light:bg-linear-to-b light:from-orange-500 light:from-10% light:via-fuchsia-700 light:via-40% light:to-fuchsia-950 text-xl font-light text-orange-100">
           {text}

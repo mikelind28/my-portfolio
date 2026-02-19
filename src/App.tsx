@@ -11,11 +11,16 @@ export const DarkModeOnContext = createContext<boolean | undefined>(undefined);
 
 function App() {
   const [dropDownNavOpen, setDropDownNavOpen] = useState(false);
+
+  // default state is 'true' if localStorage key 'theme' is 'dark' or 'null'
+  // (dark mode ON is the default)
+  // setDarkModeOn is passed to the DarkModeToggle in the Header
   const [darkModeOn, setDarkModeOn] = useState(() => {
     const theme = localStorage.getItem("theme");
     return theme === "dark" || theme === null;
   });
 
+  // whenever darkModeOn changes
   useEffect(() => {
     const body = document.querySelector("body");
     if (body) {

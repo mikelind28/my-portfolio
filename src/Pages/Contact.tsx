@@ -45,7 +45,10 @@ export default function Contact() {
             </p>
 
             <a href="https://github.com/mikelind28" className="light:text-fuchsia-800 light:text-shadow-none text-center text-base/5 text-orange-100/95 text-shadow-sm">
-              <img src={darkModeOn ? '/images/github-white.png' : '/images/github-black.png'} />
+              <img 
+                src={darkModeOn ? '/images/github-white.png' : '/images/github-black.png'} 
+                alt="GitHub logo"
+              />
             </a>
           </div>
 

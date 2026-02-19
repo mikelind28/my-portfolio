@@ -14,12 +14,10 @@ type DarkModeToggleType = {
 };
 
 function DarkModeToggle({ setDarkModeOn }: DarkModeToggleType) {
-  const [isOn, setIsOn] = useState(
-    localStorage.getItem("theme") === "dark" ||
-      localStorage.getItem("theme") === null
-      ? true
-      : false,
-  );
+  const [isOn, setIsOn] = useState(() => {
+    const theme = localStorage.getItem("theme");
+    return theme === "dark" || theme === null;
+  });
 
   const toggleSwitch = () => setIsOn(!isOn);
 
@@ -31,6 +29,7 @@ function DarkModeToggle({ setDarkModeOn }: DarkModeToggleType) {
     <button
       onClick={toggleSwitch}
       className={`light:bg-fuchsia-700/30 light:inset-shadow-xs/20 flex h-7 w-14 cursor-pointer items-center justify-between rounded-full bg-white/15`}
+      aria-label="dark / light mode toggle"
     >
       <motion.div
         animate={{ x: isOn ? 0 : 28 }}
