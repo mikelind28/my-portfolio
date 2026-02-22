@@ -81,6 +81,7 @@ function PortfolioItemLinks({
         href={appUrl}
         onHoverStart={() => setDivOneHover(true)}
         onHoverEnd={() => setDivOneHover(false)}
+        target="_blank" rel="noopener noreferrer"
         className={`group z-10 flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-black/50 text-xl transition-all duration-500 hover:origin-[25%] hover:scale-110 hover:drop-shadow-lg hover:drop-shadow-black/75 ${divTwoHover ? "scale-90" : ""}`}
       >
         <div className="flex items-center gap-2 text-xl font-light text-amber-500 drop-shadow-md/25">
@@ -93,6 +94,7 @@ function PortfolioItemLinks({
         href={gitHubUrl}
         onHoverStart={() => setDivTwoHover(true)}
         onHoverEnd={() => setDivTwoHover(false)}
+        target="_blank" rel="noopener noreferrer"
         className={`group z-10 flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-black/50 text-xl transition-all duration-500 hover:origin-[75%] hover:scale-110 hover:drop-shadow-lg hover:drop-shadow-black/75 ${divOneHover ? "scale-90" : ""}`}
       >
         <div className="flex items-center gap-2 text-xl font-light text-amber-500 drop-shadow-md/25">
@@ -180,6 +182,20 @@ export default function Portfolio() {
           <PortfolioItemDescription>
             <span className="italic">Nonprofit Template</span> is a single-page
             React application that simulates a basic nonprofit website.
+          </PortfolioItemDescription>
+        </PortfolioItem>
+
+        <Divider />
+
+        <PortfolioItem title={"Guitar Chords and Scales"}>
+          <PortfolioItemLinks
+            appUrl={"https://guitar-chords-and-scales.netlify.app/"}
+            gitHubUrl={"https://github.com/mikelind28/guitar-chords-and-scales"}
+            img={"guitar-chords.png"}
+          />
+
+          <PortfolioItemDescription>
+            <span className="italic">Guitar Chords and Scales</span> is virtual fretboard that allows you to dynamically explore all of the most common guitar chords and scales.
           </PortfolioItemDescription>
         </PortfolioItem>
 
