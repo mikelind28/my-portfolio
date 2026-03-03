@@ -172,6 +172,20 @@ export default function Portfolio() {
 
         <Divider />
 
+        <PortfolioItem title={"Animation Experimentation"}>
+          <PortfolioItemLinks
+            appUrl={"https://animation-experimentation.netlify.app"}
+            gitHubUrl={"https://github.com/mikelind28/animation-experimentation"}
+            img={"animation-experimentation.png"}
+          />
+
+          <PortfolioItemDescription>
+            <span className="italic">Animation Experimentation</span> is a series of (mostly interactive!) animation tests using the Motion animation library.
+          </PortfolioItemDescription>
+        </PortfolioItem>
+
+        <Divider />
+
         <PortfolioItem title={"Nonprofit Template"}>
           <PortfolioItemLinks
             appUrl={"https://nonprofit-template.netlify.app/"}
