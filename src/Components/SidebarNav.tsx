@@ -1,4 +1,9 @@
-import { AnimatePresence, motion, useMotionValueEvent, useScroll  } from "motion/react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+} from "motion/react";
 import { useState, type ReactNode } from "react";
 import { LuExternalLink } from "react-icons/lu";
 import { NavLink, useLocation } from "react-router";
@@ -65,16 +70,15 @@ export default function SidebarNav({ dropDownNavOpen }: SidebarNavType) {
     <AnimatePresence>
       {dropDownNavOpen && (
         <motion.div
-  
           initial={{ width: 0, opacity: 0 }}
-          animate={{ width: "12rem", opacity: 1 }}
+          animate={{ width: "14rem", opacity: 1 }}
           exit={{ width: 0, opacity: 0 }}
           transition={{ duration: 0.3, ease: "circInOut" }}
           style={{ overflow: "hidden" }}
-          className={`from-dark-violet4 to-dark-violet3 light:from-neutral-50 light:from-40% light:via-orange-50 light:via-60% light:to-fuchsia-200 light:inset-shadow-[-4px_-4px_6px_rgba(0,0,0,0.10)] sticky top-0 hidden h-dvh w-50 bg-linear-to-b text-nowrap sm:block ${scrollDirection === "up" ? "top-18" : "top-0"}`}
+          className={`from-dark-violet4 to-dark-violet3 light:from-neutral-50 light:from-40% light:via-orange-50 light:via-60% light:to-fuchsia-200 light:inset-shadow-[-4px_-4px_6px_rgba(0,0,0,0.10)] sticky top-0 hidden h-dvh grow bg-linear-to-b text-nowrap sm:block ${scrollDirection === "up" ? "top-18" : "top-0"}`}
         >
           <nav>
-            <ul className="light:text-fuchsia-950/85 *:hover:light:text-fuchsia-950 flex flex-col gap-5 p-6 text-2xl text-pink-100 *:hover:text-pink-50 sm:text-xl">
+            <ul className="light:text-fuchsia-950/85 *:hover:light:text-fuchsia-950 flex flex-col gap-5 p-6 w-full text-xl text-pink-100 *:hover:text-pink-50 ">
               <AnimatedLink url={"/"} newTab={false}>
                 Home
               </AnimatedLink>

@@ -43,7 +43,7 @@ function App() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="min-h-dvh h-full"
+        className="h-full min-h-dvh"
       >
         <AnimatePresence>
           {dropDownNavOpen && (
@@ -65,10 +65,10 @@ function App() {
           setDarkModeOn={setDarkModeOn}
         />
 
-        <div className="sm:flex sm:gap-4 min-h-dvh h-full">
+        <div className="h-full min-h-dvh sm:flex sm:gap-2">
           <Sidebar dropDownNavOpen={dropDownNavOpen} />
-          
-          <div className="flex flex-col items-center min-h-dvh h-full w-full justify-between overflow-hidden">
+
+          <div className="flex h-full min-h-dvh w-full flex-col items-center justify-between overflow-hidden">
             <Outlet />
             <Footer />
           </div>

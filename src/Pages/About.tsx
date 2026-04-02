@@ -11,6 +11,7 @@ import { useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { DarkModeOnContext } from "../App";
 import { IoPause, IoRefresh } from "react-icons/io5";
 import { IoPlay } from "react-icons/io5";
+import { FaFastForward } from "react-icons/fa";
 
 const item = {
   hidden: { opacity: 0 },
@@ -80,11 +81,15 @@ function GlowingBackground({ children, glowClass }: GlowingBackgroundType) {
   );
 
   const filter = useTransform(brightness, (b) =>
-    darkModeOn ? `blur(24px) brightness(${b})` : `blur(0px) brightness(100%)`
+    darkModeOn ? `blur(24px) brightness(${b})` : `blur(0px) brightness(100%)`,
   );
 
   useEffect(() => {
-    filter.set(darkModeOn ? `blur(24px) brightness(${brightness.get()})` : `blur(0px) brightness(100%)`);
+    filter.set(
+      darkModeOn
+        ? `blur(24px) brightness(${brightness.get()})`
+        : `blur(0px) brightness(100%)`,
+    );
   }, [darkModeOn, filter, brightness]);
 
   return (
@@ -107,6 +112,7 @@ type UseAnimatedTextType = {
     React.SetStateAction<"playing" | "paused" | "complete">
   >;
   resetTrigger: number;
+  fastForwardTrigger: number;
 };
 
 function UseAnimatedText({
@@ -114,6 +120,7 @@ function UseAnimatedText({
   animationState,
   setAnimationState,
   resetTrigger,
+  fastForwardTrigger
 }: UseAnimatedTextType) {
   const [cursor, setCursor] = useState(0);
   const controlsRef = useRef<AnimationPlaybackControlsWithThen>(null);
@@ -141,6 +148,12 @@ function UseAnimatedText({
       }
     };
   }, [text, resetTrigger]);
+
+  useEffect(() => {
+    if (controlsRef.current) {
+      controlsRef.current.complete();
+    }
+  }, [fastForwardTrigger]);
 
   // Pause briefly when encountering a period.
   useEffect(() => {
@@ -199,6 +212,7 @@ export default function About() {
     "playing" | "paused" | "complete"
   >("playing");
   const [resetTrigger, setResetTrigger] = useState(0);
+  const [fastForwardTrigger, setFastForwardTrigger] = useState(0);
 
   return (
     <main className="light:gap-0 mx-auto flex h-fit w-full max-w-120 flex-col gap-4 p-2 pt-5">
@@ -210,35 +224,48 @@ export default function About() {
           <div className="m-8 w-full px-6 text-center">
             <AboutH2 text={"My Background"} />
 
-            {animationState === "playing" && (
-              <IoPause
-                onClick={() => setAnimationState("paused")}
-                className="absolute top-4 right-4 size-6 light:text-fuchsia-900/75 text-fuchsia-700/75"
-              />
-            )}
+            <div className="light:text-fuchsia-900/75 absolute flex justify-end gap-3 size-15 top-4 right-4 text-fuchsia-700/75">
+              {animationState === "playing" && (
+                <IoPause
+                  onClick={() => setAnimationState("paused")}
+                  className="size-6"
+                />
+              )}
 
-            {animationState === "paused" && (
-              <IoPlay
-                onClick={() => setAnimationState("playing")}
-                className="absolute top-4 right-4 size-6 light:text-fuchsia-900/75 text-fuchsia-700/75"
-              />
-            )}
+              {animationState === "paused" && (
+                <IoPlay
+                  onClick={() => setAnimationState("playing")}
+                  className="size-6"
+                />
+              )}
 
-            {animationState === "complete" && (
-              <IoRefresh
-                onClick={() => {
-                  setResetTrigger((prev) => prev + 1);
-                  setAnimationState("playing");
-                }}
-                className="absolute top-4 right-4 size-6 light:text-fuchsia-900/75 text-fuchsia-700/75"
-              />
-            )}
+              {animationState !== "complete" && (
+                <FaFastForward
+                  onClick={() => {
+                    setFastForwardTrigger((prev) => prev + 1);
+                    setAnimationState("complete");
+                  }}
+                  className="size-6"
+                />
+              )}
 
-            <p className="text-transparent bg-clip-text bg-linear-to-b light:from-orange-600 light:to-fuchsia-700 light:text-shadow-none mx-4 font-mono text-base/6 whitespace-pre-line from-orange-50/85 to-orange-50 text-shadow-sm">
+              {animationState === "complete" && (
+                <IoRefresh
+                  onClick={() => {
+                    setResetTrigger((prev) => prev + 1);
+                    setAnimationState("playing");
+                  }}
+                  className="size-6"
+                />
+              )}
+            </div>
+
+            <p className="light:from-orange-600 light:to-fuchsia-700 light:text-shadow-none mx-4 bg-linear-to-b from-orange-50/85 to-orange-50 bg-clip-text font-mono text-base/6 whitespace-pre-line text-transparent text-shadow-sm">
               <UseAnimatedText
                 animationState={animationState}
                 setAnimationState={setAnimationState}
                 resetTrigger={resetTrigger}
+                fastForwardTrigger={fastForwardTrigger}
                 text={`I received my Bachelor of Fine Arts from the University of Wisconsin-Madison, where I double-majored in Studio Art and Art History.\n\nLater, while working at the Walker Art Center, I got professional experience working with the collections database. I wrote queries and designed user interfaces for our staff. I fell in love with this combination of coding, data, and design, which prompted me to take a full-stack web development coding bootcamp course through the University of Minnesota and edX.\n\nI grew up in Wisconsin, but now live in Minneapolis with my wife, our dog, and our cat.`}
               />
             </p>
@@ -280,11 +307,12 @@ export default function About() {
           <div className="m-8 px-6 text-center">
             <AboutH2 text={"Miscellaneous"} />
 
-            <p className="text-transparent bg-clip-text bg-linear-to-b light:from-fuchsia-700 light:to-green-700 light:text-shadow-none mx-4 font-mono text-base/6 whitespace-pre-line from-orange-50/85 to-orange-50 text-shadow-sm">
+            <p className="light:from-fuchsia-700 light:to-green-700 light:text-shadow-none mx-4 bg-linear-to-b from-orange-50/85 to-orange-50 bg-clip-text font-mono text-base/6 whitespace-pre-line text-transparent text-shadow-sm">
               <UseAnimatedText
                 animationState={animationState}
                 setAnimationState={setAnimationState}
                 resetTrigger={resetTrigger}
+                fastForwardTrigger={fastForwardTrigger}
                 text={`In my free time, I enjoy spending time with my wife, our dog, and our cat. I love exploring the many nature preserves surrounding the Twin Cities and maintaining a prairie yard. I frequently oscillate between practicing piano, guitar, drums, and digital mixing. My latest gaming obsessions include Hollow Knight: Silksong and Baldur's Gate 3.`}
               />
             </p>

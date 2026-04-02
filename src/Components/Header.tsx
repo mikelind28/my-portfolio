@@ -78,41 +78,26 @@ export default function Header({
       {dropDownNavOpen ? (
         <IoClose
           onClick={() => setDropDownNavOpen(false)}
-          className="light:text-zinc-950 mr-2 cursor-pointer text-2xl text-white"
+          className="light:text-zinc-950 mr-2 cursor-pointer text-2xl sm:text-3xl text-white"
         />
       ) : (
         <IoMenuOutline
           onClick={() => setDropDownNavOpen(true)}
-          className="light:text-zinc-950 mr-2 cursor-pointer text-2xl text-white"
+          className="light:text-zinc-950 mr-2 cursor-pointer text-2xl sm:text-3xl text-white"
         />
       )}
 
       <Link to={"/"}>
-        <p className="group cursor-pointer text-2xl font-extralight tracking-wider">
-          <span className="
-            light:from-orange-400 light:via-orange-600 light:to-orange-700 
-            light:group-hover:from-orange-400 light:group-hover:via-orange-500 light:group-hover:to-orange-600 
-            bg-radial-[at_60%_-10%] from-amber-500/90 to-orange-500 bg-clip-text text-transparent 
-            group-hover:bg-radial-[at_66%_0%] group-hover:from-amber-500 group-hover:from-40% group-hover:to-orange-400 
-            transition-all duration-700">
+        <p className="group cursor-pointer text-2xl sm:text-3xl font-extralight tracking-wider">
+          <span className="light:from-orange-400 light:via-orange-600 light:to-orange-700 light:group-hover:from-orange-400 light:group-hover:via-orange-500 light:group-hover:to-orange-600 bg-radial-[at_60%_-10%] from-amber-500/90 to-orange-500 bg-clip-text text-transparent transition-all duration-700 group-hover:bg-radial-[at_66%_0%] group-hover:from-amber-500 group-hover:from-40% group-hover:to-orange-400">
             mike lind
           </span>
 
-          <span className="
-            light:from-orange-500/75 light:via-fuchsia-500/75 light:to-fuchsia-600 
-            light:group-hover:from-fuchsia-400 light:group-hover:to-fuchsia-500 
-            bg-linear-to-b from-fuchsia-600/85 to-fuchsia-700/66 bg-clip-text text-transparent 
-            group-hover:bg-linear-to-b group-hover:from-fuchsia-500 group-hover:to-fuchsia-600 
-            transition-all duration-700">
+          <span className="light:from-orange-500/75 light:via-fuchsia-500/75 light:to-fuchsia-600 light:group-hover:from-fuchsia-400 light:group-hover:to-fuchsia-500 bg-linear-to-b from-fuchsia-600/85 to-fuchsia-700/66 bg-clip-text text-transparent transition-all duration-700 group-hover:bg-linear-to-b group-hover:from-fuchsia-500 group-hover:to-fuchsia-600">
             {" | "}
           </span>
 
-          <span className="
-            light:group-hover:from-fuchsia-400 light:via-fuchsia-600 light:to-fuchsia-800 
-            light:group-hover:to-fuchsia-500 
-            bg-radial-[at_40%_10%] from-fuchsia-500 to-fuchsia-600 bg-clip-text text-transparent 
-            group-hover:bg-radial-[at_33%_0%] group-hover:from-fuchsia-400 group-hover:from-20% group-hover:to-fuchsia-700 
-            transition-all duration-700">
+          <span className="light:group-hover:from-fuchsia-400 light:via-fuchsia-600 light:to-fuchsia-800 light:group-hover:to-fuchsia-500 bg-radial-[at_40%_10%] from-fuchsia-500 to-fuchsia-600 bg-clip-text text-transparent transition-all duration-700 group-hover:bg-radial-[at_33%_0%] group-hover:from-fuchsia-400 group-hover:from-20% group-hover:to-fuchsia-700">
             web dev
           </span>
         </p>

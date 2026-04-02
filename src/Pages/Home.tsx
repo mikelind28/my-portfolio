@@ -11,7 +11,7 @@ function HelloWorldWelcome() {
   const darkModeOn = useContext(DarkModeOnContext);
 
   return (
-    <div className="light:my-0 relative mt-2 mb-4 flex h-fit w-full items-center justify-center overflow-visible rounded-xl p-4">
+    <div className="light:my-0 relative mt-2 mb-4 flex h-fit w-full items-center justify-center overflow-visible rounded-xl py-4 px-6 sm:px-12 xl:max-w-120">
       <motion.div
         initial={{ opacity: darkModeOn ? 0 : 1, scale: darkModeOn ? 0.75 : 1 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -20,12 +20,16 @@ function HelloWorldWelcome() {
       ></motion.div>
 
       <div className="mt-2 mb-4 flex flex-col items-center gap-2 p-2 font-light">
-        <p className="light:text-fuchsia-700 light:text-shadow-none text-xl text-rose-100 text-shadow-md/15">
+        <p className="light:text-fuchsia-700 light:text-shadow-none text-2xl sm:text-3xl text-rose-100 text-shadow-md/15 mb-2">
           Hello, world.
         </p>
 
-        <p className="light:text-fuchsia-800 light:text-shadow-none text-center text-base/5 text-orange-100/95 text-shadow-sm">
+        <p className="light:text-fuchsia-800 light:text-shadow-none text-center text-base/6 sm:text-lg/7 text-orange-100/95 text-shadow-sm">
           Welcome to my site. I'm excited to share my work with you!
+          <div className="h-3"/>
+          I’m a full-stack developer with a unique background in database management, user interface development, and contemporary art and design.
+          <div className="h-3"/>
+          I have a bachelor's degree from the University of Wisconsin-Madison in Art and Art History, as well as a certificate from the University of Minnesota in full-stack web development that I received upon completing a coding bootcamp that emphasized modern, in-demand technologies.
         </p>
       </div>
     </div>
@@ -47,7 +51,9 @@ function PortfolioItemPreview({
 }: PortfolioItemPreviewType) {
   return (
     <a
-      href={url} target="_blank" rel="noopener noreferrer"
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
       className="light:shadow-[inset_0_5px_10px_5px_rgba(0,0,0,0.25)] light:[background:border-box_var(--border-color-light)] light:before:brightness-100 light:before:opacity-50 relative mb-1 flex h-30 w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-xl border-2 border-transparent p-4 text-center shadow-[inset_0_5px_20px_5px_rgba(0,0,0,0.75)] transition-all duration-500 [background:border-box_var(--border-color)] before:absolute before:inset-0 before:z-0 before:scale-105 before:rounded-[inherit] before:bg-(image:--img) before:bg-cover before:bg-position-[center_top_10%] before:opacity-80 before:blur-[3px] before:brightness-50 before:transition-all before:duration-500 before:content-[''] hover:brightness-120 hover:before:blur-[1px]"
       style={
         {
@@ -94,107 +100,113 @@ const item = {
 
 export default function Home() {
   return (
-    <main className="relative mx-auto flex w-full max-w-160 flex-col items-center p-5">
+    <main className="relative mx-auto flex w-full max-w-160 xl:max-w-full flex-col items-center p-5">
       <H1 text={"Welcome."} />
 
-      <HelloWorldWelcome />
+      <div className="xl:flex xl:gap-6">
+        <HelloWorldWelcome />
 
-      <Divider />
+        <div className="relative mx-auto flex w-full max-w-160 flex-col items-center">
+          <div className="flex flex-col items-center w-full xl:hidden">
+            <Divider />
+          </div>
 
-      <div className="light:bg-white light:rounded-xl light:p-4 light:shadow-sm/15 w-full">
-        <H2Link text={"My Portfolio"} pathName={"/portfolio"} />
+          <div className="light:bg-white light:rounded-xl light:p-4 sm:light:p-6 light:shadow-sm/15 w-full">
+            <H2Link text={"My Portfolio"} pathName={"/portfolio"} />
 
-        <motion.ul
-          variants={list}
-          initial="hidden"
-          animate="show"
-          className="flex w-full flex-col items-center space-y-3"
-        >
-          <motion.li
-            variants={item}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 1.03 }}
-            className={"w-full"}
-          >
-            <PortfolioItemPreview
-              text={"Window Interface API"}
-              url={"https://window-doc-nav.netlify.app"}
-              img={"win-doc-nav-interfaces.png"}
-            />
-          </motion.li>
-
-          <motion.li
-            variants={item}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 1.03 }}
-            className={"w-full"}
-          >
-            <PortfolioItemPreview
-              text={"myBookShelf"}
-              url={"https://my-bookshelf-wg3p.onrender.com/"}
-              img={"my-bookshelf.png"}
-            />
-          </motion.li>
-
-          <motion.li
-            variants={item}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 1.03 }}
-            className={"w-full"}
-          >
-            <PortfolioItemPreview
-              text={"myNumberArray"}
-              url={"https://my-number-array.netlify.app/"}
-              img={"my-number-array.png"}
-            />
-          </motion.li>
-
-          <li>
-
-            <Link to="/portfolio">
-              <motion.div
-                whileHover="hover"
-                className="light:text-orange-700 group relative m-2 flex h-fit w-fit items-center justify-center overflow-visible px-8 py-2 text-xl font-light text-orange-400"
+            <motion.ul
+              variants={list}
+              initial="hidden"
+              animate="show"
+              className="flex w-full flex-col items-center space-y-2 sm:space-y-3"
+            >
+              <motion.li
+                variants={item}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 1.03 }}
+                className={"w-full"}
               >
-                <motion.div
-                  variants={{
-                    hover: { opacity: 1, scale: 1 },
-                  }}
-                  initial={{ opacity: 0, scale: 0 }}
-                  transition={{ duration: 1 }}
-                  className="light:bg-none absolute inset-0 -z-10 rounded-xl bg-radial from-orange-500/50 from-40% to-orange-900/50 bg-clip-content blur-lg"
-                ></motion.div>
+                <PortfolioItemPreview
+                  text={"Window Interface API"}
+                  url={"https://window-doc-nav.netlify.app"}
+                  img={"win-doc-nav-interfaces.png"}
+                />
+              </motion.li>
 
-                <p className="light:duration-300 light:group-hover:drop-shadow-none light:group-hover:text-orange-600 light:group-hover:underline light:decoration-orange-500/0 light:group-hover:underline-offset-3 light:group-hover:decoration-1 light:group-hover:decoration-orange-500/75 transition-all duration-1000 group-hover:drop-shadow-md/66">
-                  See all...
-                </p>
-              </motion.div>
-            </Link>
-          </li>
-        </motion.ul>
+              <motion.li
+                variants={item}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 1.03 }}
+                className={"w-full"}
+              >
+                <PortfolioItemPreview
+                  text={"myBookShelf"}
+                  url={"https://my-bookshelf-wg3p.onrender.com/"}
+                  img={"my-bookshelf.png"}
+                />
+              </motion.li>
+
+              <motion.li
+                variants={item}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 1.03 }}
+                className={"w-full"}
+              >
+                <PortfolioItemPreview
+                  text={"myNumberArray"}
+                  url={"https://my-number-array.netlify.app/"}
+                  img={"my-number-array.png"}
+                />
+              </motion.li>
+
+              <li>
+                <Link to="/portfolio">
+                  <motion.div
+                    whileHover="hover"
+                    className="light:text-orange-700 group relative m-2 flex h-fit w-fit items-center justify-center overflow-visible px-8 py-2 text-xl sm:text-2xl font-light text-orange-400"
+                  >
+                    <motion.div
+                      variants={{
+                        hover: { opacity: 1, scale: 1 },
+                      }}
+                      initial={{ opacity: 0, scale: 0 }}
+                      transition={{ duration: 1 }}
+                      className="light:bg-none absolute inset-0 -z-10 rounded-xl bg-radial from-orange-500/50 from-40% to-orange-900/50 bg-clip-content blur-lg"
+                    ></motion.div>
+
+                    <p className="light:duration-300 light:group-hover:drop-shadow-none light:group-hover:text-orange-600 light:group-hover:underline light:decoration-orange-500/0 light:group-hover:underline-offset-3 light:group-hover:decoration-1 light:group-hover:decoration-orange-500/75 transition-all duration-1000 group-hover:drop-shadow-md/66">
+                      See all...
+                    </p>
+                  </motion.div>
+                </Link>
+              </li>
+            </motion.ul>
+          </div>
+
+          <Divider />
+
+          <div className="light:bg-white light:rounded-xl light:p-4 sm:light:p-6 light:shadow-sm/15 w-full">
+            <H2Link text={"About Me"} pathName={"/about"} />
+
+            <p className="light:text-fuchsia-950 light:font-light light:text-shadow-none self-start text-left text-base/6 sm:text-lg/7 text-orange-100/95 text-shadow-sm/15">
+              My background, my proficiencies, and some more about me.
+            </p>
+          </div>
+
+          <Divider />
+
+          <div className="light:bg-white light:rounded-xl light:p-4 sm:light:p-6 light:shadow-sm/15 w-full">
+            <H2Link text={"Contact"} pathName={"/contact"} />
+
+            <p className="light:text-fuchsia-950 light:font-light light:text-shadow-none self-start text-left text-base/5 sm:text-lg/7 text-orange-100/95 text-shadow-sm/15">
+              Let's get in touch!
+            </p>
+          </div>
+
+          <Divider />
+        </div>
       </div>
 
-      <Divider />
-
-      <div className="light:bg-white light:rounded-xl light:p-4 light:shadow-sm/15 w-full">
-        <H2Link text={"About Me"} pathName={"/about"} />
-
-        <p className="light:text-fuchsia-950 light:font-light light:text-shadow-none self-start text-left text-base/5 text-orange-100/95 text-shadow-sm/15">
-          My background, my proficiencies, and some more about me.
-        </p>
-      </div>
-
-      <Divider />
-
-      <div className="light:bg-white light:rounded-xl light:p-4 light:shadow-sm/15 w-full">
-        <H2Link text={"Contact"} pathName={"/contact"} />
-
-        <p className="light:text-fuchsia-950 light:font-light light:text-shadow-none self-start text-left text-base/5 text-orange-100/95 text-shadow-sm/15">
-          Let's get in touch!
-        </p>
-      </div>
-
-      <Divider />
     </main>
   );
 }

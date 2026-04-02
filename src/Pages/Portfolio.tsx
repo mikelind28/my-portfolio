@@ -14,7 +14,7 @@ function PortfolioItem({ title, children }: PortfolioItemType) {
   const [open, setOpen] = useState(true);
 
   return (
-    <div className="light:bg-white light:shadow-md/25 light:rounded-xl light:px-4 light:py-6 w-full relative self-start">
+    <div className="light:bg-white light:shadow-md/25 light:rounded-xl light:px-4 light:py-6 relative w-full self-start">
       <div
         onClick={() => setOpen(!open)}
         className="group flex cursor-pointer items-start gap-2"
@@ -81,7 +81,8 @@ function PortfolioItemLinks({
         href={appUrl}
         onHoverStart={() => setDivOneHover(true)}
         onHoverEnd={() => setDivOneHover(false)}
-        target="_blank" rel="noopener noreferrer"
+        target="_blank"
+        rel="noopener noreferrer"
         className={`group z-10 flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-black/50 text-xl transition-all duration-500 hover:origin-[25%] hover:scale-110 hover:drop-shadow-lg hover:drop-shadow-black/75 ${divTwoHover ? "scale-90" : ""}`}
       >
         <div className="flex items-center gap-2 text-xl font-light text-amber-500 drop-shadow-md/25">
@@ -94,7 +95,8 @@ function PortfolioItemLinks({
         href={gitHubUrl}
         onHoverStart={() => setDivTwoHover(true)}
         onHoverEnd={() => setDivTwoHover(false)}
-        target="_blank" rel="noopener noreferrer"
+        target="_blank"
+        rel="noopener noreferrer"
         className={`group z-10 flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-black/50 text-xl transition-all duration-500 hover:origin-[75%] hover:scale-110 hover:drop-shadow-lg hover:drop-shadow-black/75 ${divOneHover ? "scale-90" : ""}`}
       >
         <div className="flex items-center gap-2 text-xl font-light text-amber-500 drop-shadow-md/25">
@@ -111,7 +113,11 @@ type PortfolioItemDescriptionType = {
 };
 
 function PortfolioItemDescription({ children }: PortfolioItemDescriptionType) {
-  return <p className="light:text-fuchsia-950 light:font-light mx-2 mt-4 self-start text-orange-100">{children}</p>;
+  return (
+    <p className="light:text-fuchsia-950 light:font-light mx-2 mt-4 self-start text-orange-100">
+      {children}
+    </p>
+  );
 }
 
 export default function Portfolio() {
@@ -175,12 +181,16 @@ export default function Portfolio() {
         <PortfolioItem title={"Animation Experimentation"}>
           <PortfolioItemLinks
             appUrl={"https://animation-experimentation.netlify.app"}
-            gitHubUrl={"https://github.com/mikelind28/animation-experimentation"}
+            gitHubUrl={
+              "https://github.com/mikelind28/animation-experimentation"
+            }
             img={"animation-experimentation.png"}
           />
 
           <PortfolioItemDescription>
-            <span className="italic">Animation Experimentation</span> is a series of (mostly interactive!) animation tests using the Motion animation library.
+            <span className="italic">Animation Experimentation</span> is a
+            series of (mostly interactive!) animation tests using the Motion
+            animation library.
           </PortfolioItemDescription>
         </PortfolioItem>
 
@@ -209,7 +219,9 @@ export default function Portfolio() {
           />
 
           <PortfolioItemDescription>
-            <span className="italic">Guitar Chords and Scales</span> is virtual fretboard that allows you to dynamically explore all of the most common guitar chords and scales.
+            <span className="italic">Guitar Chords and Scales</span> is virtual
+            fretboard that allows you to dynamically explore all of the most
+            common guitar chords and scales.
           </PortfolioItemDescription>
         </PortfolioItem>
 

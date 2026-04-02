@@ -13,6 +13,9 @@ import RootErrorElement from "./Pages/RootErrorElement.tsx";
 // TODO: use images for web rather than jpg/png
 // TODO: add Motion to proficiencies
 // TODO: light mode first?
+// TODO: add tech stack icons for each portfolio item
+// TODO: allow user to skip to end of animation sequence on About page
+// TODO: expand Home page welcome text (I'm a full-stack developer proficient with...)
 const router = createBrowserRouter([
   {
     path: "/",
