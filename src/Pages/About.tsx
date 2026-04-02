@@ -295,10 +295,17 @@ export default function About() {
                 text={"React Router"}
                 img={"react-router.png"}
               />
+              <ProficiencyListItem text={"Next.js"} img={"nextjs.svg"} />
               <ProficiencyListItem text={"Tailwind CSS"} img={"tailwind.svg"} />
+              <ProficiencyListItem text={"Motion"} img={"motion.png"} />
               <ProficiencyListItem text={"PostgreSQL"} img={"postgresql.png"} />
               <ProficiencyListItem text={"Node.js"} img={"node-js.svg"} />
               <ProficiencyListItem text={"Express"} img={"express.svg"} />
+              <ProficiencyListItem text={"Playwright"} img={"playwright.png"} />
+              <ProficiencyListItem text={"GitHub Actions"} img={"github.svg"} />
+              <ProficiencyListItem text={"Payload CMS"} img={"payload.svg"} />
+              <ProficiencyListItem text={"Vercel"} img={"vercel.svg"} />
+              <ProficiencyListItem text={"Render"} img={"render.svg"} />
             </motion.ul>
           </div>
         </GlowingBackground>

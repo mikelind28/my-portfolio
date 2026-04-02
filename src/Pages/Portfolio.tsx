@@ -5,6 +5,28 @@ import { IoIosArrowDown } from "react-icons/io";
 import { AnimatePresence, motion } from "motion/react";
 import { LuExternalLink } from "react-icons/lu";
 
+type DevTagType = {
+  text: string;
+  img: string;
+};
+
+function DevTag({ text, img }: DevTagType) {
+  return (
+    <li className="light:bg-neutral-50 light:inset-shadow-orange-950 light:px-2.5 light:inset-shadow-sm/20 light:border-0 rounded-sm border border-amber-700 bg-orange-950/90 px-2 py-1 inset-shadow-sm/25 inset-shadow-fuchsia-950">
+      <div className="flex items-center gap-2">
+        <img
+          src={`/images/proficiency-logos/${img}`}
+          className="h-full w-5 rounded-xs drop-shadow-xs/75"
+          alt={`${text} logo`}
+        />
+        <p className="light:text-transparent light:bg-clip-text light:bg-linear-to-b light:from-orange-500 light:from-10% light:via-fuchsia-700 light:via-40% light:to-fuchsia-950 text-base font-light text-orange-100">
+          {text}
+        </p>
+      </div>
+    </li>
+  );
+}
+
 type PortfolioItemType = {
   title: string;
   children: ReactNode | ReactNode[];
@@ -14,7 +36,7 @@ function PortfolioItem({ title, children }: PortfolioItemType) {
   const [open, setOpen] = useState(true);
 
   return (
-    <div className="light:bg-white light:shadow-md/25 light:rounded-xl light:px-4 light:py-6 relative w-full self-start">
+    <div className="light:bg-white light:shadow-md/25 light:rounded-xl light:px-4 light:py-6 relative my-4 w-full self-start">
       <div
         onClick={() => setOpen(!open)}
         className="group flex cursor-pointer items-start gap-2"
@@ -127,7 +149,38 @@ export default function Portfolio() {
       <H1 text={"My Portfolio."} />
 
       <div className="flex h-fit w-full flex-col items-center">
-        <PortfolioItem title={"Window Interface API"}>
+        <PortfolioItem title={"Back to the Shelf Again"}>
+          <PortfolioItemLinks
+            appUrl={"https://back-to-the-shelf-again.vercel.app/"}
+            gitHubUrl={"https://github.com/mikelind28/back-to-the-shelf-again"}
+            img={"bttsa.webp"}
+          />
+
+          <PortfolioItemDescription>
+            <span className="italic">Back to the Shelf Again</span> is a
+            full-stack React + Next.js site for a pop-up book shop in
+            South-Central Wisconsin. They sell gently-used romance books at
+            local vendors. The non-developer admins can log in and add new
+            entries for their upcoming events, linking them to reusable
+            locations, using Payload CMS.
+          </PortfolioItemDescription>
+
+          <ul className="mt-4 flex flex-wrap gap-2">
+            <DevTag text={"React"} img={"react.png"} />
+            <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
+            <DevTag text={"Next.js"} img={"nextjs.svg"} />
+            <DevTag text={"Tailwind"} img={"tailwind.svg"} />
+            <DevTag text={"Motion"} img={"motion.png"} />
+            <DevTag text={"Postgres"} img={"postgresql.png"} />
+            <DevTag text={"Payload"} img={"payload.svg"} />
+            <DevTag text={"Playwright"} img={"playwright.png"} />
+            <DevTag text={"Vercel"} img={"vercel.svg"} />
+          </ul>
+        </PortfolioItem>
+
+        <Divider />
+
+        <PortfolioItem title={"Window Methods"}>
           <PortfolioItemLinks
             appUrl={"https://window-doc-nav.netlify.app"}
             gitHubUrl={"https://github.com/mikelind28/window-interface-api"}
@@ -135,11 +188,17 @@ export default function Portfolio() {
           />
 
           <PortfolioItemDescription>
-            The <span className="italic">Window Interface API</span> is a
-            dashboard-style React application that allows users to see and
-            interact with properties and methods of the browser's Window,
-            Document, and Navigator interfaces.
+            <span className="italic">Window Methods</span> is a dashboard-style
+            React application that allows users to see and interact with
+            properties and methods of the browser's Window, Document, and
+            Navigator interfaces.
           </PortfolioItemDescription>
+
+          <ul className="mt-4 flex flex-wrap gap-2">
+            <DevTag text={"React"} img={"react.png"} />
+            <DevTag text={"Tailwind"} img={"tailwind.svg"} />
+            <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
+          </ul>
         </PortfolioItem>
 
         <Divider />
@@ -158,6 +217,16 @@ export default function Portfolio() {
             users to add books to their shelf or their wish list. Books can be
             filtered by their 'read' or 'not read' status.
           </PortfolioItemDescription>
+
+          <ul className="mt-4 flex flex-wrap gap-2">
+            <DevTag text={"React"} img={"react.png"} />
+            <DevTag text={"React Router"} img={"react-router.png"} />
+            <DevTag text={"Tailwind"} img={"tailwind.svg"} />
+            <DevTag text={"Express"} img={"express.svg"} />
+            <DevTag text={"Postgres"} img={"postgresql.png"} />
+            <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
+            <DevTag text={"Render"} img={"render.svg"} />
+          </ul>
         </PortfolioItem>
 
         <Divider />
@@ -174,6 +243,14 @@ export default function Portfolio() {
             that allows you to create your own array, and then explore some of
             the common methods available to JavaScript arrays.
           </PortfolioItemDescription>
+
+          <ul className="mt-4 flex flex-wrap gap-2">
+            <DevTag text={"React"} img={"react.png"} />
+            <DevTag text={"React Router"} img={"react-router.png"} />
+            <DevTag text={"Tailwind"} img={"tailwind.svg"} />
+            <DevTag text={"Motion"} img={"motion.png"} />
+            <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
+          </ul>
         </PortfolioItem>
 
         <Divider />
@@ -192,21 +269,14 @@ export default function Portfolio() {
             series of (mostly interactive!) animation tests using the Motion
             animation library.
           </PortfolioItemDescription>
-        </PortfolioItem>
 
-        <Divider />
-
-        <PortfolioItem title={"Nonprofit Template"}>
-          <PortfolioItemLinks
-            appUrl={"https://nonprofit-template.netlify.app/"}
-            gitHubUrl={"https://github.com/mikelind28/nonprofit-template"}
-            img={"nonprofit-template.png"}
-          />
-
-          <PortfolioItemDescription>
-            <span className="italic">Nonprofit Template</span> is a single-page
-            React application that simulates a basic nonprofit website.
-          </PortfolioItemDescription>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            <DevTag text={"React"} img={"react.png"} />
+            <DevTag text={"React Router"} img={"react-router.png"} />
+            <DevTag text={"Tailwind"} img={"tailwind.svg"} />
+            <DevTag text={"Motion"} img={"motion.png"} />
+            <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
+          </ul>
         </PortfolioItem>
 
         <Divider />
@@ -223,6 +293,12 @@ export default function Portfolio() {
             fretboard that allows you to dynamically explore all of the most
             common guitar chords and scales.
           </PortfolioItemDescription>
+
+          <ul className="mt-4 flex flex-wrap gap-2">
+            <DevTag text={"React"} img={"react.png"} />
+            <DevTag text={"Tailwind"} img={"tailwind.svg"} />
+            <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
+          </ul>
         </PortfolioItem>
 
         <Divider />
