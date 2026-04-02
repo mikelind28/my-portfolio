@@ -17,7 +17,7 @@ function AnimatedLink({
   newTab,
   setDropDownNavOpen,
 }: AnimatedLinkType) {
-  let location = useLocation();
+  const location = useLocation();
 
   return (
     <motion.li

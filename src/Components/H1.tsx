@@ -21,7 +21,7 @@ export default function H1({ text }: H1Type) {
         ease: "easeInOut",
         times: [0, 0.25, 0.5, 0.85, 1],
       }}
-      className="light:from-orange-600 light:from-20% light:to-fuchsia-800 light:via-fuchsia-700 light:via-60% light:to-100% mb-4 bg-radial from-orange-500 from-10% to-fuchsia-600 to-85% bg-clip-text text-center text-4xl xl:text-5xl xl:py-4 font-light text-transparent"
+      className="light:from-orange-600 light:from-20% light:to-fuchsia-800 light:via-fuchsia-700 light:via-60% light:to-100% mb-4 bg-radial from-orange-500 from-10% to-fuchsia-600 to-85% bg-clip-text text-center text-4xl font-light text-transparent xl:py-4 xl:text-5xl"
       style={{ backgroundSize: "200% 200%" }}
     >
       {text}

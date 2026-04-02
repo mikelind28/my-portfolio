@@ -11,10 +11,6 @@ export default function RootErrorElement() {
   );
 
   useEffect(() => {
-    localStorage.setItem("theme", darkModeOn ? "dark" : "light");
-  }, []);
-
-  useEffect(() => {
     const body = document.querySelector("body");
     if (body) {
       body.style.backgroundColor = darkModeOn

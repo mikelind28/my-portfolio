@@ -15,7 +15,7 @@ type AnimatedLinkType = {
 };
 
 function AnimatedLink({ children, url, newTab }: AnimatedLinkType) {
-  let location = useLocation();
+  const location = useLocation();
 
   return (
     <motion.li
@@ -78,7 +78,7 @@ export default function SidebarNav({ dropDownNavOpen }: SidebarNavType) {
           className={`from-dark-violet4 to-dark-violet3 light:from-neutral-50 light:from-40% light:via-orange-50 light:via-60% light:to-fuchsia-200 light:inset-shadow-[-4px_-4px_6px_rgba(0,0,0,0.10)] sticky top-0 hidden h-dvh grow bg-linear-to-b text-nowrap sm:block ${scrollDirection === "up" ? "top-18" : "top-0"}`}
         >
           <nav>
-            <ul className="light:text-fuchsia-950/85 *:hover:light:text-fuchsia-950 flex flex-col gap-5 p-6 w-full text-xl text-pink-100 *:hover:text-pink-50 ">
+            <ul className="light:text-fuchsia-950/85 *:hover:light:text-fuchsia-950 flex w-full flex-col gap-5 p-6 text-xl text-pink-100 *:hover:text-pink-50">
               <AnimatedLink url={"/"} newTab={false}>
                 Home
               </AnimatedLink>

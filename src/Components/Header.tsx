@@ -23,7 +23,7 @@ function DarkModeToggle({ setDarkModeOn }: DarkModeToggleType) {
 
   useEffect(() => {
     isOn ? setDarkModeOn(true) : setDarkModeOn(false);
-  }, [isOn]);
+  }, [isOn, setDarkModeOn]);
 
   return (
     <button
@@ -78,17 +78,17 @@ export default function Header({
       {dropDownNavOpen ? (
         <IoClose
           onClick={() => setDropDownNavOpen(false)}
-          className="light:text-zinc-950 mr-2 cursor-pointer text-2xl sm:text-3xl text-white"
+          className="light:text-zinc-950 mr-2 cursor-pointer text-2xl text-white sm:text-3xl"
         />
       ) : (
         <IoMenuOutline
           onClick={() => setDropDownNavOpen(true)}
-          className="light:text-zinc-950 mr-2 cursor-pointer text-2xl sm:text-3xl text-white"
+          className="light:text-zinc-950 mr-2 cursor-pointer text-2xl text-white sm:text-3xl"
         />
       )}
 
       <Link to={"/"}>
-        <p className="group cursor-pointer text-2xl sm:text-3xl font-extralight tracking-wider">
+        <p className="group cursor-pointer text-2xl font-extralight tracking-wider sm:text-3xl">
           <span className="light:from-orange-400 light:via-orange-600 light:to-orange-700 light:group-hover:from-orange-400 light:group-hover:via-orange-500 light:group-hover:to-orange-600 bg-radial-[at_60%_-10%] from-amber-500/90 to-orange-500 bg-clip-text text-transparent transition-all duration-700 group-hover:bg-radial-[at_66%_0%] group-hover:from-amber-500 group-hover:from-40% group-hover:to-orange-400">
             mike lind
           </span>

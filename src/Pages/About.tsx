@@ -120,7 +120,7 @@ function UseAnimatedText({
   animationState,
   setAnimationState,
   resetTrigger,
-  fastForwardTrigger
+  fastForwardTrigger,
 }: UseAnimatedTextType) {
   const [cursor, setCursor] = useState(0);
   const controlsRef = useRef<AnimationPlaybackControlsWithThen>(null);
@@ -153,7 +153,7 @@ function UseAnimatedText({
     if (controlsRef.current) {
       controlsRef.current.complete();
     }
-  }, [fastForwardTrigger]);
+  }, [fastForwardTrigger, setAnimationState]);
 
   // Pause briefly when encountering a period.
   useEffect(() => {
@@ -224,7 +224,7 @@ export default function About() {
           <div className="m-8 w-full px-6 text-center">
             <AboutH2 text={"My Background"} />
 
-            <div className="light:text-fuchsia-900/75 absolute flex justify-end gap-3 size-15 top-4 right-4 text-fuchsia-700/75">
+            <div className="light:text-fuchsia-900/75 absolute top-4 right-4 flex size-15 justify-end gap-3 text-fuchsia-700/75">
               {animationState === "playing" && (
                 <IoPause
                   onClick={() => setAnimationState("paused")}

@@ -11,7 +11,7 @@ function HelloWorldWelcome() {
   const darkModeOn = useContext(DarkModeOnContext);
 
   return (
-    <div className="light:my-0 relative mt-2 mb-4 flex h-fit w-full items-center justify-center overflow-visible rounded-xl py-4 px-6 sm:px-12 xl:max-w-120">
+    <div className="light:my-0 relative mt-2 mb-4 flex h-fit w-full items-center justify-center overflow-visible rounded-xl px-6 py-4 sm:px-12 xl:max-w-120">
       <motion.div
         initial={{ opacity: darkModeOn ? 0 : 1, scale: darkModeOn ? 0.75 : 1 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -20,16 +20,21 @@ function HelloWorldWelcome() {
       ></motion.div>
 
       <div className="mt-2 mb-4 flex flex-col items-center gap-2 p-2 font-light">
-        <p className="light:text-fuchsia-700 light:text-shadow-none text-2xl sm:text-3xl text-rose-100 text-shadow-md/15 mb-2">
+        <p className="light:text-fuchsia-700 light:text-shadow-none mb-2 text-2xl text-rose-100 text-shadow-md/15 sm:text-3xl">
           Hello, world.
         </p>
 
-        <p className="light:text-fuchsia-800 light:text-shadow-none text-center text-base/6 sm:text-lg/7 text-orange-100/95 text-shadow-sm">
+        <p className="light:text-fuchsia-800 light:text-shadow-none text-center text-base/6 text-orange-100/95 text-shadow-sm sm:text-lg/7">
           Welcome to my site. I'm excited to share my work with you!
-          <div className="h-3"/>
-          I’m a full-stack developer with a unique background in database management, user interface development, and contemporary art and design.
-          <div className="h-3"/>
-          I have a bachelor's degree from the University of Wisconsin-Madison in Art and Art History, as well as a certificate from the University of Minnesota in full-stack web development that I received upon completing a coding bootcamp that emphasized modern, in-demand technologies.
+          <div className="h-3" />
+          I’m a full-stack developer with a unique background in database
+          management, user interface development, and contemporary art and
+          design.
+          <div className="h-3" />I have a bachelor's degree from the University
+          of Wisconsin-Madison in Art and Art History, as well as a certificate
+          from the University of Minnesota in full-stack web development that I
+          received upon completing a coding bootcamp that emphasized modern,
+          in-demand technologies.
         </p>
       </div>
     </div>
@@ -100,14 +105,14 @@ const item = {
 
 export default function Home() {
   return (
-    <main className="relative mx-auto flex w-full max-w-160 xl:max-w-full flex-col items-center p-5">
+    <main className="relative mx-auto flex w-full max-w-160 flex-col items-center p-5 xl:max-w-full">
       <H1 text={"Welcome."} />
 
       <div className="xl:flex xl:gap-6">
         <HelloWorldWelcome />
 
         <div className="relative mx-auto flex w-full max-w-160 flex-col items-center">
-          <div className="flex flex-col items-center w-full xl:hidden">
+          <div className="flex w-full flex-col items-center xl:hidden">
             <Divider />
           </div>
 
@@ -163,7 +168,7 @@ export default function Home() {
                 <Link to="/portfolio">
                   <motion.div
                     whileHover="hover"
-                    className="light:text-orange-700 group relative m-2 flex h-fit w-fit items-center justify-center overflow-visible px-8 py-2 text-xl sm:text-2xl font-light text-orange-400"
+                    className="light:text-orange-700 group relative m-2 flex h-fit w-fit items-center justify-center overflow-visible px-8 py-2 text-xl font-light text-orange-400 sm:text-2xl"
                   >
                     <motion.div
                       variants={{
@@ -188,7 +193,7 @@ export default function Home() {
           <div className="light:bg-white light:rounded-xl light:p-4 sm:light:p-6 light:shadow-sm/15 w-full">
             <H2Link text={"About Me"} pathName={"/about"} />
 
-            <p className="light:text-fuchsia-950 light:font-light light:text-shadow-none self-start text-left text-base/6 sm:text-lg/7 text-orange-100/95 text-shadow-sm/15">
+            <p className="light:text-fuchsia-950 light:font-light light:text-shadow-none self-start text-left text-base/6 text-orange-100/95 text-shadow-sm/15 sm:text-lg/7">
               My background, my proficiencies, and some more about me.
             </p>
           </div>
@@ -198,7 +203,7 @@ export default function Home() {
           <div className="light:bg-white light:rounded-xl light:p-4 sm:light:p-6 light:shadow-sm/15 w-full">
             <H2Link text={"Contact"} pathName={"/contact"} />
 
-            <p className="light:text-fuchsia-950 light:font-light light:text-shadow-none self-start text-left text-base/5 sm:text-lg/7 text-orange-100/95 text-shadow-sm/15">
+            <p className="light:text-fuchsia-950 light:font-light light:text-shadow-none self-start text-left text-base/5 text-orange-100/95 text-shadow-sm/15 sm:text-lg/7">
               Let's get in touch!
             </p>
           </div>
@@ -206,7 +211,6 @@ export default function Home() {
           <Divider />
         </div>
       </div>
-
     </main>
   );
 }

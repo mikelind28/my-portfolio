@@ -11,7 +11,7 @@ type AnimatedFooterLinkType = {
 };
 
 function AnimatedFooterLink({ children, url, newTab }: AnimatedFooterLinkType) {
-  let location = useLocation();
+  const location = useLocation();
 
   return (
     <motion.li
@@ -71,7 +71,7 @@ export default function Footer() {
         ></motion.div>
 
         <nav>
-          <ul className="light:text-fuchsia-950/85 *:hover:light:text-fuchsia-950 light:pt-12 flex flex-col items-center gap-3 pt-14 text-base sm:text-lg text-pink-200/90 *:hover:text-pink-50">
+          <ul className="light:text-fuchsia-950/85 *:hover:light:text-fuchsia-950 light:pt-12 flex flex-col items-center gap-3 pt-14 text-base text-pink-200/90 *:hover:text-pink-50 sm:text-lg">
             <AnimatedFooterLink url={"/"} newTab={false}>
               Home
             </AnimatedFooterLink>
