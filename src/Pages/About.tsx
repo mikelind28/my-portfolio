@@ -128,6 +128,7 @@ function UseAnimatedText({
 
   useEffect(() => {
     setCursor(0);
+    let active = true;
 
     const controls = animate(0, text.split(delimiter).length + 3, {
       duration: 20,
@@ -135,13 +136,14 @@ function UseAnimatedText({
         setCursor(Math.floor(latest));
       },
       onComplete() {
-        setAnimationState("complete");
+        if (active) setAnimationState("complete");
       },
     });
 
     controlsRef.current = controls;
 
     return () => {
+      active = false;
       controls.stop();
       if (autoPauseTimeoutRef.current) {
         clearTimeout(autoPauseTimeoutRef.current);
@@ -153,7 +155,7 @@ function UseAnimatedText({
     if (controlsRef.current) {
       controlsRef.current.complete();
     }
-  }, [fastForwardTrigger, setAnimationState]);
+  }, [fastForwardTrigger]);
 
   // Pause briefly when encountering a period.
   useEffect(() => {
@@ -188,10 +190,8 @@ function UseAnimatedText({
 
     if (animationState === "playing") {
       controlsRef.current.play();
-      console.log("playing");
     } else if (animationState === "paused") {
       controlsRef.current.pause();
-      console.log("paused");
     }
   }, [animationState]);
 
@@ -215,116 +215,161 @@ export default function About() {
   const [fastForwardTrigger, setFastForwardTrigger] = useState(0);
 
   return (
-    <main className="light:gap-0 mx-auto flex h-fit w-full max-w-120 flex-col gap-4 p-2 pt-5">
+    <main className="light:gap-0 mx-auto flex h-fit w-full max-w-120 flex-col gap-4 p-2 pt-5 lg:max-w-5xl">
       <title>Mike Lind | Web Dev - About</title>
       <H1 text={"About Me."} />
 
-      <div className="light:gap-3 light:px-2 mb-8 flex flex-col gap-8 px-4">
-        <GlowingBackground glowClass="light:from-white light:to-white light:shadow-sm/25 bg-radial from-fuchsia-800/50 from-40% to-fuchsia-900/40">
-          <div className="m-8 w-full px-6 text-center">
-            <AboutH2 text={"My Background"} />
+      <div className="lg:flex light:lg:gap-0 lg:gap-6">
+        <div className="hidden lg:block lg:ml-4 lg:mb-6">
+          <GlowingBackground glowClass="light:from-white light:to-white light:shadow-sm/25 bg-radial from-orange-700/70 from-40% to-orange-800/40">
+            <div className="m-8 w-full px-6 text-center">
+              <AboutH2 text={"My Proficiencies"} />
 
-            <div className="light:text-fuchsia-900/75 absolute top-4 right-4 flex size-15 justify-end gap-3 text-fuchsia-700/75">
-              {animationState === "playing" && (
-                <IoPause
-                  onClick={() => setAnimationState("paused")}
-                  className="size-6"
+              <motion.ul
+                variants={list}
+                initial="hidden"
+                animate="show"
+                className="flex flex-col items-center gap-2"
+              >
+                <ProficiencyListItem text={"JavaScript"} img={"javascript.jpg"} />
+                <ProficiencyListItem
+                  text={"TypeScript"}
+                  img={"typescript.svg.png"}
                 />
-              )}
-
-              {animationState === "paused" && (
-                <IoPlay
-                  onClick={() => setAnimationState("playing")}
-                  className="size-6"
+                <ProficiencyListItem text={"HTML"} img={"html.png"} />
+                <ProficiencyListItem text={"CSS"} img={"css.svg.png"} />
+                <ProficiencyListItem text={"Vite"} img={"vite.svg"} />
+                <ProficiencyListItem text={"React"} img={"react.png"} />
+                <ProficiencyListItem
+                  text={"React Router"}
+                  img={"react-router.png"}
                 />
-              )}
-
-              {animationState !== "complete" && (
-                <FaFastForward
-                  onClick={() => {
-                    setFastForwardTrigger((prev) => prev + 1);
-                    setAnimationState("complete");
-                  }}
-                  className="size-6"
-                />
-              )}
-
-              {animationState === "complete" && (
-                <IoRefresh
-                  onClick={() => {
-                    setResetTrigger((prev) => prev + 1);
-                    setAnimationState("playing");
-                  }}
-                  className="size-6"
-                />
-              )}
+                <ProficiencyListItem text={"Next.js"} img={"nextjs.svg"} />
+                <ProficiencyListItem text={"Tailwind CSS"} img={"tailwind.svg"} />
+                <ProficiencyListItem text={"Motion"} img={"motion.png"} />
+                <ProficiencyListItem text={"PostgreSQL"} img={"postgresql.png"} />
+                <ProficiencyListItem text={"Node.js"} img={"node-js.svg"} />
+                <ProficiencyListItem text={"Express"} img={"express.svg"} />
+                <ProficiencyListItem text={"Playwright"} img={"playwright.png"} />
+                <ProficiencyListItem text={"GitHub Actions"} img={"github.svg"} />
+                <ProficiencyListItem text={"Payload CMS"} img={"payload.svg"} />
+                <ProficiencyListItem text={"Vercel"} img={"vercel.svg"} />
+                <ProficiencyListItem text={"Render"} img={"render.svg"} />
+                <ProficiencyListItem text={"Figma"} img={"figma.png"} />
+              </motion.ul>
             </div>
+          </GlowingBackground>
+        </div>
 
-            <p className="light:from-orange-600 light:to-fuchsia-700 light:text-shadow-none mx-4 bg-linear-to-b from-orange-50/85 to-orange-50 bg-clip-text font-mono text-base/6 whitespace-pre-line text-transparent text-shadow-sm">
-              <UseAnimatedText
-                animationState={animationState}
-                setAnimationState={setAnimationState}
-                resetTrigger={resetTrigger}
-                fastForwardTrigger={fastForwardTrigger}
-                text={`I received my Bachelor of Fine Arts from the University of Wisconsin-Madison, where I double-majored in Studio Art and Art History.\n\nLater, while working at the Walker Art Center, I got professional experience working with the collections database. I wrote queries and designed user interfaces for our staff. I fell in love with this combination of coding, data, and design, which prompted me to take a full-stack web development coding bootcamp course through the University of Minnesota and edX.\n\nI grew up in Wisconsin, but now live in Minneapolis with my wife, our dog, and our cat.`}
-              />
-            </p>
+        <div className="light:gap-3 light:px-2 mb-8 flex flex-col gap-8 px-4 lg:max-w-2xl">
+          <GlowingBackground glowClass="light:from-white light:to-white light:shadow-sm/25 bg-radial from-fuchsia-800/50 from-40% to-fuchsia-900/40">
+            <div className="m-8 w-full px-6 pt-3 text-center">
+              <AboutH2 text={"My Background"} />
+
+              <div className="light:text-fuchsia-900/75 absolute top-4 right-4 flex size-15 justify-end gap-3 text-fuchsia-700/75">
+                {animationState === "playing" && (
+                  <IoPause
+                    onClick={() => setAnimationState("paused")}
+                    className="size-6"
+                  />
+                )}
+
+                {animationState === "paused" && (
+                  <IoPlay
+                    onClick={() => setAnimationState("playing")}
+                    className="size-6"
+                  />
+                )}
+
+                {animationState !== "complete" && (
+                  <FaFastForward
+                    onClick={() => {
+                      setFastForwardTrigger((prev) => prev + 1);
+                      setAnimationState("complete");
+                    }}
+                    className="size-6"
+                  />
+                )}
+
+                {animationState === "complete" && (
+                  <IoRefresh
+                    onClick={() => {
+                      setResetTrigger((prev) => prev + 1);
+                      setAnimationState("playing");
+                    }}
+                    className="size-6"
+                  />
+                )}
+              </div>
+
+              <p className="light:from-orange-600 light:to-fuchsia-700 light:text-shadow-none mx-4 bg-linear-to-b from-orange-50/85 to-orange-50 bg-clip-text font-mono text-base/6 whitespace-pre-line text-transparent text-shadow-sm">
+                <UseAnimatedText
+                  animationState={animationState}
+                  setAnimationState={setAnimationState}
+                  resetTrigger={resetTrigger}
+                  fastForwardTrigger={fastForwardTrigger}
+                  text={`I received my Bachelor of Fine Arts from the University of Wisconsin-Madison, where I double-majored in Studio Art and Art History.\n\nLater, while working at the Walker Art Center, I got professional experience working with the collections database. I wrote queries and designed user interfaces for our staff. I fell in love with this combination of coding, data, and design, which prompted me to take a full-stack web development coding bootcamp course through the University of Minnesota and edX.\n\nI grew up in Wisconsin, but now live in Minneapolis with my wife, our dog, and our cat.`}
+                />
+              </p>
+            </div>
+          </GlowingBackground>
+
+          <div className="lg:hidden">
+            <GlowingBackground glowClass="light:from-white light:to-white light:shadow-sm/25 bg-radial from-orange-700/70 from-40% to-orange-800/40">
+              <div className="m-8 w-full px-6 text-center">
+                <AboutH2 text={"My Proficiencies"} />
+
+                <motion.ul
+                  variants={list}
+                  initial="hidden"
+                  animate="show"
+                  className="flex flex-col items-center gap-2"
+                >
+                  <ProficiencyListItem text={"JavaScript"} img={"javascript.jpg"} />
+                  <ProficiencyListItem
+                    text={"TypeScript"}
+                    img={"typescript.svg.png"}
+                  />
+                  <ProficiencyListItem text={"HTML"} img={"html.png"} />
+                  <ProficiencyListItem text={"CSS"} img={"css.svg.png"} />
+                  <ProficiencyListItem text={"Vite"} img={"vite.svg"} />
+                  <ProficiencyListItem text={"React"} img={"react.png"} />
+                  <ProficiencyListItem
+                    text={"React Router"}
+                    img={"react-router.png"}
+                  />
+                  <ProficiencyListItem text={"Next.js"} img={"nextjs.svg"} />
+                  <ProficiencyListItem text={"Tailwind CSS"} img={"tailwind.svg"} />
+                  <ProficiencyListItem text={"Motion"} img={"motion.png"} />
+                  <ProficiencyListItem text={"PostgreSQL"} img={"postgresql.png"} />
+                  <ProficiencyListItem text={"Node.js"} img={"node-js.svg"} />
+                  <ProficiencyListItem text={"Express"} img={"express.svg"} />
+                  <ProficiencyListItem text={"Playwright"} img={"playwright.png"} />
+                  <ProficiencyListItem text={"GitHub Actions"} img={"github.svg"} />
+                  <ProficiencyListItem text={"Payload CMS"} img={"payload.svg"} />
+                  <ProficiencyListItem text={"Vercel"} img={"vercel.svg"} />
+                  <ProficiencyListItem text={"Render"} img={"render.svg"} />
+                </motion.ul>
+              </div>
+            </GlowingBackground>
           </div>
-        </GlowingBackground>
 
-        <GlowingBackground glowClass="light:from-white light:to-white light:shadow-sm/25 bg-radial from-orange-700/70 from-40% to-orange-800/40">
-          <div className="m-8 w-full px-6 text-center">
-            <AboutH2 text={"My Proficiencies"} />
+          <GlowingBackground glowClass="light:from-white light:to-white light:shadow-sm/25 bg-radial from-green-800/70 from-40% to-green-900/50">
+            <div className="m-8 px-6 text-center">
+              <AboutH2 text={"Miscellaneous"} />
 
-            <motion.ul
-              variants={list}
-              initial="hidden"
-              animate="show"
-              className="flex flex-col items-center gap-2"
-            >
-              <ProficiencyListItem text={"JavaScript"} img={"javascript.jpg"} />
-              <ProficiencyListItem
-                text={"TypeScript"}
-                img={"typescript.svg.png"}
-              />
-              <ProficiencyListItem text={"HTML"} img={"html.png"} />
-              <ProficiencyListItem text={"CSS"} img={"css.svg.png"} />
-              <ProficiencyListItem text={"Vite"} img={"vite.svg"} />
-              <ProficiencyListItem text={"React"} img={"react.png"} />
-              <ProficiencyListItem
-                text={"React Router"}
-                img={"react-router.png"}
-              />
-              <ProficiencyListItem text={"Next.js"} img={"nextjs.svg"} />
-              <ProficiencyListItem text={"Tailwind CSS"} img={"tailwind.svg"} />
-              <ProficiencyListItem text={"Motion"} img={"motion.png"} />
-              <ProficiencyListItem text={"PostgreSQL"} img={"postgresql.png"} />
-              <ProficiencyListItem text={"Node.js"} img={"node-js.svg"} />
-              <ProficiencyListItem text={"Express"} img={"express.svg"} />
-              <ProficiencyListItem text={"Playwright"} img={"playwright.png"} />
-              <ProficiencyListItem text={"GitHub Actions"} img={"github.svg"} />
-              <ProficiencyListItem text={"Payload CMS"} img={"payload.svg"} />
-              <ProficiencyListItem text={"Vercel"} img={"vercel.svg"} />
-              <ProficiencyListItem text={"Render"} img={"render.svg"} />
-            </motion.ul>
-          </div>
-        </GlowingBackground>
-
-        <GlowingBackground glowClass="light:from-white light:to-white light:shadow-sm/25 bg-radial from-green-800/70 from-40% to-green-900/50">
-          <div className="m-8 px-6 text-center">
-            <AboutH2 text={"Miscellaneous"} />
-
-            <p className="light:from-fuchsia-700 light:to-green-700 light:text-shadow-none mx-4 bg-linear-to-b from-orange-50/85 to-orange-50 bg-clip-text font-mono text-base/6 whitespace-pre-line text-transparent text-shadow-sm">
-              <UseAnimatedText
-                animationState={animationState}
-                setAnimationState={setAnimationState}
-                resetTrigger={resetTrigger}
-                fastForwardTrigger={fastForwardTrigger}
-                text={`In my free time, I enjoy spending time with my wife, our dog, and our cat. I love exploring the many nature preserves surrounding the Twin Cities and maintaining a prairie yard. I frequently oscillate between practicing piano, guitar, drums, and digital mixing. My latest gaming obsessions include Hollow Knight: Silksong and Baldur's Gate 3.`}
-              />
-            </p>
-          </div>
-        </GlowingBackground>
+              <p className="light:from-fuchsia-700 light:to-green-700 light:text-shadow-none mx-4 bg-linear-to-b from-orange-50/85 to-orange-50 bg-clip-text font-mono text-base/6 whitespace-pre-line text-transparent text-shadow-sm">
+                <UseAnimatedText
+                  animationState={animationState}
+                  setAnimationState={setAnimationState}
+                  resetTrigger={resetTrigger}
+                  fastForwardTrigger={fastForwardTrigger}
+                  text={`In my free time, I enjoy spending time with my wife, our dog, and our cat. I love exploring the many nature preserves surrounding the Twin Cities and maintaining a prairie yard. I frequently oscillate between practicing piano, guitar, drums, and digital mixing. My latest gaming obsessions include Hollow Knight: Silksong and Baldur's Gate 3.`}
+                />
+              </p>
+            </div>
+          </GlowingBackground>
+        </div>
       </div>
     </main>
   );

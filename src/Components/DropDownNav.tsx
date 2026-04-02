@@ -62,7 +62,7 @@ type DropDownNavType = {
 
 export default function DropDownNav({ setDropDownNavOpen }: DropDownNavType) {
   return (
-    <div className="from-dark-violet4 to-dark-violet3 light:from-white light:from-40% light:via-orange-100 light:via-80% light:to-fuchsia-200 h-dvh w-dvw bg-linear-to-b sm:hidden">
+    <div className="from-dark-violet4 via-dark-violet4 to-fuchsia-950 light:from-white light:from-40% light:via-orange-100 light:via-80% light:to-fuchsia-200 h-dvh w-dvw bg-linear-to-b sm:hidden">
       <IoClose
         onClick={() => setDropDownNavOpen(false)}
         className="light:text-fuchsia-950 size-12 shrink-0 cursor-pointer pt-4 pl-2 text-white"

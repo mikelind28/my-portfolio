@@ -57,9 +57,9 @@ export default function Footer() {
       initial={{ y: "200%" }}
       animate={{ y: 0 }}
       transition={{ duration: 1.5, ease: "easeOut" }}
-      className="light:p-4 w-full max-w-160 p-5 xl:max-w-277"
+      className="light:p-4 w-full"
     >
-      <div className="light:my-0 light:flex light:justify-center relative h-fit w-full overflow-visible rounded-xl p-4 pt-0 pb-8">
+      <div className="light:my-0 flex justify-center relative h-fit w-full overflow-visible rounded-xl p-4 pt-0 pb-8 xl:pb-12">
         <motion.div
           initial={{
             opacity: darkModeOn ? 0 : 1,
@@ -71,7 +71,7 @@ export default function Footer() {
         ></motion.div>
 
         <nav>
-          <ul className="light:text-fuchsia-950/85 *:hover:light:text-fuchsia-950 light:pt-12 flex flex-col items-center gap-3 pt-14 text-base text-pink-200/90 *:hover:text-pink-50 sm:text-lg">
+          <ul className="light:text-fuchsia-950/85 *:hover:light:text-fuchsia-950 light:pt-12 flex flex-col xl:flex-row xl:gap-14 items-center gap-3 pt-14 text-base text-pink-200/90 *:hover:text-pink-50 sm:text-lg">
             <AnimatedFooterLink url={"/"} newTab={false}>
               Home
             </AnimatedFooterLink>

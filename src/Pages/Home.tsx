@@ -11,7 +11,7 @@ function HelloWorldWelcome() {
   const darkModeOn = useContext(DarkModeOnContext);
 
   return (
-    <div className="light:my-0 relative mt-2 mb-4 flex h-fit w-full items-center justify-center overflow-visible rounded-xl px-6 py-4 sm:px-12 xl:max-w-120">
+    <div className="light:my-0 relative mt-2 mb-4 flex h-fit w-full items-center justify-center overflow-visible rounded-xl px-6 py-4 sm:px-12 xl:max-w-160 xl:py-12">
       <motion.div
         initial={{ opacity: darkModeOn ? 0 : 1, scale: darkModeOn ? 0.75 : 1 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -108,7 +108,7 @@ export default function Home() {
     <main className="relative mx-auto flex w-full max-w-160 flex-col items-center p-5 xl:max-w-full">
       <H1 text={"Welcome."} />
 
-      <div className="xl:flex xl:gap-6">
+      <div className="xl:flex xl:gap-10 light:xl:gap-8">
         <HelloWorldWelcome />
 
         <div className="relative mx-auto flex w-full max-w-160 flex-col items-center">
@@ -132,9 +132,9 @@ export default function Home() {
                 className={"w-full"}
               >
                 <PortfolioItemPreview
-                  text={"Window Interface API"}
-                  url={"https://window-doc-nav.netlify.app"}
-                  img={"win-doc-nav-interfaces.png"}
+                  text={"Back to the Shelf Again"}
+                  url={"https://back-to-the-shelf-again.vercel.app"}
+                  img={"bttsa.webp"}
                 />
               </motion.li>
 
@@ -158,9 +158,9 @@ export default function Home() {
                 className={"w-full"}
               >
                 <PortfolioItemPreview
-                  text={"myNumberArray"}
-                  url={"https://my-number-array.netlify.app/"}
-                  img={"my-number-array.png"}
+                  text={"Window Methods"}
+                  url={"https://window-doc-nav.netlify.app"}
+                  img={"win-doc-nav-interfaces.png"}
                 />
               </motion.li>
 
