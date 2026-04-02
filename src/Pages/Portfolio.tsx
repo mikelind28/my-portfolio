@@ -32,10 +32,6 @@ type PortfolioItemType = {
   children: ReactNode | ReactNode[];
 };
 
-// bg-linear-to-b from-fuchsia-700/40 via-fuchsia-900/33 via-10% to-fuchsia-700/40 
-
-// bg-linear-[180deg,oklch(35%_0.253_323.949),oklch(25%_0.17_325.612)_10%,oklch(15%_0.17_325.612)_85%,oklch(25%_0.253_323.949)]
-
 function PortfolioItem({ title, children }: PortfolioItemType) {
   const [open, setOpen] = useState(true);
 
@@ -152,170 +148,168 @@ export default function Portfolio() {
       <title>Mike Lind | Web Dev - Portfolio</title>
       <H1 text={"My Portfolio."} />
 
-      <div className="2xl:columns-2 2xl:block 2xl:gap-15">
-        <div className="flex h-fit w-full flex-col items-center 2xl:gap-6">
-          <PortfolioItem title={"Back to the Shelf Again"}>
-            <PortfolioItemLinks
-              appUrl={"https://back-to-the-shelf-again.vercel.app/"}
-              gitHubUrl={"https://github.com/mikelind28/back-to-the-shelf-again"}
-              img={"bttsa.webp"}
-            />
+      <div className="flex h-fit w-full flex-col items-center 2xl:columns-2 2xl:block 2xl:gap-15">
+        <PortfolioItem title={"Back to the Shelf Again"}>
+          <PortfolioItemLinks
+            appUrl={"https://back-to-the-shelf-again.vercel.app/"}
+            gitHubUrl={"https://github.com/mikelind28/back-to-the-shelf-again"}
+            img={"bttsa.webp"}
+          />
 
-            <PortfolioItemDescription>
-              <span className="italic">Back to the Shelf Again</span> is a
-              full-stack React + Next.js site for a pop-up book shop in
-              South-Central Wisconsin. They sell gently-used romance books at
-              local vendors. The non-developer admins can log in and add new
-              entries for their upcoming events, linking them to reusable
-              locations, using Payload CMS.
-            </PortfolioItemDescription>
+          <PortfolioItemDescription>
+            <span className="italic">Back to the Shelf Again</span> is a
+            full-stack React + Next.js site for a pop-up book shop in
+            South-Central Wisconsin. They sell gently-used romance books at
+            local vendors. The non-developer admins can log in and add new
+            entries for their upcoming events, linking them to reusable
+            locations, using Payload CMS.
+          </PortfolioItemDescription>
 
-            <ul className="mt-4 flex flex-wrap gap-2">
-              <DevTag text={"React"} img={"react.png"} />
-              <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
-              <DevTag text={"Next.js"} img={"nextjs.svg"} />
-              <DevTag text={"Tailwind"} img={"tailwind.svg"} />
-              <DevTag text={"Motion"} img={"motion.png"} />
-              <DevTag text={"Postgres"} img={"postgresql.png"} />
-              <DevTag text={"Payload"} img={"payload.svg"} />
-              <DevTag text={"Playwright"} img={"playwright.png"} />
-              <DevTag text={"Vercel"} img={"vercel.svg"} />
-            </ul>
-          </PortfolioItem>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            <DevTag text={"React"} img={"react.png"} />
+            <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
+            <DevTag text={"Next.js"} img={"nextjs.svg"} />
+            <DevTag text={"Tailwind"} img={"tailwind.svg"} />
+            <DevTag text={"Motion"} img={"motion.png"} />
+            <DevTag text={"Postgres"} img={"postgresql.png"} />
+            <DevTag text={"Payload"} img={"payload.svg"} />
+            <DevTag text={"Playwright"} img={"playwright.png"} />
+            <DevTag text={"Vercel"} img={"vercel.svg"} />
+          </ul>
+        </PortfolioItem>
 
-          <Divider />
+        <Divider />
 
-          <PortfolioItem title={"Window Methods"}>
-            <PortfolioItemLinks
-              appUrl={"https://window-doc-nav.netlify.app"}
-              gitHubUrl={"https://github.com/mikelind28/window-interface-api"}
-              img={"win-doc-nav-interfaces.png"}
-            />
+        <PortfolioItem title={"Window Methods"}>
+          <PortfolioItemLinks
+            appUrl={"https://window-doc-nav.netlify.app"}
+            gitHubUrl={"https://github.com/mikelind28/window-interface-api"}
+            img={"win-doc-nav-interfaces.png"}
+          />
 
-            <PortfolioItemDescription>
-              <span className="italic">Window Methods</span> is a dashboard-style
-              React application that allows users to see and interact with
-              properties and methods of the browser's Window, Document, and
-              Navigator interfaces.
-            </PortfolioItemDescription>
+          <PortfolioItemDescription>
+            <span className="italic">Window Methods</span> is a dashboard-style
+            React application that allows users to see and interact with
+            properties and methods of the browser's Window, Document, and
+            Navigator interfaces.
+          </PortfolioItemDescription>
 
-            <ul className="mt-4 flex flex-wrap gap-2">
-              <DevTag text={"React"} img={"react.png"} />
-              <DevTag text={"Tailwind"} img={"tailwind.svg"} />
-              <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
-            </ul>
-          </PortfolioItem>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            <DevTag text={"React"} img={"react.png"} />
+            <DevTag text={"Tailwind"} img={"tailwind.svg"} />
+            <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
+          </ul>
+        </PortfolioItem>
 
-          <Divider />
+        <Divider />
 
-          <PortfolioItem title={"myBookShelf"}>
-            <PortfolioItemLinks
-              appUrl={"https://my-bookshelf-wg3p.onrender.com/"}
-              gitHubUrl={"https://github.com/mikelind28/my-bookshelf"}
-              img={"my-bookshelf.png"}
-            />
+        <PortfolioItem title={"myBookShelf"}>
+          <PortfolioItemLinks
+            appUrl={"https://my-bookshelf-wg3p.onrender.com/"}
+            gitHubUrl={"https://github.com/mikelind28/my-bookshelf"}
+            img={"my-bookshelf.png"}
+          />
 
-            <PortfolioItemDescription>
-              <span className="italic">myBookShelf</span> is a full-stack React
-              application that simulates a personal bookshelf. It uses an external
-              API from OpenLibrary to fetch book and author details, allowing
-              users to add books to their shelf or their wish list. Books can be
-              filtered by their 'read' or 'not read' status.
-            </PortfolioItemDescription>
+          <PortfolioItemDescription>
+            <span className="italic">myBookShelf</span> is a full-stack React
+            application that simulates a personal bookshelf. It uses an external
+            API from OpenLibrary to fetch book and author details, allowing
+            users to add books to their shelf or their wish list. Books can be
+            filtered by their 'read' or 'not read' status.
+          </PortfolioItemDescription>
 
-            <ul className="mt-4 flex flex-wrap gap-2">
-              <DevTag text={"React"} img={"react.png"} />
-              <DevTag text={"React Router"} img={"react-router.png"} />
-              <DevTag text={"Tailwind"} img={"tailwind.svg"} />
-              <DevTag text={"Express"} img={"express.svg"} />
-              <DevTag text={"Postgres"} img={"postgresql.png"} />
-              <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
-              <DevTag text={"Render"} img={"render.svg"} />
-            </ul>
-          </PortfolioItem>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            <DevTag text={"React"} img={"react.png"} />
+            <DevTag text={"React Router"} img={"react-router.png"} />
+            <DevTag text={"Tailwind"} img={"tailwind.svg"} />
+            <DevTag text={"Express"} img={"express.svg"} />
+            <DevTag text={"Postgres"} img={"postgresql.png"} />
+            <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
+            <DevTag text={"Render"} img={"render.svg"} />
+          </ul>
+        </PortfolioItem>
 
-          <Divider />
+        <Divider />
 
-          <PortfolioItem title={"myNumberArray"}>
-            <PortfolioItemLinks
-              appUrl={"https://my-number-array.netlify.app/"}
-              gitHubUrl={"https://github.com/mikelind28/my-number-array"}
-              img={"my-number-array.png"}
-            />
+        <PortfolioItem title={"myNumberArray"}>
+          <PortfolioItemLinks
+            appUrl={"https://my-number-array.netlify.app/"}
+            gitHubUrl={"https://github.com/mikelind28/my-number-array"}
+            img={"my-number-array.png"}
+          />
 
-            <PortfolioItemDescription>
-              <span className="italic">myNumberArray</span> is a React application
-              that allows you to create your own array, and then explore some of
-              the common methods available to JavaScript arrays.
-            </PortfolioItemDescription>
+          <PortfolioItemDescription>
+            <span className="italic">myNumberArray</span> is a React application
+            that allows you to create your own array, and then explore some of
+            the common methods available to JavaScript arrays.
+          </PortfolioItemDescription>
 
-            <ul className="mt-4 flex flex-wrap gap-2">
-              <DevTag text={"React"} img={"react.png"} />
-              <DevTag text={"React Router"} img={"react-router.png"} />
-              <DevTag text={"Tailwind"} img={"tailwind.svg"} />
-              <DevTag text={"Motion"} img={"motion.png"} />
-              <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
-            </ul>
-          </PortfolioItem>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            <DevTag text={"React"} img={"react.png"} />
+            <DevTag text={"React Router"} img={"react-router.png"} />
+            <DevTag text={"Tailwind"} img={"tailwind.svg"} />
+            <DevTag text={"Motion"} img={"motion.png"} />
+            <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
+          </ul>
+        </PortfolioItem>
 
-          <Divider />
+        <Divider />
 
-          <PortfolioItem title={"Animation Experimentation"}>
-            <PortfolioItemLinks
-              appUrl={"https://animation-experimentation.netlify.app"}
-              gitHubUrl={
-                "https://github.com/mikelind28/animation-experimentation"
-              }
-              img={"animation-experimentation.png"}
-            />
+        <PortfolioItem title={"Animation Experimentation"}>
+          <PortfolioItemLinks
+            appUrl={"https://animation-experimentation.netlify.app"}
+            gitHubUrl={
+              "https://github.com/mikelind28/animation-experimentation"
+            }
+            img={"animation-experimentation.png"}
+          />
 
-            <PortfolioItemDescription>
-              <span className="italic">Animation Experimentation</span> is a
-              series of (mostly interactive!) animation tests using the Motion
-              animation library.
-            </PortfolioItemDescription>
+          <PortfolioItemDescription>
+            <span className="italic">Animation Experimentation</span> is a
+            series of (mostly interactive!) animation tests using the Motion
+            animation library.
+          </PortfolioItemDescription>
 
-            <ul className="mt-4 flex flex-wrap gap-2">
-              <DevTag text={"React"} img={"react.png"} />
-              <DevTag text={"React Router"} img={"react-router.png"} />
-              <DevTag text={"Tailwind"} img={"tailwind.svg"} />
-              <DevTag text={"Motion"} img={"motion.png"} />
-              <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
-            </ul>
-          </PortfolioItem>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            <DevTag text={"React"} img={"react.png"} />
+            <DevTag text={"React Router"} img={"react-router.png"} />
+            <DevTag text={"Tailwind"} img={"tailwind.svg"} />
+            <DevTag text={"Motion"} img={"motion.png"} />
+            <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
+          </ul>
+        </PortfolioItem>
 
-          <Divider />
+        <Divider />
 
-          <PortfolioItem title={"Guitar Chords and Scales"}>
-            <PortfolioItemLinks
-              appUrl={"https://guitar-chords-and-scales.netlify.app/"}
-              gitHubUrl={"https://github.com/mikelind28/guitar-chords-and-scales"}
-              img={"guitar-chords.png"}
-            />
+        <PortfolioItem title={"Guitar Chords and Scales"}>
+          <PortfolioItemLinks
+            appUrl={"https://guitar-chords-and-scales.netlify.app/"}
+            gitHubUrl={"https://github.com/mikelind28/guitar-chords-and-scales"}
+            img={"guitar-chords.png"}
+          />
 
-            <PortfolioItemDescription>
-              <span className="italic">Guitar Chords and Scales</span> is virtual
-              fretboard that allows you to dynamically explore all of the most
-              common guitar chords and scales.
-            </PortfolioItemDescription>
+          <PortfolioItemDescription>
+            <span className="italic">Guitar Chords and Scales</span> is virtual
+            fretboard that allows you to dynamically explore all of the most
+            common guitar chords and scales.
+          </PortfolioItemDescription>
 
-            <ul className="mt-4 flex flex-wrap gap-2">
-              <DevTag text={"React"} img={"react.png"} />
-              <DevTag text={"Tailwind"} img={"tailwind.svg"} />
-              <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
-            </ul>
-          </PortfolioItem>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            <DevTag text={"React"} img={"react.png"} />
+            <DevTag text={"Tailwind"} img={"tailwind.svg"} />
+            <DevTag text={"TypeScript"} img={"typescript.svg.png"} />
+          </ul>
+        </PortfolioItem>
 
-          <Divider />
+        <Divider />
 
-          <PortfolioItem title={"And more..."}>
-            <PortfolioItemDescription>
-              More coming soon! Ask me what I'm working on :-)
-            </PortfolioItemDescription>
-          </PortfolioItem>
+        <PortfolioItem title={"And more..."}>
+          <PortfolioItemDescription>
+            More coming soon! Ask me what I'm working on :-)
+          </PortfolioItemDescription>
+        </PortfolioItem>
 
-          <Divider />
-        </div>
+        <Divider />
       </div>
     </main>
   );
