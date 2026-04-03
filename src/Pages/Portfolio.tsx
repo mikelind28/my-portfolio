@@ -36,7 +36,7 @@ function PortfolioItem({ title, children }: PortfolioItemType) {
   const [open, setOpen] = useState(true);
 
   return (
-    <div className="light:bg-white light:border-0 light:shadow-md/25 rounded-xl px-4 py-6 relative my-4 w-full self-start 2xl:my-0 bg-fuchsia-gradient to-fuchsia-700/40 border border-fuchsia-700/40 shadow-md/100 2xl:break-inside-avoid">
+    <div className="light:bg-white light:border-0 light:shadow-md/25 rounded-xl px-4 py-6 relative my-4 w-full self-start 2xl:my-0 bg-fuchsia-gradient to-fuchsia-700/40 shadow-lg/50 2xl:break-inside-avoid 2xl:px-6">
       <div
         onClick={() => setOpen(!open)}
         className="group flex cursor-pointer items-start gap-2"
@@ -48,7 +48,7 @@ function PortfolioItem({ title, children }: PortfolioItemType) {
           <IoIosArrowDown className="size-8 text-amber-600 transition-all duration-700 group-hover:text-amber-500" />
         </motion.div>
 
-        <h2 className="mb-2 w-fit bg-radial-[at_40%_-10%] from-amber-500 to-orange-700 bg-clip-text text-2xl sm:text-3xl font-light text-nowrap text-transparent transition-colors duration-700 group-hover:from-amber-400 group-hover:to-orange-600 drop-shadow-xl/66 light:drop-shadow-none">
+        <h2 className="mb-2 w-fit bg-radial-[at_40%_-10%] from-amber-500 to-orange-700 bg-clip-text text-2xl sm:text-3xl font-light text-nowrap text-transparent transition-colors duration-700 group-hover:from-amber-400 group-hover:to-orange-600 drop-shadow-md/75 light:drop-shadow-none">
           {title}
         </h2>
       </div>
@@ -97,7 +97,7 @@ function PortfolioItemLinks({
           "--img": `url(/images/screenshots/${img})`,
         } as React.CSSProperties
       }
-      className="light:shadow-[inset_0_5px_10px_5px_rgba(0,0,0,0.25)] light:[background:border-box_var(--border-color-light)] light:before:brightness-100 light:before:opacity-50 relative mt-2 mb-4 flex h-30 w-full items-center justify-center gap-2 overflow-hidden rounded-xl border-2 border-transparent p-4 text-center shadow-[inset_0_5px_20px_5px_rgba(0,0,0,0.75)] transition-all duration-500 [background:border-box_var(--border-color)] before:absolute before:inset-0 before:z-0 before:scale-105 before:rounded-[inherit] before:bg-(image:--img) before:bg-cover before:bg-position-[center_top_10%] before:opacity-80 before:blur-[3px] before:brightness-50 before:transition-all before:duration-500 before:content-[''] hover:brightness-120 hover:before:blur-[1px]"
+      className="light:shadow-[inset_0_5px_10px_5px_rgba(0,0,0,0.25)] light:[background:border-box_var(--border-color-light)] light:before:brightness-100 light:before:opacity-50 relative mt-2 mb-4 flex h-30 w-full items-center justify-center gap-2 overflow-hidden rounded-xl border-2 border-transparent p-4 text-center shadow-[inset_0_5px_20px_5px_rgba(0,0,0,0.75)] transition-all duration-500 [background:border-box_var(--border-color)] before:absolute before:inset-0 before:scale-100 before:rounded-[inherit] before:bg-(image:--img) before:bg-cover before:bg-position-[center_top_10%] before:opacity-80 before:blur-[3px] before:brightness-50 before:transition-all before:duration-500 before:content-[''] hover:brightness-120 hover:before:blur-[1px]"
     >
       <motion.a
         href={appUrl}
@@ -144,11 +144,11 @@ function PortfolioItemDescription({ children }: PortfolioItemDescriptionType) {
 
 export default function Portfolio() {
   return (
-    <main className="mx-auto w-full max-w-160 xl:max-w-180 p-5 2xl:max-w-7xl">
+    <main className="mx-auto w-full max-w-160 xl:max-w-180 p-5 2xl:max-w-7xl mb-4">
       <title>Mike Lind | Web Dev - Portfolio</title>
       <H1 text={"My Portfolio."} />
 
-      <div className="flex h-fit w-full flex-col items-center 2xl:columns-2 2xl:block 2xl:gap-15">
+      <div className="flex h-fit w-full flex-col items-center 2xl:columns-2 2xl:block 2xl:gap-10">
         <PortfolioItem title={"Back to the Shelf Again"}>
           <PortfolioItemLinks
             appUrl={"https://back-to-the-shelf-again.vercel.app/"}

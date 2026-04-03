@@ -11,7 +11,7 @@ export default function Contact() {
       <title>Mike Lind | Web Dev - Contact</title>
       <H1 text={"Contact."} />
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-8">
         <div className="light:my-0 mb- relative mt-2 flex h-fit w-full items-center justify-center overflow-visible rounded-xl p-4">
           <motion.div
             initial={{
@@ -20,7 +20,7 @@ export default function Contact() {
             }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 2, ease: "easeInOut" }}
-            className="light:bg-linear-to-b light:from-white light:to-white light:shadow-sm/15 light:blur-none light:h-full light:w-full absolute -z-10 h-[95%] w-[95%] rounded-xl bg-radial from-fuchsia-800/80 from-40% to-fuchsia-900/50 bg-clip-content blur-lg"
+            className="light:bg-linear-to-b light:from-white light:to-white light:shadow-sm/15 light:blur-none light:h-full light:w-full absolute -z-10 h-[95%] w-[95%] rounded-xl bg-radial from-fuchsia-800/80 from-70% to-fuchsia-900/50 bg-clip-content blur-lg"
           ></motion.div>
 
           <div className="mx-12 mt-2 mb-4 flex flex-col items-center gap-2 p-2 font-light">

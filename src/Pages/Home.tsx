@@ -105,13 +105,13 @@ const item = {
 
 export default function Home() {
   return (
-    <main className="relative mx-auto flex w-full max-w-160 flex-col items-center p-5 xl:max-w-full">
+    <main className="relative mx-auto flex w-full max-w-160 flex-col items-center p-5 xl:max-w-400 xl:mx-0">
       <H1 text={"Welcome."} />
 
-      <div className="xl:flex xl:gap-10 light:xl:gap-8">
+      <div className="xl:flex xl:gap-10 light:xl:gap-8 xl:w-[90%] xl:justify-evenly">
         <HelloWorldWelcome />
 
-        <div className="relative mx-auto flex w-full max-w-160 flex-col items-center">
+        <div className="relative mx-auto flex w-full max-w-160 flex-col items-center xl:mx-0">
           <div className="flex w-full flex-col items-center xl:hidden">
             <Divider />
           </div>

@@ -27,6 +27,16 @@ function App() {
       body.style.backgroundColor = darkModeOn
         ? "var(--color-dark-violet4)"
         : "var(--color-neutral-100)";
+
+      body.style.backgroundImage = darkModeOn
+        ? `linear-gradient(
+            160deg,
+            var(--color-dark-violet4) 20%,
+            color-mix(in oklch, var(--color-fuchsia-700) 5%, transparent) 30%,
+            color-mix(in oklch, var(--color-fuchsia-800) 20%, transparent) 60%,
+            color-mix(in oklch, var(--color-fuchsia-900) 15%, transparent) 90%
+          )`
+        : ``;
     }
 
     const html = document.querySelector("html");

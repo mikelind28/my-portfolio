@@ -57,7 +57,7 @@ export default function Footer() {
       initial={{ y: "200%" }}
       animate={{ y: 0 }}
       transition={{ duration: 1.5, ease: "easeOut" }}
-      className="light:p-4 w-full"
+      className="light:p-4 w-full mt-6"
     >
       <div className="light:my-0 flex justify-center relative h-fit w-full overflow-visible rounded-xl p-4 pt-0 pb-8 xl:pb-12">
         <motion.div
@@ -67,7 +67,7 @@ export default function Footer() {
           }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 2, ease: "easeInOut" }}
-          className="light:bg-linear-to-b light:from-white light:to-white light:shadow-sm/15 light:blur-none light:justify-self-center absolute -z-10 h-[150%] w-[95%] rounded-xl bg-radial from-fuchsia-900/40 from-40% to-fuchsia-950/10 bg-clip-content blur-lg"
+          className="light:bg-linear-to-b light:from-white light:to-white light:shadow-sm/15 light:blur-none light:justify-self-center absolute -z-10 h-[150%] w-[95%] rounded-xl bg-radial from-fuchsia-800/40 from-90% to-fuchsia-950/10 bg-clip-content blur-lg"
         ></motion.div>
 
         <nav>
